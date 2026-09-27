@@ -392,6 +392,451 @@
 
 
 
+
+<!-- =====================================================
+     PREMIUM UYIRMANN SEARCH EXPERIENCE
+===================================================== -->
+
+<section class="uyirmann-search-section" id="uyirmann-search">
+
+    <div class="search-glow"></div>
+
+    <div class="search-content">
+
+        <span class="search-eyebrow">
+            EXPLORE UYIRMANN
+        </span>
+
+        <h2>
+            Everything About
+            <span>Tamil Agriculture.</span>
+        </h2>
+
+        <p>
+            Explore crops, districts, farming traditions, soil,
+            water, technology, farmers, stories and the future
+            of agriculture.
+        </p>
+
+        <a href="search.html" class="premium-search-button">
+
+            <span class="search-icon">⌕</span>
+
+            <span>Search UYIRMANN</span>
+
+            <span class="search-arrow">→</span>
+
+        </a>
+
+        <div class="search-tags">
+
+            <span>🌾 Crops</span>
+            <span>🗺️ Districts</span>
+            <span>🌱 Soil</span>
+            <span>💧 Water</span>
+            <span>🤖 Technology</span>
+            <span>👨‍🌾 Farmers</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<style>
+
+/* =====================================================
+   PREMIUM UYIRMANN SEARCH
+===================================================== */
+
+.uyirmann-search-section {
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 110px 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(47, 255, 132, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #06130d,
+            #091b12 55%,
+            #030907
+        );
+
+    border-top:
+        1px solid rgba(120, 255, 160, 0.08);
+
+    border-bottom:
+        1px solid rgba(120, 255, 160, 0.08);
+}
+
+
+.search-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+.search-eyebrow {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    color: #65ff9a;
+
+}
+
+
+.search-content h2 {
+
+    margin: 0;
+
+    font-size: clamp(40px, 6vw, 76px);
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    color: #f4fff7;
+
+}
+
+
+.search-content h2 span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #61ff9a,
+            #c9ffd9
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+}
+
+
+.search-content p {
+
+    max-width: 650px;
+
+    margin: 28px auto 35px;
+
+    color: rgba(225, 244, 231, 0.72);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+.premium-search-button {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px 25px;
+
+    border:
+        1px solid rgba(101, 255, 154, 0.45);
+
+    border-radius: 14px;
+
+    background:
+        rgba(42, 255, 123, 0.08);
+
+    color: #effff3;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 0 25px rgba(42, 255, 123, 0.08),
+        inset 0 0 20px rgba(42, 255, 123, 0.03);
+
+    transition: 0.35s ease;
+
+}
+
+
+.premium-search-button:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #65ff9a;
+
+    background:
+        rgba(42, 255, 123, 0.15);
+
+    box-shadow:
+        0 12px 40px rgba(42, 255, 123, 0.16),
+        0 0 25px rgba(42, 255, 123, 0.12);
+
+}
+
+
+.search-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(101, 255, 154, 0.12);
+
+    color: #65ff9a;
+
+    font-size: 25px;
+
+    transition: 0.35s ease;
+
+}
+
+
+.premium-search-button:hover .search-icon {
+
+    transform:
+        rotate(-15deg)
+        scale(1.12);
+
+}
+
+
+.search-arrow {
+
+    font-size: 22px;
+
+    color: #65ff9a;
+
+    transition: 0.35s ease;
+
+}
+
+
+.premium-search-button:hover .search-arrow {
+
+    transform:
+        translateX(5px);
+
+}
+
+
+.search-tags {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 35px;
+
+}
+
+
+.search-tags span {
+
+    padding: 9px 14px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 100px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    color:
+        rgba(225, 244, 231, 0.65);
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+
+}
+
+
+.search-tags span:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(101, 255, 154, 0.35);
+
+    color: #65ff9a;
+
+    background:
+        rgba(101, 255, 154, 0.06);
+
+}
+
+
+.search-glow {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(40, 255, 120, 0.07);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        searchPulse 5s ease-in-out infinite;
+
+}
+
+
+@keyframes searchPulse {
+
+    0%, 100% {
+
+        opacity: 0.45;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+    }
+
+    50% {
+
+        opacity: 0.8;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .uyirmann-search-section {
+
+        padding: 80px 18px;
+
+    }
+
+
+    .search-content h2 {
+
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+
+    }
+
+
+    .search-content p {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .premium-search-button {
+
+        width: 100%;
+
+        max-width: 330px;
+
+        justify-content: center;
+
+    }
+
+
+    .search-tags {
+
+        gap: 7px;
+
+    }
+
+
+    .search-tags span {
+
+        font-size: 12px;
+
+        padding: 8px 11px;
+
+    }
+
+}
+
+</style>
+
+
+
+
 <!-- =====================================================
      FEATURE CARDS
 ===================================================== -->
@@ -1402,10 +1847,6 @@
 
                 <a href="about.html">
                     About
-                </a>
-
-                <a href="search.html">
-                    🔎 Search
                 </a>
 
                 <a href="about.html">
