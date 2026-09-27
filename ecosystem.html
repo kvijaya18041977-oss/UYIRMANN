@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ecosystem & Biodiversity | UYIRMANN</title>
+  <meta name="description" content="Explore the living ecosystem around Tamil Nadu agriculture — pollinators, birds, insects, trees, wetlands, soil life and biodiversity.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --eco-green:#79d98a;
+      --eco-dark:#07140d;
+      --eco-card:rgba(16,35,23,.72);
+      --eco-line:rgba(121,217,138,.18);
+      --eco-text:#edf8ef;
+      --eco-muted:#a8bcae;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(70,150,80,.12),transparent 30%),
+        radial-gradient(circle at 85% 40%,rgba(60,180,110,.08),transparent 32%),
+        var(--eco-dark);
+      color:var(--eco-text);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .eco-hero{
+      min-height:88vh;
+      position:relative;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(3,12,7,.92),rgba(3,12,7,.52),rgba(3,12,7,.2)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+    }
+
+    .eco-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,transparent 55%,var(--eco-dark) 100%);
+    }
+
+    .eco-hero-content{
+      width:min(1200px,92%);
+      margin:auto;
+      position:relative;
+      z-index:2;
+      padding:110px 0 80px;
+    }
+
+    .eco-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 16px;
+      border:1px solid rgba(121,217,138,.3);
+      border-radius:999px;
+      background:rgba(5,20,11,.55);
+      backdrop-filter:blur(12px);
+      color:var(--eco-green);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .eco-kicker span{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--eco-green);
+      box-shadow:0 0 15px var(--eco-green);
+    }
+
+    .eco-hero h1{
+      max-width:850px;
+      margin:25px 0 20px;
+      font-size:clamp(3rem,7vw,6.8rem);
+      line-height:.92;
+      letter-spacing:-4px;
+    }
+
+    .eco-hero h1 span{
+      color:var(--eco-green);
+    }
+
+    .eco-hero p{
+      max-width:680px;
+      color:#d4e4d7;
+      font-size:1.08rem;
+      line-height:1.8;
+    }
+
+    .eco-scroll{
+      margin-top:40px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:#b9cbbd;
+      font-size:.82rem;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+    }
+
+    .eco-scroll-line{
+      width:55px;
+      height:1px;
+      background:var(--eco-green);
+    }
+
+    .eco-section{
+      width:min(1200px,92%);
+      margin:auto;
+      padding:105px 0;
+    }
+
+    .eco-heading{
+      max-width:760px;
+      margin-bottom:55px;
+    }
+
+    .eco-label{
+      color:var(--eco-green);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .eco-heading h2{
+      font-size:clamp(2.2rem,5vw,4.4rem);
+      line-height:1;
+      letter-spacing:-2px;
+      margin:0 0 20px;
+    }
+
+    .eco-heading p{
+      color:var(--eco-muted);
+      line-height:1.8;
+      font-size:1rem;
+    }
+
+    .eco-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .eco-card{
+      position:relative;
+      min-height:280px;
+      padding:30px;
+      border:1px solid var(--eco-line);
+      border-radius:24px;
+      overflow:hidden;
+      background:linear-gradient(
+        145deg,
+        rgba(19,43,27,.85),
+        rgba(7,19,12,.7)
+      );
+      transition:.45s ease;
+    }
+
+    .eco-card:hover{
+      transform:translateY(-10px);
+      border-color:rgba(121,217,138,.48);
+      box-shadow:0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .eco-card::after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:-80px;
+      bottom:-80px;
+      border-radius:50%;
+      background:rgba(121,217,138,.08);
+      transition:.45s;
+    }
+
+    .eco-card:hover::after{
+      transform:scale(1.5);
+    }
+
+    .eco-icon{
+      font-size:2.3rem;
+      margin-bottom:30px;
+      display:block;
+    }
+
+    .eco-card h3{
+      margin:0 0 12px;
+      font-size:1.35rem;
+    }
+
+    .eco-card p{
+      color:var(--eco-muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .eco-number{
+      position:absolute;
+      top:24px;
+      right:26px;
+      font-size:.72rem;
+      color:rgba(255,255,255,.3);
+      letter-spacing:2px;
+    }
+
+    .eco-flow{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      align-items:center;
+      gap:10px;
+    }
+
+    .eco-flow-item{
+      text-align:center;
+      padding:30px 15px;
+      border:1px solid var(--eco-line);
+      border-radius:22px;
+      background:rgba(12,29,18,.7);
+      transition:.35s;
+    }
+
+    .eco-flow-item:hover{
+      transform:translateY(-7px);
+      background:rgba(22,52,31,.8);
+    }
+
+    .eco-flow-icon{
+      font-size:2rem;
+      margin-bottom:15px;
+    }
+
+    .eco-flow-item h3{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .eco-arrow{
+      text-align:center;
+      color:var(--eco-green);
+      font-size:1.3rem;
+    }
+
+    .eco-feature{
+      min-height:560px;
+      border-radius:32px;
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      background:
+        linear-gradient(90deg,rgba(4,13,8,.95),rgba(4,13,8,.55),rgba(4,13,8,.15)),
+        url("https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+    .eco-feature-content{
+      max-width:650px;
+      padding:55px;
+    }
+
+    .eco-feature h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:.98;
+      margin:0 0 20px;
+      letter-spacing:-2px;
+    }
+
+    .eco-feature p{
+      color:#d2e2d5;
+      line-height:1.8;
+      margin:0;
+    }
+
+    .eco-services{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .eco-service{
+      padding:28px;
+      border-top:1px solid var(--eco-line);
+      background:linear-gradient(180deg,rgba(16,38,23,.62),rgba(7,18,11,.3));
+    }
+
+    .eco-service h3{
+      margin:0 0 12px;
+      font-size:1.2rem;
+    }
+
+    .eco-service p{
+      margin:0;
+      color:var(--eco-muted);
+      line-height:1.7;
+    }
+
+    .eco-beyond{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .eco-panel{
+      padding:45px;
+      border:1px solid var(--eco-line);
+      border-radius:28px;
+      background:rgba(12,29,18,.68);
+    }
+
+    .eco-panel h2{
+      margin:0 0 18px;
+      font-size:2.3rem;
+    }
+
+    .eco-panel p{
+      color:var(--eco-muted);
+      line-height:1.8;
+    }
+
+    .eco-principles{
+      display:grid;
+      gap:13px;
+      margin-top:28px;
+    }
+
+    .eco-principle{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:15px;
+      border-radius:14px;
+      background:rgba(121,217,138,.055);
+    }
+
+    .eco-principle b{
+      color:var(--eco-green);
+    }
+
+    .eco-principle span{
+      color:#d2dfd5;
+      line-height:1.5;
+    }
+
+    .eco-future{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .eco-future-card{
+      min-height:210px;
+      padding:30px;
+      border-radius:22px;
+      border:1px solid var(--eco-line);
+      background:
+        linear-gradient(135deg,rgba(18,47,27,.8),rgba(6,18,10,.8));
+      transition:.4s;
+    }
+
+    .eco-future-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(121,217,138,.45);
+    }
+
+    .eco-future-card h3{
+      margin:0 0 12px;
+    }
+
+    .eco-future-card p{
+      color:var(--eco-muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .eco-quote{
+      text-align:center;
+      padding:100px 20px;
+      position:relative;
+    }
+
+    .eco-quote::before{
+      content:"“";
+      position:absolute;
+      top:20px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:8rem;
+      line-height:1;
+      color:rgba(121,217,138,.08);
+    }
+
+    .eco-quote p{
+      max-width:850px;
+      margin:auto;
+      font-size:clamp(1.6rem,3vw,2.7rem);
+      line-height:1.35;
+      font-weight:600;
+    }
+
+    .eco-quote span{
+      display:block;
+      margin-top:25px;
+      color:var(--eco-green);
+      font-size:.78rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .eco-cta{
+      margin-bottom:90px;
+      padding:65px;
+      border-radius:30px;
+      text-align:center;
+      border:1px solid rgba(121,217,138,.2);
+      background:
+        radial-gradient(circle at 50% 0%,rgba(121,217,138,.12),transparent 50%),
+        rgba(10,27,16,.75);
+    }
+
+    .eco-cta h2{
+      margin:0 0 15px;
+      font-size:clamp(2rem,4vw,3.5rem);
+    }
+
+    .eco-cta p{
+      color:var(--eco-muted);
+      max-width:650px;
+      margin:0 auto 30px;
+      line-height:1.7;
+    }
+
+    .eco-buttons{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .eco-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 22px;
+      border-radius:999px;
+      border:1px solid rgba(121,217,138,.28);
+      color:#e9f8eb;
+      background:rgba(121,217,138,.08);
+      transition:.3s;
+    }
+
+    .eco-btn:hover{
+      background:var(--eco-green);
+      color:#061009;
+      transform:translateY(-3px);
+    }
+
+    .eco-reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+
+    .eco-reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:900px){
+      .eco-grid,
+      .eco-services,
+      .eco-future{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .eco-flow{
+        grid-template-columns:1fr;
+      }
+
+      .eco-arrow{
+        transform:rotate(90deg);
+      }
+
+      .eco-beyond{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:650px){
+      .eco-hero{
+        min-height:78vh;
+      }
+
+      .eco-hero h1{
+        letter-spacing:-2px;
+      }
+
+      .eco-section{
+        padding:75px 0;
+      }
+
+      .eco-grid,
+      .eco-services,
+      .eco-future{
+        grid-template-columns:1fr;
+      }
+
+      .eco-card{
+        min-height:230px;
+      }
+
+      .eco-feature{
+        min-height:500px;
+      }
+
+      .eco-feature-content{
+        padding:30px;
+      }
+
+      .eco-panel{
+        padding:30px;
+      }
+
+      .eco-cta{
+        padding:45px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="eco-hero">
+      <div class="eco-hero-content eco-reveal">
+        <div class="eco-kicker">
+          <span></span>
+          Agriculture × Nature
+        </div>
+
+        <h1>
+          A Farm Is An <span>Ecosystem.</span>
+        </h1>
+
+        <p>
+          A field is never just a field. Plants, soil, insects, birds,
+          water, trees and people interact every day to create a living
+          agricultural landscape.
+        </p>
+
+        <div class="eco-scroll">
+          <div class="eco-scroll-line"></div>
+          Explore the living field
+        </div>
+      </div>
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="eco-section eco-reveal">
+      <div class="eco-heading">
+        <div class="eco-label">01 / Living Agriculture</div>
+
+        <h2>
+          Farming depends on more life than we see.
+        </h2>
+
+        <p>
+          A healthy agricultural landscape contains many forms of life.
+          Pollinators help plants reproduce, birds interact with insects,
+          soil organisms support soil processes, trees provide habitat,
+          and wetlands connect water with biodiversity.
+        </p>
+      </div>
+
+      <div class="eco-grid">
+
+        <article class="eco-card">
+          <span class="eco-number">01</span>
+          <span class="eco-icon">🐝</span>
+          <h3>Pollinators</h3>
+          <p>
+            Bees and other pollinating animals help many flowering plants
+            complete their reproductive cycles.
+          </p>
+        </article>
+
+        <article class="eco-card">
+          <span class="eco-number">02</span>
+          <span class="eco-icon">🐦</span>
+          <h3>Birds</h3>
+          <p>
+            Birds are part of agricultural food webs and can interact
+            with insects, seeds and plants around farms.
+          </p>
+        </article>
+
+        <article class="eco-card">
+          <span class="eco-number">03</span>
+          <span class="eco-icon">🦋</span>
+          <h3>Beneficial Insects</h3>
+          <p>
+            Many insects play important ecological roles, including
+            pollination and relationships within food webs.
+          </p>
+        </article>
+
+        <article class="eco-card">
+          <span class="eco-number">04</span>
+          <span class="eco-icon">🌳</span>
+          <h3>Trees & Hedges</h3>
+          <p>
+            Trees and vegetation can provide shade, shelter and habitat
+            while adding diversity to agricultural landscapes.
+          </p>
+        </article>
+
+        <article class="eco-card">
+          <span class="eco-number">05</span>
+          <span class="eco-icon">🪱</span>
+          <h3>Soil Life</h3>
+          <p>
+            Roots, microorganisms and soil animals contribute to the
+            complex living system beneath the field.
+          </p>
+        </article>
+
+        <article class="eco-card">
+          <span class="eco-number">06</span>
+          <span class="eco-icon">💧</span>
+          <h3>Wetlands</h3>
+          <p>
+            Wetlands and water bodies can provide habitat while connecting
+            agriculture with wider landscape and water systems.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- FLOW -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-heading">
+        <div class="eco-label">02 / One Field, Many Lives</div>
+
+        <h2>
+          Everything is connected.
+        </h2>
+
+        <p>
+          Agriculture is part of a wider ecological network. A change in
+          one part of the system can influence other parts.
+        </p>
+      </div>
+
+      <div class="eco-flow">
+
+        <div class="eco-flow-item">
+          <div class="eco-flow-icon">🌱</div>
+          <h3>Soil</h3>
+        </div>
+
+        <div class="eco-arrow">→</div>
+
+        <div class="eco-flow-item">
+          <div class="eco-flow-icon">🌾</div>
+          <h3>Plants</h3>
+        </div>
+
+        <div class="eco-arrow">→</div>
+
+        <div class="eco-flow-item">
+          <div class="eco-flow-icon">🐝</div>
+          <h3>Insects</h3>
+        </div>
+
+        <div class="eco-arrow">→</div>
+
+        <div class="eco-flow-item">
+          <div class="eco-flow-icon">🐦</div>
+          <h3>Birds</h3>
+        </div>
+
+        <div class="eco-arrow">→</div>
+
+        <div class="eco-flow-item">
+          <div class="eco-flow-icon">👨‍🌾</div>
+          <h3>People</h3>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FEATURE -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-feature">
+
+        <div class="eco-feature-content">
+          <div class="eco-label">03 / Nature at Work</div>
+
+          <h2>
+            Nature Works Quietly.
+          </h2>
+
+          <p>
+            Much of an ecosystem's work happens without being noticed.
+            Pollination, decomposition, nutrient cycling, habitat and
+            predator-prey relationships continuously connect living
+            organisms with the agricultural landscape.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ECOSYSTEM SERVICES -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-heading">
+        <div class="eco-label">04 / Ecosystem Connections</div>
+
+        <h2>
+          What biodiversity gives the field.
+        </h2>
+
+        <p>
+          Healthy ecosystems support functions that are valuable to
+          agriculture and the wider environment.
+        </p>
+      </div>
+
+      <div class="eco-services">
+
+        <div class="eco-service">
+          <h3>🌼 Pollination</h3>
+          <p>
+            Pollinating organisms connect flowers, plants and reproduction.
+          </p>
+        </div>
+
+        <div class="eco-service">
+          <h3>⚖️ Natural Balance</h3>
+          <p>
+            Food webs create relationships among plants, insects, birds
+            and other organisms.
+          </p>
+        </div>
+
+        <div class="eco-service">
+          <h3>🌱 Soil Health</h3>
+          <p>
+            Soil organisms participate in the living processes of the soil.
+          </p>
+        </div>
+
+        <div class="eco-service">
+          <h3>💧 Water Retention</h3>
+          <p>
+            Vegetation and healthy landscapes can influence how water
+            moves through an environment.
+          </p>
+        </div>
+
+        <div class="eco-service">
+          <h3>🏡 Habitat</h3>
+          <p>
+            Trees, field edges and wetlands can create spaces for wildlife.
+          </p>
+        </div>
+
+        <div class="eco-service">
+          <h3>🕸️ Food Webs</h3>
+          <p>
+            Every field contains relationships between producers,
+            consumers and decomposers.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BEYOND THE CROP -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-beyond">
+
+        <div class="eco-panel">
+
+          <div class="eco-label">05 / Beyond The Crop</div>
+
+          <h2>
+            The crop is only one part of the story.
+          </h2>
+
+          <p>
+            When we look beyond the crop itself, the agricultural landscape
+            becomes a network of relationships. Field boundaries, trees,
+            water bodies, soil organisms and wildlife can all contribute
+            to the character of a farm.
+          </p>
+
+          <div class="eco-principles">
+
+            <div class="eco-principle">
+              <b>01</b>
+              <span>Protect habitats wherever possible.</span>
+            </div>
+
+            <div class="eco-principle">
+              <b>02</b>
+              <span>Reduce unnecessary disturbance to living systems.</span>
+            </div>
+
+            <div class="eco-principle">
+              <b>03</b>
+              <span>Support native plants and local biodiversity.</span>
+            </div>
+
+            <div class="eco-principle">
+              <b>04</b>
+              <span>Observe nature before making decisions.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="eco-panel">
+
+          <div class="eco-label">Field Observation</div>
+
+          <h2>
+            Look closer.
+          </h2>
+
+          <p>
+            A farmer can see more than a crop. The field can reveal
+            insects moving between plants, birds crossing the landscape,
+            changes in soil moisture, flowering plants and signs of
+            seasonal change.
+          </p>
+
+          <p>
+            Observation turns a farm into a living classroom.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-heading">
+        <div class="eco-label">06 / Future Landscapes</div>
+
+        <h2>
+          Agriculture can grow with nature.
+        </h2>
+
+        <p>
+          The future of farming can combine ecological understanding,
+          traditional knowledge and modern technology.
+        </p>
+      </div>
+
+      <div class="eco-future">
+
+        <div class="eco-future-card">
+          <h3>🌳 Agroforestry</h3>
+          <p>
+            Combining trees with agricultural landscapes can create
+            more diverse farming environments.
+          </p>
+        </div>
+
+        <div class="eco-future-card">
+          <h3>💧 Wetland Protection</h3>
+          <p>
+            Protecting wetlands helps preserve important connections
+            between water, habitat and biodiversity.
+          </p>
+        </div>
+
+        <div class="eco-future-card">
+          <h3>🦋 Habitat Corridors</h3>
+          <p>
+            Connected habitats can help living organisms move through
+            wider agricultural landscapes.
+          </p>
+        </div>
+
+        <div class="eco-future-card">
+          <h3>🪱 Soil Biodiversity</h3>
+          <p>
+            Understanding life below the surface can improve how we
+            think about healthy agricultural soils.
+          </p>
+        </div>
+
+        <div class="eco-future-card">
+          <h3>📡 Smart Monitoring</h3>
+          <p>
+            Sensors and digital tools can help observe environmental
+            conditions across farms.
+          </p>
+        </div>
+
+        <div class="eco-future-card">
+          <h3>🌍 Climate Resilience</h3>
+          <p>
+            Diverse agricultural landscapes can be part of strategies
+            for adapting to changing environmental conditions.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+    <section class="eco-section eco-reveal">
+      <div class="eco-quote">
+        <p>
+          “A healthy field is not silent. It is full of relationships
+          we are only beginning to notice.”
+        </p>
+
+        <span>UYIRMANN / Agriculture × Nature</span>
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="eco-section eco-reveal">
+
+      <div class="eco-cta">
+
+        <div class="eco-label">Explore More</div>
+
+        <h2>
+          Follow the living system.
+        </h2>
+
+        <p>
+          Explore the soil beneath the field, the water that feeds it,
+          the traditions that shaped it and the climate that surrounds it.
+        </p>
+
+        <div class="eco-buttons">
+
+          <a href="soil.html" class="eco-btn">
+            Explore Soil →
+          </a>
+
+          <a href="water.html" class="eco-btn">
+            Explore Water →
+          </a>
+
+          <a href="traditional.html" class="eco-btn">
+            Traditional Wisdom →
+          </a>
+
+          <a href="climate.html" class="eco-btn">
+            Explore Climate →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+    const ecoRevealItems = document.querySelectorAll(".eco-reveal");
+
+    const ecoObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        threshold:0.12
+      }
+    );
+
+    ecoRevealItems.forEach(item => {
+      ecoObserver.observe(item);
+    });
+
+
+    const ecoCards = document.querySelectorAll(
+      ".eco-card, .eco-future-card, .eco-flow-item"
+    );
+
+    ecoCards.forEach(card => {
+
+      card.addEventListener("mousemove", e => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateX = ((y / rect.height) - 0.5) * -5;
+        const rotateY = ((x / rect.width) - 0.5) * 5;
+
+        card.style.transform =
+          `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+
+    });
+  </script>
+
+</body>
+</html>
