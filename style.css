@@ -965,15 +965,1313 @@ button {
 
 
 /* =========================================================
+   PREMIUM SEARCH
+========================================================= */
+
+.uyirmann-search-section {
+    position: relative;
+
+    width: min(92%, var(--max));
+
+    margin: 0 auto;
+
+    padding: 120px 40px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(158,234,99,0.08);
+
+    border-bottom: 1px solid rgba(158,234,99,0.08);
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(40,255,120,0.06),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.01)
+        );
+}
+
+.search-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.search-eyebrow {
+    display: inline-block;
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+.search-content h2 {
+    font-family: var(--serif);
+
+    font-size: clamp(45px, 6vw, 78px);
+
+    line-height: 0.95;
+
+    font-weight: 600;
+
+    letter-spacing: -2px;
+}
+
+.search-content h2 span {
+    display: block;
+
+    color: var(--green);
+
+    font-style: italic;
+}
+
+.search-content p {
+    max-width: 650px;
+
+    margin: 25px auto 35px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.premium-search-button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    min-width: 260px;
+
+    padding: 17px 22px;
+
+    border: 1px solid rgba(158,234,99,0.4);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(158,234,99,0.12),
+            rgba(158,234,99,0.035)
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.premium-search-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.7s ease;
+}
+
+.premium-search-button:hover::before {
+    left: 140%;
+}
+
+.premium-search-button:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(158,234,99,0.75);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(158,234,99,0.2),
+            rgba(158,234,99,0.06)
+        );
+
+    box-shadow:
+        0 15px 45px rgba(80,255,130,0.12);
+}
+
+.search-icon {
+    color: var(--green);
+
+    font-size: 24px;
+
+    line-height: 1;
+}
+
+.search-arrow {
+    font-size: 22px;
+
+    color: var(--green);
+
+    transition: 0.35s ease;
+}
+
+.premium-search-button:hover .search-arrow {
+    transform: translateX(5px);
+}
+
+.search-tags {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 35px;
+}
+
+.search-tags span {
+    padding: 9px 14px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 100px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    color:
+        rgba(225,244,231,0.65);
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.search-tags span:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(101,255,154,0.35);
+
+    color: #65ff9a;
+
+    background:
+        rgba(101,255,154,0.06);
+}
+
+.search-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(40,255,120,0.07);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        searchPulse 5s ease-in-out infinite;
+}
+
+@keyframes searchPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 0.8;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   3D CROP GROWING GAME
+========================================================= */
+
+.crop-game-section {
+    position: relative;
+
+    width: min(100%, 1500px);
+
+    margin: 0 auto;
+
+    padding: 130px 4%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(48,255,130,0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(158,234,99,0.07),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #04120b,
+            #071c11,
+            #020806
+        );
+
+    border-top:
+        1px solid rgba(100,255,150,0.08);
+
+    border-bottom:
+        1px solid rgba(100,255,150,0.08);
+}
+
+.crop-game-glow {
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(45,255,120,0.08);
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.crop-game-header {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    max-width: 850px;
+
+    margin:
+        0 auto 60px;
+}
+
+.crop-game-header .eyebrow {
+    justify-content: center;
+}
+
+.crop-game-header h2 {
+    margin: 15px 0;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(45px, 6vw, 78px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+}
+
+.crop-game-header h2 span {
+    display: block;
+
+    color: var(--green);
+
+    font-style: italic;
+}
+
+.crop-game-header p {
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* GAME MAIN */
+
+.crop-game {
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        350px
+        minmax(0, 1fr);
+
+    gap: 25px;
+}
+
+
+/* GAME CONTROL PANEL */
+
+.game-panel {
+    padding: 28px;
+
+    border:
+        1px solid rgba(100,255,150,0.14);
+
+    border-radius: 24px;
+
+    background:
+        rgba(5,20,12,0.82);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.35);
+}
+
+.game-panel-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+.game-panel-title > span {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(80,255,140,0.10);
+
+    font-size: 25px;
+}
+
+.game-panel-title small {
+    display: block;
+
+    color: #61ff98;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+.game-panel-title h3 {
+    margin: 3px 0 0;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+
+/* CROP CHOICES */
+
+.crop-choice-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+}
+
+.game-crop {
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    color: white;
+
+    border-radius: 15px;
+
+    padding: 15px 10px;
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
+}
+
+.game-crop span {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.game-crop strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.game-crop small {
+    color:
+        rgba(255,255,255,0.45);
+}
+
+.game-crop:hover,
+.game-crop.active {
+    border-color:
+        rgba(91,255,150,0.55);
+
+    background:
+        rgba(70,255,130,0.09);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(50,255,120,0.08);
+}
+
+
+/* GAME STATUS */
+
+.game-status {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.07);
+}
+
+.status-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 8px 0;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 13px;
+}
+
+.status-row strong {
+    color: #72ff9f;
+}
+
+
+/* GAME PROGRESS */
+
+.game-progress {
+    margin-top: 18px;
+}
+
+.progress-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.progress-track {
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+.progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2eff78,
+            #b8ffc9
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(60,255,130,0.35);
+
+    transition:
+        width 0.6s ease;
+}
+
+
+/* GAME BUTTONS */
+
+.game-buttons {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.game-action {
+    border: 0;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        0.25s ease;
+}
+
+.plant-button {
+    color: #031108;
+
+    background: #63ff99;
+}
+
+.water-button {
+    color: white;
+
+    background:
+        rgba(40,160,255,0.18);
+
+    border:
+        1px solid rgba(70,180,255,0.25);
+}
+
+.reset-button {
+    grid-column:
+        1 / -1;
+
+    color:
+        rgba(255,255,255,0.7);
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.game-action:hover {
+    transform:
+        translateY(-3px);
+}
+
+.game-action:active {
+    transform:
+        translateY(0)
+        scale(0.98);
+}
+
+
+/* GAME MESSAGE */
+
+.game-message {
+    margin-top: 18px;
+
+    text-align: center;
+
+    color:
+        rgba(220,255,230,0.55);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    min-height: 38px;
+}
+
+
+/* =========================================================
+   3D FARM WORLD
+========================================================= */
+
+.farm-world {
+    position: relative;
+
+    min-height: 540px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    border:
+        1px solid rgba(100,255,150,0.12);
+
+    background:
+        linear-gradient(
+            #123b29 0%,
+            #183e2a 43%,
+            #0b2416 44%,
+            #06140c 100%
+        );
+
+    perspective:
+        1000px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.4);
+}
+
+
+/* SUN */
+
+.sun {
+    position: absolute;
+
+    top: 35px;
+    right: 55px;
+
+    font-size: 55px;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,210,70,0.4)
+        );
+
+    animation:
+        sunFloat 5s ease-in-out infinite;
+
+    z-index: 2;
+}
+
+@keyframes sunFloat {
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+
+/* CLOUDS */
+
+.cloud {
+    position: absolute;
+
+    font-size: 45px;
+
+    opacity: 0.35;
+
+    z-index: 2;
+}
+
+.cloud-one {
+    top: 80px;
+    left: 12%;
+
+    animation:
+        cloudMove 18s linear infinite;
+}
+
+.cloud-two {
+    top: 145px;
+    right: 25%;
+
+    animation:
+        cloudMove 25s linear infinite reverse;
+}
+
+@keyframes cloudMove {
+
+    50% {
+        transform:
+            translateX(70px);
+    }
+
+}
+
+
+/* MOUNTAINS */
+
+.mountains {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 48%;
+
+    height: 150px;
+
+    z-index: 1;
+}
+
+.mountains span {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        130px solid transparent;
+
+    border-right:
+        130px solid transparent;
+
+    border-bottom:
+        160px solid #102d1e;
+}
+
+.mountains span:nth-child(1) {
+    left: 5%;
+}
+
+.mountains span:nth-child(2) {
+    left: 38%;
+
+    border-bottom-color:
+        #0d291b;
+}
+
+.mountains span:nth-child(3) {
+    right: 5%;
+
+    border-bottom-color:
+        #143521;
+}
+
+
+/* =========================================================
+   3D FIELD
+========================================================= */
+
+.field-3d {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -80px;
+
+    width: 90%;
+
+    height: 65%;
+
+    transform:
+        translateX(-50%)
+        rotateX(58deg);
+
+    transform-origin:
+        bottom center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #173c20,
+            #244d27,
+            #173c20
+        );
+
+    border-radius:
+        30px 30px 0 0;
+
+    box-shadow:
+        inset 0 0 70px
+        rgba(0,0,0,0.3);
+
+    z-index: 3;
+}
+
+
+/* FIELD LINES */
+
+.field-row {
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+
+    height: 3px;
+
+    background:
+        rgba(8,20,8,0.45);
+
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.025);
+}
+
+.row-one {
+    top: 15%;
+}
+
+.row-two {
+    top: 32%;
+}
+
+.row-three {
+    top: 49%;
+}
+
+.row-four {
+    top: 66%;
+}
+
+.row-five {
+    top: 83%;
+}
+
+
+/* =========================================================
+   VIRTUAL CROP
+========================================================= */
+
+.virtual-crop {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 18%;
+
+    transform:
+        translateX(-50%);
+
+    width: 150px;
+
+    height: 210px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    z-index: 10;
+
+    transition:
+        transform 0.8s ease;
+}
+
+.crop-shadow {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    filter:
+        blur(5px);
+}
+
+.crop-plant {
+    position: relative;
+
+    width: 90px;
+
+    height: 190px;
+
+    transform-origin:
+        bottom center;
+
+    transform:
+        scale(0.15)
+        rotateY(0deg);
+
+    opacity: 0.3;
+
+    transition:
+        transform 1s ease,
+        opacity 1s ease;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(0,0,0,0.25)
+        );
+}
+
+.plant-stem {
+    position: absolute;
+
+    bottom: 20px;
+    left: 42px;
+
+    width: 9px;
+    height: 125px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            #42b85f,
+            #137332
+        );
+
+    box-shadow:
+        inset 2px 0 2px
+        rgba(255,255,255,0.15);
+}
+
+.plant-leaf {
+    position: absolute;
+
+    width: 65px;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #237f3c,
+            #62d878
+        );
+
+    border-radius:
+        100% 0 100% 0;
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(255,255,255,0.12);
+}
+
+.leaf-one {
+    left: 2px;
+
+    bottom: 90px;
+
+    transform:
+        rotate(-30deg);
+}
+
+.leaf-two {
+    right: 0;
+
+    bottom: 115px;
+
+    transform:
+        rotate(30deg)
+        scaleX(-1);
+}
+
+.leaf-three {
+    left: 5px;
+
+    bottom: 55px;
+
+    transform:
+        rotate(-18deg);
+}
+
+.plant-top {
+    position: absolute;
+
+    left: 31px;
+
+    top: 0;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #d9ff67,
+            #49b947
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(130,255,90,0.2);
+}
+
+
+/* CROP GROWTH STAGES */
+
+.virtual-crop.growing .crop-plant {
+    transform:
+        scale(0.65)
+        rotateY(8deg);
+
+    opacity: 0.9;
+}
+
+.virtual-crop.large .crop-plant {
+    transform:
+        scale(1)
+        rotateY(-8deg);
+
+    opacity: 1;
+}
+
+.virtual-crop.harvest .crop-plant {
+    transform:
+        scale(1.12)
+        rotateY(8deg);
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(130,255,90,0.3)
+        );
+}
+
+
+/* =========================================================
+   FARM INFO
+========================================================= */
+
+.field-info {
+    position: absolute;
+
+    left: 25px;
+
+    bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        12px 17px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 100px;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    backdrop-filter:
+        blur(12px);
+
+    color: white;
+
+    z-index: 20;
+}
+
+.field-info span {
+    font-size: 23px;
+}
+
+.field-info strong {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   HARVEST ACHIEVEMENT
+========================================================= */
+
+.game-achievement {
+    max-width: 700px;
+
+    margin:
+        30px auto 0;
+
+    display: none;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        18px 22px;
+
+    border:
+        1px solid rgba(100,255,150,0.3);
+
+    border-radius: 18px;
+
+    background:
+        rgba(50,255,120,0.07);
+
+    box-shadow:
+        0 15px 50px
+        rgba(50,255,120,0.05);
+}
+
+.game-achievement.show {
+    display: flex;
+
+    animation:
+        achievementIn 0.6s ease;
+}
+
+.achievement-icon {
+    font-size: 35px;
+
+    animation:
+        achievementStar 1.5s ease-in-out infinite;
+}
+
+@keyframes achievementStar {
+
+    50% {
+        transform:
+            scale(1.15)
+            rotate(8deg);
+    }
+
+}
+
+.game-achievement strong {
+    display: block;
+
+    color: #6aff9c;
+
+    margin-bottom: 4px;
+}
+
+.game-achievement span {
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 13px;
+}
+
+@keyframes achievementIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
    FEATURE GRID
 ========================================================= */
 
 .feature-grid {
     display: grid;
 
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns:
+        1.4fr 1fr 1fr;
 
-    grid-template-rows: 260px 260px;
+    grid-template-rows:
+        260px 260px;
 
     gap: 15px;
 }
@@ -1000,13 +2298,16 @@ button {
 }
 
 .feature-card:hover {
-    transform: translateY(-8px);
+    transform:
+        translateY(-8px);
 
-    border-color: rgba(158,234,99,0.35);
+    border-color:
+        rgba(158,234,99,0.35);
 }
 
 .feature-large {
-    grid-row: span 2;
+    grid-row:
+        span 2;
 
     background:
         radial-gradient(
@@ -1120,9 +2421,11 @@ button {
 .statistics-content h2 {
     font-family: var(--serif);
 
-    font-size: clamp(45px, 6vw, 75px);
+    font-size:
+        clamp(45px, 6vw, 75px);
 
-    margin: 20px 0 55px;
+    margin:
+        20px 0 55px;
 }
 
 .statistics-content h2 span {
@@ -1134,17 +2437,22 @@ button {
 .stat-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    border-top: 1px solid rgba(255,255,255,0.18);
+    border-top:
+        1px solid rgba(255,255,255,0.18);
 
-    border-bottom: 1px solid rgba(255,255,255,0.18);
+    border-bottom:
+        1px solid rgba(255,255,255,0.18);
 }
 
 .stat-item {
-    padding: 35px 25px;
+    padding:
+        35px 25px;
 
-    border-right: 1px solid rgba(255,255,255,0.18);
+    border-right:
+        1px solid rgba(255,255,255,0.18);
 }
 
 .stat-item:last-child {
@@ -1183,7 +2491,8 @@ button {
 .crop-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 15px;
 }
@@ -1195,7 +2504,8 @@ button {
 
     overflow: hidden;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid var(--line);
 }
 
 .crop-image {
@@ -1207,11 +2517,13 @@ button {
 
     background-position: center;
 
-    transition: transform 0.8s ease;
+    transition:
+        transform 0.8s ease;
 }
 
 .crop-card:hover .crop-image {
-    transform: scale(1.08);
+    transform:
+        scale(1.08);
 }
 
 .crop-rice .crop-image {
@@ -1288,7 +2600,8 @@ button {
 
     font-size: 10px;
 
-    border-bottom: 1px solid var(--green);
+    border-bottom:
+        1px solid var(--green);
 
     padding-bottom: 5px;
 }
@@ -1298,7 +2611,8 @@ button {
 
     font-size: 11px;
 
-    border-bottom: 1px solid rgba(158,234,99,0.3);
+    border-bottom:
+        1px solid rgba(158,234,99,0.3);
 
     padding-bottom: 7px;
 }
@@ -1336,17 +2650,21 @@ button {
 .district-explorer {
     display: grid;
 
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns:
+        0.8fr 1.2fr;
 
     min-height: 520px;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid var(--line);
 }
 
 .district-list {
-    background: rgba(255,255,255,0.025);
+    background:
+        rgba(255,255,255,0.025);
 
-    border-right: 1px solid var(--line);
+    border-right:
+        1px solid var(--line);
 }
 
 .district {
@@ -1354,23 +2672,27 @@ button {
 
     display: grid;
 
-    grid-template-columns: 50px 1fr 30px;
+    grid-template-columns:
+        50px 1fr 30px;
 
     align-items: center;
 
     text-align: left;
 
-    padding: 24px 25px;
+    padding:
+        24px 25px;
 
     background: transparent;
 
     border: none;
 
-    border-bottom: 1px solid var(--line);
+    border-bottom:
+        1px solid var(--line);
 
     color: #9ea9a1;
 
-    transition: 0.3s ease;
+    transition:
+        0.3s ease;
 }
 
 .district span {
@@ -1384,12 +2706,14 @@ button {
 
     opacity: 0;
 
-    transition: 0.3s ease;
+    transition:
+        0.3s ease;
 }
 
 .district:hover,
 .district.active {
-    background: rgba(158,234,99,0.07);
+    background:
+        rgba(158,234,99,0.07);
 
     color: white;
 }
@@ -1492,7 +2816,8 @@ button {
 
     max-width: 950px;
 
-    margin: 90px auto 0;
+    margin:
+        90px auto 0;
 }
 
 .timeline-line {
@@ -1517,7 +2842,8 @@ button {
 
     width: 50%;
 
-    padding: 0 60px 100px 0;
+    padding:
+        0 60px 100px 0;
 }
 
 .timeline-item.reverse {
@@ -1542,7 +2868,8 @@ button {
 
     background: var(--bg);
 
-    border: 1px solid var(--green);
+    border:
+        1px solid var(--green);
 
     display: grid;
 
@@ -1613,7 +2940,8 @@ button {
 .story-grid {
     display: grid;
 
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns:
+        1.4fr 1fr 1fr;
 
     gap: 15px;
 }
@@ -1635,11 +2963,13 @@ button {
 
     background-position: center;
 
-    transition: transform 0.8s ease;
+    transition:
+        transform 0.8s ease;
 }
 
 .story-card:hover .story-image {
-    transform: scale(1.07);
+    transform:
+        scale(1.07);
 }
 
 .story-one .story-image {
@@ -1771,7 +3101,8 @@ button {
 .future-content h2 {
     font-family: var(--serif);
 
-    font-size: clamp(55px, 8vw, 110px);
+    font-size:
+        clamp(55px, 8vw, 110px);
 
     line-height: 0.9;
 
@@ -1800,15 +3131,16 @@ button {
     position: absolute;
 
     right: 8%;
-
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
     width: 360px;
     height: 360px;
 
-    border: 1px solid rgba(158,234,99,0.15);
+    border:
+        1px solid rgba(158,234,99,0.15);
 
     border-radius: 50%;
 }
@@ -1820,7 +3152,8 @@ button {
 
     inset: 45px;
 
-    border: 1px dashed rgba(158,234,99,0.18);
+    border:
+        1px dashed rgba(158,234,99,0.18);
 
     border-radius: 50%;
 }
@@ -1831,7 +3164,8 @@ button {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     width: 90px;
     height: 90px;
@@ -1840,9 +3174,11 @@ button {
 
     place-items: center;
 
-    background: rgba(158,234,99,0.12);
+    background:
+        rgba(158,234,99,0.12);
 
-    border: 1px solid rgba(158,234,99,0.35);
+    border:
+        1px solid rgba(158,234,99,0.35);
 
     border-radius: 50%;
 
@@ -1859,9 +3195,11 @@ button {
 
     place-items: center;
 
-    background: rgba(5,20,11,0.8);
+    background:
+        rgba(5,20,11,0.8);
 
-    border: 1px solid rgba(158,234,99,0.3);
+    border:
+        1px solid rgba(158,234,99,0.3);
 
     border-radius: 50%;
 }
@@ -1870,28 +3208,32 @@ button {
     top: 15px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 }
 
 .orbit-two {
     right: 10px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 }
 
 .orbit-three {
     bottom: 15px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 }
 
 .orbit-four {
     left: 10px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 }
 
 
@@ -1922,7 +3264,8 @@ button {
 .quote-section blockquote {
     font-family: var(--serif);
 
-    font-size: clamp(35px, 5vw, 60px);
+    font-size:
+        clamp(35px, 5vw, 60px);
 
     line-height: 1.1;
 }
@@ -1951,7 +3294,8 @@ button {
 .newsletter-box {
     padding: 70px;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid var(--line);
 
     background:
         radial-gradient(
@@ -1972,7 +3316,8 @@ button {
 .newsletter-box h2 {
     font-family: var(--serif);
 
-    font-size: clamp(35px, 5vw, 60px);
+    font-size:
+        clamp(35px, 5vw, 60px);
 
     line-height: 1;
 
@@ -1996,7 +3341,8 @@ button {
 
     min-width: 390px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom:
+        1px solid rgba(255,255,255,0.25);
 }
 
 .newsletter-form input {
@@ -2039,7 +3385,8 @@ footer {
 
     padding: 80px 0 30px;
 
-    border-top: 1px solid var(--line);
+    border-top:
+        1px solid var(--line);
 }
 
 .footer-top {
@@ -2089,7 +3436,8 @@ footer {
 
     font-size: 11px;
 
-    transition: color 0.3s ease;
+    transition:
+        color 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -2097,7 +3445,8 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--line);
+    border-top:
+        1px solid var(--line);
 
     padding-top: 25px;
 
@@ -2128,11 +3477,14 @@ footer {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(158,234,99,0.3);
+    border:
+        1px solid rgba(158,234,99,0.3);
 
-    background: rgba(6,17,11,0.8);
+    background:
+        rgba(6,17,11,0.8);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(10px);
 
     color: var(--green);
 
@@ -2142,9 +3494,11 @@ footer {
 
     visibility: hidden;
 
-    transform: translateY(20px);
+    transform:
+        translateY(20px);
 
-    transition: 0.3s ease;
+    transition:
+        0.3s ease;
 }
 
 .back-top.show {
@@ -2152,7 +3506,8 @@ footer {
 
     visibility: visible;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 
@@ -2171,9 +3526,11 @@ footer {
     }
 
     .feature-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
 
-        grid-template-rows: auto;
+        grid-template-rows:
+            auto;
     }
 
     .feature-large {
@@ -2181,7 +3538,8 @@ footer {
     }
 
     .crop-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .crop-card {
@@ -2193,7 +3551,8 @@ footer {
     }
 
     .intro {
-        grid-template-columns: 60px 1fr;
+        grid-template-columns:
+            60px 1fr;
     }
 
     .intro-description {
@@ -2201,17 +3560,20 @@ footer {
     }
 
     .district-explorer {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .district-list {
         border-right: none;
 
-        border-bottom: 1px solid var(--line);
+        border-bottom:
+            1px solid var(--line);
 
         display: grid;
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .district-preview {
@@ -2219,11 +3581,13 @@ footer {
     }
 
     .story-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .story-one {
-        grid-column: span 2;
+        grid-column:
+            span 2;
     }
 
     .tech-orbit {
@@ -2236,6 +3600,25 @@ footer {
         flex-direction: column;
 
         align-items: flex-start;
+    }
+
+    /* GAME TABLET */
+
+    .crop-game {
+        grid-template-columns:
+            1fr;
+    }
+
+    .game-panel {
+        max-width: 700px;
+
+        width: 100%;
+
+        margin: auto;
+    }
+
+    .farm-world {
+        min-height: 500px;
     }
 
 }
@@ -2339,6 +3722,173 @@ footer {
         margin-top: 35px;
     }
 
+
+    /* PREMIUM SEARCH MOBILE */
+
+    .uyirmann-search-section {
+        padding: 80px 18px;
+    }
+
+    .search-content h2 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .search-content p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .premium-search-button {
+        width: 100%;
+
+        max-width: 330px;
+
+        justify-content: center;
+    }
+
+    .search-tags {
+        gap: 7px;
+    }
+
+    .search-tags span {
+        font-size: 12px;
+
+        padding: 8px 11px;
+    }
+
+
+    /* GAME MOBILE */
+
+    .crop-game-section {
+        padding:
+            85px 15px;
+    }
+
+    .crop-game-header {
+        margin-bottom: 40px;
+    }
+
+    .crop-game-header h2 {
+        font-size: 45px;
+
+        letter-spacing: -1px;
+    }
+
+    .crop-game-header p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+    .game-panel {
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .game-panel-title h3 {
+        font-size: 18px;
+    }
+
+    .crop-choice-grid {
+        gap: 8px;
+    }
+
+    .game-crop {
+        padding:
+            13px 7px;
+    }
+
+    .game-crop span {
+        font-size: 25px;
+    }
+
+    .game-crop strong {
+        font-size: 12px;
+    }
+
+    .game-crop small {
+        font-size: 10px;
+    }
+
+    .farm-world {
+        min-height: 390px;
+
+        border-radius: 20px;
+    }
+
+    .sun {
+        top: 20px;
+
+        right: 20px;
+
+        font-size: 40px;
+    }
+
+    .cloud {
+        font-size: 32px;
+    }
+
+    .mountains {
+        bottom: 45%;
+    }
+
+    .mountains span {
+        border-left-width: 90px;
+
+        border-right-width: 90px;
+
+        border-bottom-width: 110px;
+    }
+
+    .field-3d {
+        width: 105%;
+
+        bottom: -55px;
+
+        height: 65%;
+    }
+
+    .virtual-crop {
+        transform:
+            translateX(-50%)
+            scale(0.85);
+    }
+
+    .field-info {
+        left: 15px;
+
+        bottom: 15px;
+
+        padding:
+            9px 13px;
+    }
+
+    .field-info span {
+        font-size: 19px;
+    }
+
+    .field-info strong {
+        font-size: 11px;
+    }
+
+    .game-achievement {
+        padding:
+            15px;
+
+        border-radius: 15px;
+    }
+
+    .achievement-icon {
+        font-size: 28px;
+    }
+
+
+    /* ORIGINAL MOBILE */
+
     .feature-grid {
         display: flex;
 
@@ -2350,15 +3900,18 @@ footer {
     }
 
     .stat-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .stat-item {
-        border-bottom: 1px solid var(--line);
+        border-bottom:
+            1px solid var(--line);
     }
 
     .crop-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .crop-card {
@@ -2366,7 +3919,8 @@ footer {
     }
 
     .district-list {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .district-preview {
@@ -2408,11 +3962,13 @@ footer {
     }
 
     .story-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .story-one {
-        grid-column: auto;
+        grid-column:
+            auto;
     }
 
     .story-card {
@@ -2437,7 +3993,8 @@ footer {
     }
 
     .newsletter-box {
-        padding: 35px 25px;
+        padding:
+            35px 25px;
     }
 
     .newsletter-form {
@@ -2455,7 +4012,8 @@ footer {
     .footer-links {
         display: grid;
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
 
         gap: 40px;
     }
@@ -2470,6 +4028,49 @@ footer {
 
 
 /* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 53px;
+    }
+
+    .hero-mini-stats {
+        gap: 12px;
+    }
+
+    .hero-mini-stats strong {
+        font-size: 17px;
+    }
+
+    .search-content h2 {
+        font-size: 37px;
+    }
+
+    .crop-game-header h2 {
+        font-size: 38px;
+    }
+
+    .game-buttons {
+        grid-template-columns:
+            1fr;
+    }
+
+    .reset-button {
+        grid-column:
+            auto;
+    }
+
+    .farm-world {
+        min-height: 350px;
+    }
+
+}
+
+
+/* =========================================================
    REDUCED MOTION
 ========================================================= */
 
@@ -2478,13 +4079,17 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-iteration-count:
+            1 !important;
 
-        scroll-behavior: auto !important;
+        scroll-behavior:
+            auto !important;
 
-        transition-duration: 0.01ms !important;
+        transition-duration:
+            0.01ms !important;
     }
 
 }
