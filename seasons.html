@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farming Seasons | UYIRMANN</title>
+    <meta name="description"
+          content="Explore farming seasons, crop cycles, monsoon patterns and agricultural activities connected to Tamil Nadu.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           UYIRMANN — FARMING SEASONS
+        ========================================= */
+
+        .seasons-page {
+            min-height: 100vh;
+            color: #fff;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(72,145,86,.16), transparent 28%),
+                radial-gradient(circle at 85% 45%, rgba(207,169,72,.10), transparent 30%),
+                #061009;
+        }
+
+        /* HERO */
+
+        .season-hero {
+            min-height: 78vh;
+            padding: 130px 8% 90px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,11,6,.96),
+                    rgba(3,11,6,.55),
+                    rgba(3,11,6,.82)
+                ),
+                url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .season-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #061009, transparent 45%);
+        }
+
+        .season-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            color: #d5b45c;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .season-hero h1 {
+            font-size: clamp(3rem, 7vw, 7rem);
+            line-height: .92;
+            letter-spacing: -4px;
+            margin: 20px 0 28px;
+            font-weight: 900;
+        }
+
+        .season-hero h1 span {
+            color: #8dce72;
+        }
+
+        .season-hero p {
+            max-width: 700px;
+            color: #c8d2ca;
+            line-height: 1.85;
+            font-size: 1.12rem;
+        }
+
+        /* COMMON */
+
+        .season-section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            max-width: 750px;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin: 12px 0 18px;
+            line-height: 1;
+        }
+
+        .section-title p {
+            color: #9eaba1;
+            line-height: 1.8;
+        }
+
+        /* SEASON CARDS */
+
+        .season-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .season-card {
+            position: relative;
+            min-height: 430px;
+            overflow: hidden;
+            border-radius: 26px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #0b1710;
+            transition: .4s ease;
+        }
+
+        .season-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(141,206,114,.4);
+        }
+
+        .season-card-image {
+            height: 270px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .season-card-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #0b1710, transparent 60%);
+        }
+
+        .season-card:nth-child(1) .season-card-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1534773728080-33d31da27ae5?auto=format&fit=crop&w=1100&q=80");
+        }
+
+        .season-card:nth-child(2) .season-card-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=1100&q=80");
+        }
+
+        .season-card:nth-child(3) .season-card-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1100&q=80");
+        }
+
+        .season-card-content {
+            padding: 0 25px 28px;
+            margin-top: -8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .season-number {
+            color: #d5b45c;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .season-card h3 {
+            font-size: 1.7rem;
+            margin: 8px 0 10px;
+        }
+
+        .season-card p {
+            color: #9ca99f;
+            line-height: 1.65;
+            font-size: .92rem;
+        }
+
+        /* CROP CYCLE */
+
+        .cycle {
+            position: relative;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .cycle-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(130,201,107,.25);
+            transform: translateX(-50%);
+        }
+
+        .cycle-item {
+            width: 50%;
+            padding: 20px 50px;
+            position: relative;
+        }
+
+        .cycle-item:nth-child(odd) {
+            margin-left: 50%;
+        }
+
+        .cycle-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .cycle-dot {
+            position: absolute;
+            top: 28px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #8dce72;
+            box-shadow: 0 0 0 7px rgba(141,206,114,.10);
+        }
+
+        .cycle-item:nth-child(odd) .cycle-dot {
+            left: -7px;
+        }
+
+        .cycle-item:nth-child(even) .cycle-dot {
+            right: -8px;
+        }
+
+        .cycle-box {
+            padding: 27px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .cycle-box span {
+            color: #d4b258;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .cycle-box h3 {
+            margin: 9px 0;
+            font-size: 1.4rem;
+        }
+
+        .cycle-box p {
+            color: #9da99f;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* MONTH STRIP */
+
+        .month-section {
+            background:
+                linear-gradient(rgba(5,14,8,.94), rgba(5,14,8,.97)),
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1800&q=80")
+                center/cover fixed;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        .month {
+            padding: 22px 12px;
+            text-align: center;
+            border-radius: 15px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.07);
+            transition: .3s ease;
+        }
+
+        .month:hover {
+            background: rgba(130,201,107,.10);
+            transform: translateY(-5px);
+        }
+
+        .month strong {
+            display: block;
+            color: #8dce72;
+            margin-bottom: 8px;
+        }
+
+        .month small {
+            color: #929f95;
+            line-height: 1.4;
+        }
+
+        /* BALANCE */
+
+        .balance {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .balance-card {
+            padding: 45px;
+            border-radius: 25px;
+            background: #0c1810;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .balance-card h3 {
+            font-size: 2rem;
+            margin: 0 0 18px;
+        }
+
+        .balance-card p {
+            color: #9eaaa0;
+            line-height: 1.8;
+        }
+
+        .balance-list {
+            display: grid;
+            gap: 13px;
+            margin-top: 25px;
+        }
+
+        .balance-list div {
+            padding: 14px 16px;
+            background: rgba(255,255,255,.035);
+            border-radius: 10px;
+            color: #c6d0c7;
+        }
+
+        .balance-list span {
+            color: #8dce72;
+            font-weight: 800;
+            margin-right: 8px;
+        }
+
+        /* QUOTE */
+
+        .season-quote {
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .season-quote .mark {
+            font-size: 5rem;
+            color: #8dce72;
+            line-height: .6;
+        }
+
+        .season-quote blockquote {
+            font-size: clamp(1.7rem, 4vw, 3rem);
+            line-height: 1.35;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+
+        .season-quote p {
+            color: #909d94;
+        }
+
+        /* CTA */
+
+        .season-cta {
+            margin: 0 8% 100px;
+            padding: 75px 8%;
+            border-radius: 30px;
+            text-align: center;
+
+            background:
+                linear-gradient(120deg, rgba(35,91,50,.9), rgba(7,28,15,.94)),
+                url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+        }
+
+        .season-cta h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin: 0 0 18px;
+        }
+
+        .season-cta p {
+            color: #ccd8ce;
+            max-width: 650px;
+            margin: auto auto 30px;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            background: #8dce72;
+            color: #07100b;
+            text-decoration: none;
+            font-weight: 800;
+            transition: .3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .season-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .month-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .balance {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .season-hero {
+                padding: 120px 6% 70px;
+            }
+
+            .season-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .season-section {
+                padding: 70px 6%;
+            }
+
+            .season-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .month-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cycle-line {
+                left: 12px;
+            }
+
+            .cycle-item,
+            .cycle-item:nth-child(odd) {
+                width: 100%;
+                margin-left: 0;
+                padding: 15px 0 15px 42px;
+                text-align: left;
+            }
+
+            .cycle-item:nth-child(even) {
+                text-align: left;
+            }
+
+            .cycle-item:nth-child(odd) .cycle-dot,
+            .cycle-item:nth-child(even) .cycle-dot {
+                left: 5px;
+                right: auto;
+            }
+
+            .balance-card {
+                padding: 30px 25px;
+            }
+
+            .season-cta {
+                margin: 0 6% 70px;
+                padding: 55px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="seasons-page">
+
+    <!-- HERO -->
+    <section class="season-hero">
+        <div class="season-hero-content reveal">
+
+            <span class="eyebrow">UYIRMANN • THE FARMING CALENDAR</span>
+
+            <h1>
+                Farming follows
+                <span>the seasons.</span>
+            </h1>
+
+            <p>
+                Agriculture moves with the rhythm of rainfall, temperature,
+                soil conditions and crop cycles. Discover how time and
+                farming are connected across Tamil Nadu.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- THREE SEASONS -->
+    <section class="season-section">
+
+        <div class="section-title reveal">
+            <span class="eyebrow">AGRICULTURAL RHYTHM</span>
+
+            <h2>Three important crop seasons.</h2>
+
+            <p>
+                Tamil Nadu agriculture includes different cropping periods.
+                The exact crop calendar can vary by region, water availability,
+                soil and local farming practices.
+            </p>
+        </div>
+
+
+        <div class="season-grid">
+
+            <article class="season-card reveal">
+
+                <div class="season-card-image"></div>
+
+                <div class="season-card-content">
+
+                    <span class="season-number">01 • JUNE — SEPTEMBER</span>
+
+                    <h3>Kuruvai</h3>
+
+                    <p>
+                        A short-duration rice-growing season associated
+                        especially with areas that have suitable irrigation
+                        and water availability.
+                    </p>
+
+                </div>
+            </article>
+
+
+            <article class="season-card reveal">
+
+                <div class="season-card-image"></div>
+
+                <div class="season-card-content">
+
+                    <span class="season-number">02 • SEPTEMBER — JANUARY</span>
+
+                    <h3>Samba</h3>
+
+                    <p>
+                        A major rice-growing season in Tamil Nadu, with
+                        cultivation timing influenced by rainfall,
+                        irrigation and regional conditions.
+                    </p>
+
+                </div>
+            </article>
+
+
+            <article class="season-card reveal">
+
+                <div class="season-card-image"></div>
+
+                <div class="season-card-content">
+
+                    <span class="season-number">03 • WINTER PERIOD</span>
+
+                    <h3>Navarai</h3>
+
+                    <p>
+                        Another rice-growing period found in parts of
+                        Tamil Nadu, often associated with available
+                        irrigation after the main cropping seasons.
+                    </p>
+
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CROP CYCLE -->
+    <section class="season-section">
+
+        <div class="section-title reveal">
+
+            <span class="eyebrow">FROM SEED TO HARVEST</span>
+
+            <h2>The rhythm of a crop.</h2>
+
+            <p>
+                A crop passes through several stages. Farmers observe
+                the field continuously and adjust their decisions as
+                conditions change.
+            </p>
+
+        </div>
+
+
+        <div class="cycle">
+
+            <div class="cycle-line"></div>
+
+            <div class="cycle-item reveal">
+                <div class="cycle-dot"></div>
+
+                <div class="cycle-box">
+                    <span>01 • PREPARE</span>
+                    <h3>Prepare the Land</h3>
+
+                    <p>
+                        Soil preparation creates suitable conditions
+                        for planting and crop establishment.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="cycle-item reveal">
+                <div class="cycle-dot"></div>
+
+                <div class="cycle-box">
+                    <span>02 • PLANT</span>
+                    <h3>Sow the Crop</h3>
+
+                    <p>
+                        Seeds or seedlings are introduced according
+                        to the crop and local cultivation method.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="cycle-item reveal">
+                <div class="cycle-dot"></div>
+
+                <div class="cycle-box">
+                    <span>03 • GROW</span>
+                    <h3>Care for the Field</h3>
+
+                    <p>
+                        Water, nutrients, weeds, pests and crop health
+                        are monitored throughout the growing period.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="cycle-item reveal">
+                <div class="cycle-dot"></div>
+
+                <div class="cycle-box">
+                    <span>04 • OBSERVE</span>
+                    <h3>Read the Conditions</h3>
+
+                    <p>
+                        Weather, soil moisture and crop development
+                        help guide farming decisions.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="cycle-item reveal">
+                <div class="cycle-dot"></div>
+
+                <div class="cycle-box">
+                    <span>05 • HARVEST</span>
+                    <h3>Bring in the Crop</h3>
+
+                    <p>
+                        When the crop reaches the appropriate stage,
+                        harvesting begins and the next cycle approaches.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MONTHS -->
+    <section class="season-section month-section">
+
+        <div class="section-title reveal">
+
+            <span class="eyebrow">A YEAR IN THE FIELD</span>
+
+            <h2>Every month brings a new task.</h2>
+
+            <p>
+                Farming activities differ between crops and regions.
+                This is a broad visual guide rather than a fixed
+                crop calendar.
+            </p>
+
+        </div>
+
+
+        <div class="month-grid">
+
+            <div class="month reveal">
+                <strong>JAN</strong>
+                <small>Harvest & planning</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>FEB</strong>
+                <small>Field preparation</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>MAR</strong>
+                <small>Water management</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>APR</strong>
+                <small>Summer crops</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>MAY</strong>
+                <small>Weather watch</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>JUN</strong>
+                <small>Planting period</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>JUL</strong>
+                <small>Crop growth</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>AUG</strong>
+                <small>Field care</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>SEP</strong>
+                <small>Rain & crop planning</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>OCT</strong>
+                <small>Monsoon season</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>NOV</strong>
+                <small>Growth & water</small>
+            </div>
+
+            <div class="month reveal">
+                <strong>DEC</strong>
+                <small>Harvest & transition</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BALANCE -->
+    <section class="season-section">
+
+        <div class="balance">
+
+            <div class="balance-card reveal">
+
+                <span class="eyebrow">TRADITION</span>
+
+                <h3>Reading nature.</h3>
+
+                <p>
+                    Farmers have traditionally observed soil, rainfall,
+                    seasons, plants and local environmental signs to
+                    make decisions about cultivation.
+                </p>
+
+                <div class="balance-list">
+
+                    <div>
+                        <span>✓</span>
+                        Observe soil
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Understand seasons
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Protect water
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="balance-card reveal">
+
+                <span class="eyebrow">MODERN FARMING</span>
+
+                <h3>Reading data.</h3>
+
+                <p>
+                    Modern agricultural tools can provide additional
+                    information about weather, soil moisture, crop
+                    conditions and resource use.
+                </p>
+
+                <div class="balance-list">
+
+                    <div>
+                        <span>✓</span>
+                        Monitor conditions
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Analyse data
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Make precise decisions
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+    <section class="season-section">
+
+        <div class="season-quote reveal">
+
+            <div class="mark">“</div>
+
+            <blockquote>
+                Agriculture does not follow the clock.
+                It follows the land, the water and the season.
+            </blockquote>
+
+            <p>— UYIRMANN</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="season-cta reveal">
+
+        <h2>See how farming is changing.</h2>
+
+        <p>
+            From traditional wisdom to sensors, satellites and
+            smart irrigation, technology is creating new possibilities
+            for agriculture.
+        </p>
+
+        <a href="technology.html" class="cta-btn">
+            Explore Smart Farming →
+        </a>
+
+    </section>
+
+</div>
+
+
+<script>
+    /* =========================================
+       UYIRMANN — SEASONS SCRIPT
+    ========================================= */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    obs.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+</script>
+
+</body>
+</html>
