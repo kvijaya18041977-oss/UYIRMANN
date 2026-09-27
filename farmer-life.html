@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer's Life | UYIRMANN</title>
+<meta name="description" content="Experience the journey of a farmer from sunrise to harvest with UYIRMANN.">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+    --green:#0b3d2e;
+    --green2:#126b4f;
+    --lime:#9be15d;
+    --gold:#d6b45a;
+    --dark:#050908;
+    --card:rgba(255,255,255,.055);
+    --line:rgba(255,255,255,.11);
+    --text:#f2f7f3;
+    --muted:#aab9b1;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:
+    radial-gradient(circle at 10% 10%,rgba(18,107,79,.18),transparent 30%),
+    radial-gradient(circle at 90% 60%,rgba(155,225,93,.07),transparent 28%),
+    var(--dark);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* HERO */
+
+.hero{
+    min-height:82vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+
+    background:
+    linear-gradient(90deg,rgba(2,8,5,.94),rgba(2,8,5,.55),rgba(2,8,5,.2)),
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,var(--dark),transparent 50%);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:100px 0;
+}
+
+.eyebrow{
+    color:var(--lime);
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(50px,8vw,105px);
+    line-height:.92;
+    letter-spacing:-5px;
+    margin:20px 0;
+}
+
+.hero h1 span{
+    color:var(--lime);
+}
+
+.hero p{
+    max-width:680px;
+    color:#d3dfd8;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* INTRO */
+
+.intro{
+    padding:90px 0 50px;
+}
+
+.intro-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.intro h2{
+    font-size:clamp(35px,5vw,62px);
+    margin:12px 0;
+}
+
+.intro h2 span{
+    color:var(--lime);
+}
+
+.intro-text{
+    color:var(--muted);
+    line-height:1.9;
+    font-size:17px;
+}
+
+.quote-box{
+    padding:35px;
+    border-left:3px solid var(--lime);
+    background:rgba(255,255,255,.035);
+    border-radius:0 20px 20px 0;
+}
+
+.quote-box p{
+    font-size:24px;
+    line-height:1.5;
+    margin:0;
+}
+
+.quote-box small{
+    display:block;
+    margin-top:18px;
+    color:var(--lime);
+}
+
+/* JOURNEY */
+
+.journey{
+    padding:80px 0;
+}
+
+.heading{
+    margin-bottom:45px;
+}
+
+.heading span{
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.heading h2{
+    font-size:clamp(38px,6vw,68px);
+    margin:12px 0;
+}
+
+.heading p{
+    color:var(--muted);
+    max-width:650px;
+    line-height:1.8;
+}
+
+/* TIMELINE */
+
+.timeline{
+    position:relative;
+    margin-top:50px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(
+        transparent,
+        rgba(155,225,93,.5),
+        transparent
+    );
+}
+
+.timeline-item{
+    width:50%;
+    padding:25px 45px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-dot{
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:var(--lime);
+    box-shadow:0 0 20px rgba(155,225,93,.4);
+    top:43px;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-7px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-7px;
+}
+
+.time-card{
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:var(--card);
+    transition:.3s;
+}
+
+.time-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(155,225,93,.4);
+}
+
+.time-number{
+    color:var(--lime);
+    font-size:12px;
+    letter-spacing:3px;
+}
+
+.time-card h3{
+    font-size:27px;
+    margin:12px 0;
+}
+
+.time-card p{
+    color:var(--muted);
+    line-height:1.75;
+}
+
+/* FULL IMAGE */
+
+.visual{
+    min-height:520px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    margin:80px 0;
+
+    background:
+    linear-gradient(to top,rgba(0,0,0,.85),transparent 65%),
+    url("https://images.unsplash.com/photo-1523742810156-5173a0c4f7a1?auto=format&fit=crop&w=1800&q=90")
+    center/cover;
+}
+
+.visual-content{
+    position:absolute;
+    left:45px;
+    bottom:40px;
+    max-width:650px;
+}
+
+.visual-content span{
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.visual-content h2{
+    font-size:clamp(35px,5vw,65px);
+    margin:12px 0;
+}
+
+.visual-content p{
+    color:#d0ddd5;
+    line-height:1.8;
+}
+
+/* DAILY RHYTHM */
+
+.rhythm{
+    padding:60px 0 100px;
+}
+
+.rhythm-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.rhythm-card{
+    min-height:250px;
+    padding:28px;
+    border-radius:22px;
+    border:1px solid var(--line);
+    background:var(--card);
+    transition:.3s;
+}
+
+.rhythm-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(155,225,93,.35);
+}
+
+.icon{
+    font-size:30px;
+}
+
+.rhythm-card h3{
+    margin:20px 0 10px;
+    font-size:21px;
+}
+
+.rhythm-card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* CHALLENGES */
+
+.challenges{
+    padding:90px 0;
+    background:
+    linear-gradient(
+        180deg,
+        transparent,
+        rgba(18,107,79,.08),
+        transparent
+    );
+}
+
+.challenge-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.challenge{
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+}
+
+.challenge-number{
+    color:var(--lime);
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.challenge h3{
+    font-size:25px;
+    margin:12px 0;
+}
+
+.challenge p{
+    color:var(--muted);
+    line-height:1.75;
+}
+
+/* HUMAN SIDE */
+
+.human{
+    padding:100px 0;
+}
+
+.human-box{
+    padding:65px;
+    border-radius:30px;
+    background:
+    linear-gradient(
+        120deg,
+        rgba(18,107,79,.65),
+        rgba(5,12,8,.95)
+    );
+    border:1px solid rgba(155,225,93,.15);
+}
+
+.human-box h2{
+    font-size:clamp(38px,6vw,70px);
+    max-width:850px;
+    margin:15px 0;
+}
+
+.human-box h2 span{
+    color:var(--lime);
+}
+
+.human-box p{
+    color:#d0ddd5;
+    max-width:700px;
+    line-height:1.9;
+    font-size:17px;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:90px 20px;
+    border-top:1px solid var(--line);
+}
+
+.cta h2{
+    font-size:clamp(38px,6vw,70px);
+    margin:15px 0;
+}
+
+.cta h2 span{
+    color:var(--lime);
+}
+
+.cta p{
+    color:var(--muted);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+}
+
+.buttons a{
+    padding:14px 23px;
+    border:1px solid var(--line);
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+}
+
+.buttons a.primary{
+    background:var(--lime);
+    color:#07110c;
+    border-color:var(--lime);
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .intro-grid{
+        grid-template-columns:1fr;
+    }
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding:25px 0 25px 45px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:3px;
+        right:auto;
+    }
+
+    .rhythm-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .challenge-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .rhythm-grid{
+        grid-template-columns:1fr;
+    }
+
+    .visual{
+        min-height:450px;
+    }
+
+    .visual-content{
+        left:25px;
+        right:25px;
+        bottom:25px;
+    }
+
+    .human-box{
+        padding:35px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container hero-content reveal">
+
+        <div class="eyebrow">
+            UYIRMANN / FARMER LIFE
+        </div>
+
+        <h1>
+            Life in the<br>
+            <span>Field.</span>
+        </h1>
+
+        <p>
+            Agriculture is not only about crops. It is a rhythm of
+            observation, work, patience, changing weather, water,
+            seasons and decisions made every day.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <div class="container intro-grid">
+
+        <div class="reveal">
+
+            <div class="eyebrow">
+                BEYOND THE CROP
+            </div>
+
+            <h2>
+                A farm is a place where
+                <span>time becomes food.</span>
+            </h2>
+
+            <p class="intro-text">
+                Every agricultural landscape has its own rhythm.
+                Farmers observe the land, work with changing seasons,
+                manage resources and care for crops until harvest.
+            </p>
+
+        </div>
+
+
+        <div class="quote-box reveal">
+
+            <p>
+                “The story of food begins long before
+                it reaches the table.”
+            </p>
+
+            <small>
+                — UYIRMANN
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JOURNEY -->
+
+<section class="journey">
+
+    <div class="container">
+
+        <div class="heading reveal">
+
+            <span>THE FARMING JOURNEY</span>
+
+            <h2>
+                From sunrise<br>
+                to harvest.
+            </h2>
+
+            <p>
+                Farming activities change according to the crop,
+                season, location and local conditions. This is a
+                general visual journey through a farming day and cycle.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">01 / MORNING</div>
+
+                    <h3>Begin with the land</h3>
+
+                    <p>
+                        The day can begin early, with farmers checking
+                        fields, plants, soil conditions and weather
+                        before deciding what work needs attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">02 / FIELD</div>
+
+                    <h3>Care for the crop</h3>
+
+                    <p>
+                        Crop care may involve irrigation, field
+                        observation, removing unwanted plants,
+                        checking growth and responding to changing
+                        conditions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">03 / WATER</div>
+
+                    <h3>Use every drop wisely</h3>
+
+                    <p>
+                        Water management is an important part of
+                        agriculture. Farmers work with available
+                        rainfall, irrigation systems and local
+                        water resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">04 / OBSERVE</div>
+
+                    <h3>Watch the crop</h3>
+
+                    <p>
+                        Changes in plant growth, weather, soil and
+                        pests can influence farm decisions. Observation
+                        helps farmers respond to the field.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">05 / GROW</div>
+
+                    <h3>Wait, work and adapt</h3>
+
+                    <p>
+                        Crops need time. Farming combines repeated
+                        care with patience while conditions continue
+                        to change.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="time-card">
+
+                    <div class="time-number">06 / HARVEST</div>
+
+                    <h3>Turn growth into food</h3>
+
+                    <p>
+                        When a crop reaches its appropriate harvest
+                        stage, the produce moves from the field toward
+                        storage, processing, markets or consumption.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VISUAL -->
+
+<section class="container">
+
+    <div class="visual reveal">
+
+        <div class="visual-content">
+
+            <span>THE FIELD</span>
+
+            <h2>
+                Every season asks a different question.
+            </h2>
+
+            <p>
+                Rain, heat, soil, water and crop growth are always
+                changing. Farming requires attention to all of them.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DAILY RHYTHM -->
+
+<section class="rhythm">
+
+    <div class="container">
+
+        <div class="heading reveal">
+
+            <span>THE DAILY RHYTHM</span>
+
+            <h2>
+                Four things the field teaches.
+            </h2>
+
+        </div>
+
+
+        <div class="rhythm-grid">
+
+            <article class="rhythm-card reveal">
+
+                <div class="icon">🌅</div>
+
+                <h3>Timing</h3>
+
+                <p>
+                    Agricultural work follows seasons, crop stages
+                    and environmental conditions rather than a
+                    single fixed schedule.
+                </p>
+
+            </article>
+
+
+            <article class="rhythm-card reveal">
+
+                <div class="icon">💧</div>
+
+                <h3>Water</h3>
+
+                <p>
+                    Water is a central resource in agriculture,
+                    making careful observation and management
+                    important.
+                </p>
+
+            </article>
+
+
+            <article class="rhythm-card reveal">
+
+                <div class="icon">🌱</div>
+
+                <h3>Patience</h3>
+
+                <p>
+                    Crops cannot be rushed. Growth takes time,
+                    and farmers continuously monitor what is
+                    happening in the field.
+                </p>
+
+            </article>
+
+
+            <article class="rhythm-card reveal">
+
+                <div class="icon">🌦️</div>
+
+                <h3>Adaptation</h3>
+
+                <p>
+                    Weather and field conditions can change.
+                    Agriculture therefore requires observation
+                    and adaptation.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGES -->
+
+<section class="challenges">
+
+    <div class="container">
+
+        <div class="heading reveal">
+
+            <span>THE REALITY OF FARMING</span>
+
+            <h2>
+                Agriculture has challenges.
+            </h2>
+
+            <p>
+                Farming involves uncertainty as well as opportunity.
+                The challenges below can affect agricultural
+                communities in different ways.
+            </p>
+
+        </div>
+
+
+        <div class="challenge-grid">
+
+            <article class="challenge reveal">
+
+                <div class="challenge-number">
+                    01 / WATER
+                </div>
+
+                <h3>Water availability</h3>
+
+                <p>
+                    Rainfall, irrigation access and changing water
+                    conditions can influence agricultural activity.
+                </p>
+
+            </article>
+
+
+            <article class="challenge reveal">
+
+                <div class="challenge-number">
+                    02 / WEATHER
+                </div>
+
+                <h3>Changing conditions</h3>
+
+                <p>
+                    Heat, rainfall patterns, storms and other
+                    environmental changes can affect crops and
+                    farming decisions.
+                </p>
+
+            </article>
+
+
+            <article class="challenge reveal">
+
+                <div class="challenge-number">
+                    03 / SOIL
+                </div>
+
+                <h3>Soil health</h3>
+
+                <p>
+                    Healthy soil supports agricultural productivity.
+                    Maintaining soil quality is an important part
+                    of long-term farming.
+                </p>
+
+            </article>
+
+
+            <article class="challenge reveal">
+
+                <div class="challenge-number">
+                    04 / MARKETS
+                </div>
+
+                <h3>Connecting to consumers</h3>
+
+                <p>
+                    After harvest, agricultural products move through
+                    storage, transport, processing and markets before
+                    reaching consumers.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HUMAN SIDE -->
+
+<section class="human">
+
+    <div class="container">
+
+        <div class="human-box reveal">
+
+            <div class="eyebrow">
+                THE HUMAN SIDE
+            </div>
+
+            <h2>
+                Behind every field is a
+                <span>person.</span>
+            </h2>
+
+            <p>
+                Agriculture is built not only from soil and seeds,
+                but also from knowledge, experience, labour,
+                family traditions, technology and decisions.
+                Understanding farming means understanding the
+                people connected to it.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            KEEP EXPLORING
+        </div>
+
+        <h2>
+            Meet the land.<br>
+            <span>Understand the future.</span>
+        </h2>
+
+        <p>
+            Continue exploring Tamil Nadu's crops, traditions,
+            seasons and agricultural technology.
+        </p>
+
+        <div class="buttons">
+
+            <a href="stories.html" class="primary">
+                Farmer Stories
+            </a>
+
+            <a href="crops.html">
+                Explore Crops
+            </a>
+
+            <a href="traditional.html">
+                Traditional Farming
+            </a>
+
+            <a href="technology.html">
+                Smart Farming
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================
+   SCROLL REVEAL
+===================================== */
+
+const revealObserver =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+</script>
+
+</body>
+</html>
