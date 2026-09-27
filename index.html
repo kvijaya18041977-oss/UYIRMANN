@@ -837,6 +837,79 @@
 
 
 
+
+<!-- =====================================================
+     UYIRMANN 3D CROP GROWING GAME
+===================================================== -->
+<section class="crop-game-section" id="crop-game">
+  <div class="crop-game-glow"></div>
+  <div class="crop-game-header">
+    <span class="eyebrow">UYIRMANN FARM LAB</span>
+    <h2>Grow Your Own <span>3D Crop.</span></h2>
+    <p>Choose a crop, plant it, give it water and watch your virtual farm grow.</p>
+  </div>
+  <div class="crop-game">
+    <div class="game-panel">
+      <div class="game-panel-title"><span>🌱</span><div><small>CROP LAB</small><h3>Choose Your Crop</h3></div></div>
+      <div class="crop-choice-grid">
+        <button class="game-crop active" data-crop="paddy"><span>🌾</span><strong>Paddy</strong><small>Rice</small></button>
+        <button class="game-crop" data-crop="banana"><span>🍌</span><strong>Banana</strong><small>Fruit</small></button>
+        <button class="game-crop" data-crop="maize"><span>🌽</span><strong>Maize</strong><small>Grain</small></button>
+        <button class="game-crop" data-crop="groundnut"><span>🥜</span><strong>Groundnut</strong><small>Oilseed</small></button>
+      </div>
+      <div class="game-status">
+        <div class="status-row"><span>Selected</span><strong id="selectedCrop">Paddy</strong></div>
+        <div class="status-row"><span>Stage</span><strong id="cropStage">Seed</strong></div>
+        <div class="status-row"><span>Water</span><strong id="waterLevel">0%</strong></div>
+        <div class="status-row"><span>Growth</span><strong id="growthPercent">0%</strong></div>
+      </div>
+      <div class="game-progress">
+        <div class="progress-label"><span>GROWTH</span><span id="progressText">0%</span></div>
+        <div class="progress-track"><div class="progress-fill" id="growthBar"></div></div>
+      </div>
+      <div class="game-buttons">
+        <button class="game-action plant-button" id="plantButton">🌱 Plant</button>
+        <button class="game-action water-button" id="waterButton">💧 Water</button>
+        <button class="game-action reset-button" id="resetGame">↻ Reset</button>
+      </div>
+      <div class="game-message" id="gameMessage">Choose a crop and plant it.</div>
+    </div>
+    <div class="farm-world">
+      <div class="sky-glow"></div><div class="sun">☀️</div>
+      <div class="cloud cloud-one">☁️</div><div class="cloud cloud-two">☁️</div>
+      <div class="mountains"><span></span><span></span><span></span></div>
+      <div class="field-3d">
+        <div class="field-row row-one"></div><div class="field-row row-two"></div>
+        <div class="field-row row-three"></div><div class="field-row row-four"></div><div class="field-row row-five"></div>
+        <div class="virtual-crop" id="virtualCrop">
+          <div class="crop-shadow"></div>
+          <div class="crop-plant"><div class="plant-stem"></div><div class="plant-leaf leaf-one"></div><div class="plant-leaf leaf-two"></div><div class="plant-leaf leaf-three"></div><div class="plant-top"></div></div>
+        </div>
+      </div>
+      <div class="field-info"><span id="fieldCropIcon">🌾</span><strong id="fieldCropName">Paddy Field</strong></div>
+    </div>
+  </div>
+  <div class="game-achievement" id="gameAchievement"><div class="achievement-icon">🌟</div><div><strong>Harvest Ready!</strong><span>Your virtual crop has fully grown.</span></div></div>
+</section>
+
+<style>
+.crop-game-section{position:relative;overflow:hidden;padding:120px 20px;background:radial-gradient(circle at 20% 20%,rgba(48,255,130,.1),transparent 35%),linear-gradient(135deg,#04120b,#071c11,#020806);border-top:1px solid rgba(100,255,150,.08)}
+.crop-game-glow{position:absolute;width:500px;height:500px;left:50%;top:45%;transform:translate(-50%,-50%);background:rgba(45,255,120,.08);filter:blur(100px);border-radius:50%;pointer-events:none}
+.crop-game-header{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto 55px}.crop-game-header h2{margin:12px 0;font-size:clamp(42px,6vw,75px);line-height:1;color:#f1fff5}.crop-game-header h2 span{display:block;background:linear-gradient(90deg,#58ff95,#caffd9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.crop-game-header p{color:rgba(225,245,231,.68);line-height:1.8;font-size:16px}
+.crop-game{position:relative;z-index:3;max-width:1250px;margin:auto;display:grid;grid-template-columns:350px 1fr;gap:25px}.game-panel{padding:28px;border:1px solid rgba(100,255,150,.14);border-radius:24px;background:rgba(5,20,12,.82);backdrop-filter:blur(20px);box-shadow:0 25px 80px rgba(0,0,0,.35)}
+.game-panel-title{display:flex;align-items:center;gap:14px;margin-bottom:25px}.game-panel-title>span{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(80,255,140,.1);font-size:25px}.game-panel-title small{color:#61ff98;font-size:10px;letter-spacing:3px}.game-panel-title h3{margin:3px 0 0;color:white;font-size:20px}
+.crop-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.game-crop{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);color:white;border-radius:15px;padding:15px 10px;cursor:pointer;transition:.3s ease}.game-crop span{display:block;font-size:28px;margin-bottom:5px}.game-crop strong{display:block;font-size:13px}.game-crop small{color:rgba(255,255,255,.45)}.game-crop:hover,.game-crop.active{border-color:rgba(91,255,150,.55);background:rgba(70,255,130,.09);transform:translateY(-3px);box-shadow:0 10px 25px rgba(50,255,120,.08)}
+.game-status{margin-top:25px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}.status-row{display:flex;justify-content:space-between;padding:8px 0;color:rgba(255,255,255,.55);font-size:13px}.status-row strong{color:#72ff9f}.game-progress{margin-top:18px}.progress-label{display:flex;justify-content:space-between;margin-bottom:8px;color:rgba(255,255,255,.55);font-size:10px;letter-spacing:2px}.progress-track{height:8px;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.07)}.progress-fill{width:0%;height:100%;border-radius:20px;background:linear-gradient(90deg,#2eff78,#b8ffc9);box-shadow:0 0 15px rgba(60,255,130,.35);transition:width .6s ease}
+.game-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.game-action{border:0;padding:13px;border-radius:12px;font-weight:800;cursor:pointer;transition:.25s ease}.plant-button{color:#031108;background:#63ff99}.water-button{color:white;background:rgba(40,160,255,.18);border:1px solid rgba(70,180,255,.25)}.reset-button{grid-column:1/-1;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}.game-action:hover{transform:translateY(-3px)}.game-message{margin-top:18px;text-align:center;color:rgba(220,255,230,.55);font-size:12px;line-height:1.6}
+.farm-world{position:relative;min-height:540px;overflow:hidden;border-radius:28px;border:1px solid rgba(100,255,150,.12);background:linear-gradient(#123b29 0%,#183e2a 43%,#0b2416 44%,#06140c 100%);perspective:1000px;box-shadow:0 30px 100px rgba(0,0,0,.4)}.sun{position:absolute;top:35px;right:55px;font-size:55px;filter:drop-shadow(0 0 25px rgba(255,210,70,.4));animation:sunFloat 5s ease-in-out infinite}@keyframes sunFloat{50%{transform:translateY(-8px)}}.cloud{position:absolute;font-size:45px;opacity:.35}.cloud-one{top:80px;left:12%;animation:cloudMove 18s linear infinite}.cloud-two{top:145px;right:25%;animation:cloudMove 25s linear infinite reverse}@keyframes cloudMove{50%{transform:translateX(70px)}}
+.mountains{position:absolute;left:0;right:0;bottom:48%;height:150px}.mountains span{position:absolute;bottom:0;width:0;height:0;border-left:130px solid transparent;border-right:130px solid transparent;border-bottom:160px solid #102d1e}.mountains span:nth-child(1){left:5%}.mountains span:nth-child(2){left:38%;border-bottom-color:#0d291b}.mountains span:nth-child(3){right:5%;border-bottom-color:#143521}
+.field-3d{position:absolute;left:50%;bottom:-80px;width:90%;height:65%;transform:translateX(-50%) rotateX(58deg);transform-origin:bottom center;background:linear-gradient(90deg,#173c20,#244d27,#173c20);border-radius:30px 30px 0 0;box-shadow:inset 0 0 70px rgba(0,0,0,.3)}.field-row{position:absolute;left:5%;right:5%;height:3px;background:rgba(8,20,8,.45)}.row-one{top:15%}.row-two{top:32%}.row-three{top:49%}.row-four{top:66%}.row-five{top:83%}
+.virtual-crop{position:absolute;left:50%;bottom:18%;transform:translateX(-50%);width:150px;height:210px;display:flex;justify-content:center;align-items:flex-end}.crop-shadow{position:absolute;bottom:0;width:100px;height:25px;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(5px)}.crop-plant{position:relative;width:90px;height:190px;transform-origin:bottom center;transform:scale(.15);opacity:.3;transition:transform 1s ease,opacity 1s ease}.plant-stem{position:absolute;bottom:20px;left:42px;width:9px;height:125px;border-radius:10px;background:linear-gradient(#42b85f,#137332)}.plant-leaf{position:absolute;width:65px;height:25px;background:linear-gradient(90deg,#237f3c,#62d878);border-radius:100% 0 100% 0}.leaf-one{left:2px;bottom:90px;transform:rotate(-30deg)}.leaf-two{right:0;bottom:115px;transform:rotate(30deg) scaleX(-1)}.leaf-three{left:5px;bottom:55px;transform:rotate(-18deg)}.plant-top{position:absolute;left:31px;top:0;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,#d9ff67,#49b947)}.virtual-crop.growing .crop-plant{transform:scale(.65);opacity:.9}.virtual-crop.large .crop-plant{transform:scale(1);opacity:1}.virtual-crop.harvest .crop-plant{transform:scale(1.12);filter:drop-shadow(0 0 20px rgba(130,255,90,.3))}
+.field-info{position:absolute;left:25px;bottom:25px;display:flex;align-items:center;gap:10px;padding:12px 17px;border:1px solid rgba(255,255,255,.08);border-radius:100px;background:rgba(0,0,0,.35);backdrop-filter:blur(12px);color:white}.field-info span{font-size:23px}.field-info strong{font-size:13px}
+.game-achievement{max-width:700px;margin:30px auto 0;display:none;align-items:center;gap:15px;padding:18px 22px;border:1px solid rgba(100,255,150,.3);border-radius:18px;background:rgba(50,255,120,.07)}.game-achievement.show{display:flex;animation:achievementIn .6s ease}.achievement-icon{font-size:35px}.game-achievement strong{display:block;color:#6aff9c}.game-achievement span{color:rgba(255,255,255,.55);font-size:13px}@keyframes achievementIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.crop-game{grid-template-columns:1fr}.farm-world{min-height:460px}}@media(max-width:600px){.crop-game-section{padding:80px 15px}.game-panel{padding:20px}.farm-world{min-height:390px;border-radius:20px}.field-3d{width:105%}.sun{right:20px;font-size:40px}}
+</style>
+
 <!-- =====================================================
      FEATURE CARDS
 ===================================================== -->
@@ -1892,6 +1965,18 @@
 </button>
 
 
+
+
+<script>
+const gameCrops={paddy:{name:"Paddy",icon:"🌾"},banana:{name:"Banana",icon:"🍌"},maize:{name:"Maize",icon:"🌽"},groundnut:{name:"Groundnut",icon:"🥜"}};
+let selectedCrop="paddy",planted=false,growth=0,water=0;
+const cropButtons=document.querySelectorAll(".game-crop"),virtualCrop=document.getElementById("virtualCrop"),selectedCropText=document.getElementById("selectedCrop"),cropStage=document.getElementById("cropStage"),waterLevel=document.getElementById("waterLevel"),growthPercent=document.getElementById("growthPercent"),growthBar=document.getElementById("growthBar"),progressText=document.getElementById("progressText"),gameMessage=document.getElementById("gameMessage"),plantButton=document.getElementById("plantButton"),waterButton=document.getElementById("waterButton"),resetButton=document.getElementById("resetGame"),fieldCropIcon=document.getElementById("fieldCropIcon"),fieldCropName=document.getElementById("fieldCropName"),achievement=document.getElementById("gameAchievement");
+cropButtons.forEach(button=>button.addEventListener("click",()=>{cropButtons.forEach(btn=>btn.classList.remove("active"));button.classList.add("active");selectedCrop=button.dataset.crop;const crop=gameCrops[selectedCrop];selectedCropText.textContent=crop.name;fieldCropIcon.textContent=crop.icon;fieldCropName.textContent=crop.name+" Field";resetGame()}));
+plantButton.addEventListener("click",()=>{if(planted){gameMessage.textContent="Your crop is already planted. 💧 Give it some water.";return}planted=true;growth=10;water=0;updateGame();gameMessage.textContent="🌱 Your "+gameCrops[selectedCrop].name+" has been planted! Now water it."});
+waterButton.addEventListener("click",()=>{if(!planted){gameMessage.textContent="🌱 Plant your crop first.";return}if(growth>=100){gameMessage.textContent="🌾 Your crop is ready for harvest!";return}water=Math.min(100,water+25);growth=Math.min(100,growth+15);updateGame();if(growth<100)gameMessage.textContent="💧 Good! Your crop is growing.";if(growth>=100){gameMessage.textContent="🎉 Amazing! Your crop is fully grown!";achievement.classList.add("show")}});
+function updateGame(){growthPercent.textContent=growth+"%";progressText.textContent=growth+"%";growthBar.style.width=growth+"%";waterLevel.textContent=water+"%";if(!planted){cropStage.textContent="Seed";virtualCrop.className="virtual-crop";return}if(growth<30){cropStage.textContent="Sprout";virtualCrop.className="virtual-crop growing"}else if(growth<70){cropStage.textContent="Growing";virtualCrop.className="virtual-crop growing"}else if(growth<100){cropStage.textContent="Mature";virtualCrop.className="virtual-crop large"}else{cropStage.textContent="Harvest";virtualCrop.className="virtual-crop harvest"}}
+function resetGame(){planted=false;growth=0;water=0;achievement.classList.remove("show");gameMessage.textContent="Choose a crop and plant it.";updateGame()}resetButton.addEventListener("click",resetGame);updateGame();
+</script>
 
 <script src="script.js"></script>
 
