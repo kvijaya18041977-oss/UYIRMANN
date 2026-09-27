@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Innovation in Agriculture | UYIRMANN</title>
+
+    <meta name="description"
+          content="Explore agricultural innovation, AI, robotics, drones, sensors, smart irrigation and the future of farming with UYIRMANN.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           UYIRMANN — INNOVATION PAGE
+        ========================================= */
+
+        :root {
+            --green: #0f3d2e;
+            --green-light: #1f6b4f;
+            --lime: #9bd36a;
+            --gold: #d8b56a;
+            --dark: #050907;
+            --dark-2: #09120d;
+            --glass: rgba(255,255,255,0.055);
+            --border: rgba(155,211,106,0.18);
+            --text: #eef5ef;
+            --muted: #a9b7ad;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(30,100,65,.18), transparent 35%),
+                radial-gradient(circle at 85% 70%, rgba(120,180,80,.08), transparent 35%),
+                var(--dark);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HERO */
+
+        .innovation-hero {
+            min-height: 82vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(3,8,5,.95) 0%,
+                    rgba(3,8,5,.72) 45%,
+                    rgba(3,8,5,.25) 100%),
+                url("https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .innovation-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(transparent 95%, rgba(155,211,106,.2)),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0,
+                    transparent 100px,
+                    rgba(155,211,106,.025) 101px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            width: min(1180px, 92%);
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 9px 16px;
+            border: 1px solid rgba(155,211,106,.3);
+            border-radius: 50px;
+            color: var(--lime);
+            background: rgba(0,0,0,.25);
+            backdrop-filter: blur(8px);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .innovation-hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: .9;
+            margin: 0;
+            max-width: 850px;
+            letter-spacing: -5px;
+        }
+
+        .innovation-hero h1 span {
+            color: var(--lime);
+        }
+
+        .hero-text {
+            max-width: 650px;
+            margin-top: 28px;
+            color: #d1ddd3;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            margin-top: 30px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            background: var(--lime);
+            color: #081008;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(155,211,106,.2);
+        }
+
+        /* GENERAL */
+
+        .section {
+            width: min(1180px, 92%);
+            margin: auto;
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            max-width: 750px;
+            margin-bottom: 50px;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1;
+            margin: 14px 0 20px;
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* INTRO */
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro-image {
+            min-height: 430px;
+            border-radius: 28px;
+            background:
+                linear-gradient(transparent, rgba(0,0,0,.55)),
+                url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+            box-shadow: 0 25px 70px rgba(0,0,0,.35);
+        }
+
+        .intro-text h3 {
+            font-size: 34px;
+            margin-top: 0;
+        }
+
+        .intro-text p {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        /* INNOVATION CARDS */
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .innovation-card {
+            min-height: 220px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.07),
+                rgba(255,255,255,.025)
+            );
+            backdrop-filter: blur(12px);
+            transition: .35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .innovation-card::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(155,211,106,.08);
+            right: -50px;
+            top: -50px;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(155,211,106,.45);
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+        }
+
+        .card-number {
+            font-size: 13px;
+            color: var(--lime);
+            letter-spacing: 2px;
+        }
+
+        .innovation-card h3 {
+            font-size: 24px;
+            margin: 25px 0 12px;
+        }
+
+        .innovation-card p {
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* DATA PIPELINE */
+
+        .pipeline-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(15,61,46,.35),
+                    rgba(0,0,0,.2)
+                );
+            border-top: 1px solid rgba(155,211,106,.08);
+            border-bottom: 1px solid rgba(155,211,106,.08);
+        }
+
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .pipeline-item {
+            padding: 30px 18px;
+            text-align: center;
+            border-radius: 18px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.07);
+            position: relative;
+        }
+
+        .pipeline-item strong {
+            display: block;
+            color: var(--lime);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .pipeline-item span {
+            color: #aab7ad;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ROBOTICS */
+
+        .robotics {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .robot-image {
+            min-height: 560px;
+            border-radius: 30px;
+            background:
+                linear-gradient(180deg, transparent 40%, rgba(0,0,0,.8)),
+                url("https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+        }
+
+        .robot-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin: 0 0 20px;
+            line-height: 1;
+        }
+
+        .robot-content > p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .robot-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .robot-item {
+            padding: 20px;
+            border-left: 2px solid var(--lime);
+            background: rgba(255,255,255,.04);
+        }
+
+        .robot-item strong {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .robot-item span {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* AI */
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .ai-card {
+            padding: 35px;
+            border-radius: 24px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(25,80,55,.3),
+                    rgba(255,255,255,.025)
+                );
+            border: 1px solid var(--border);
+        }
+
+        .ai-card h3 {
+            font-size: 25px;
+            margin: 0 0 12px;
+        }
+
+        .ai-card p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* TAMIL SOIL */
+
+        .future-banner {
+            min-height: 470px;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2,9,5,.92),
+                    rgba(2,9,5,.45)
+                ),
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+        }
+
+        .future-banner-content {
+            max-width: 650px;
+        }
+
+        .future-banner h2 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: .95;
+            margin: 12px 0 20px;
+        }
+
+        .future-banner p {
+            color: #cbd7cd;
+            line-height: 1.8;
+        }
+
+        /* PRINCIPLES */
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .principle {
+            padding: 30px 24px;
+            border-top: 2px solid var(--lime);
+            background: rgba(255,255,255,.035);
+        }
+
+        .principle h3 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .principle p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* FUTURE CARDS */
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .future-card {
+            min-height: 230px;
+            padding: 30px;
+            border-radius: 24px;
+            background: linear-gradient(
+                145deg,
+                rgba(155,211,106,.08),
+                rgba(255,255,255,.025)
+            );
+            border: 1px solid rgba(155,211,106,.15);
+            transition: .3s;
+        }
+
+        .future-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(155,211,106,.4);
+        }
+
+        .future-card h3 {
+            font-size: 23px;
+            margin: 0 0 15px;
+        }
+
+        .future-card p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            padding: 110px 20px;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(40,110,70,.25),
+                    transparent 60%
+                );
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin: 0 0 20px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .cta-button {
+            padding: 14px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(155,211,106,.3);
+            background: rgba(255,255,255,.04);
+            transition: .3s;
+        }
+
+        .cta-button:hover {
+            background: var(--lime);
+            color: #071008;
+            transform: translateY(-3px);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .intro-grid,
+            .robotics {
+                grid-template-columns: 1fr;
+            }
+
+            .innovation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pipeline {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .principles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .future-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .robot-image {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .innovation-hero {
+                min-height: 78vh;
+            }
+
+            .innovation-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .innovation-grid,
+            .ai-grid,
+            .future-grid,
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .future-banner {
+                padding: 35px 25px;
+            }
+
+            .intro-image {
+                min-height: 320px;
+            }
+
+            .robot-image {
+                min-height: 320px;
+            }
+        }
+
+        /* REVEAL ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="innovation-hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                UYIRMANN / AGRICULTURAL INNOVATION
+            </div>
+
+            <h1>
+                The Future<br>
+                Is <span>Growing.</span>
+            </h1>
+
+            <p class="hero-text">
+                Agriculture is entering a new era — where soil, sensors,
+                data, machines and human knowledge work together.
+                Discover how innovation can transform the way we understand
+                and care for the field.
+            </p>
+
+            <a href="#innovations" class="hero-button">
+                Explore Innovation ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+    <section class="section">
+
+        <div class="intro-grid reveal">
+
+            <div class="intro-image"></div>
+
+            <div class="intro-text">
+
+                <div class="eyebrow">A New Agricultural Era</div>
+
+                <h3>
+                    Technology is becoming another tool in the farmer's field.
+                </h3>
+
+                <p>
+                    Modern agriculture can combine traditional knowledge
+                    with digital tools to understand crops, soil, water
+                    and weather more precisely.
+                </p>
+
+                <p>
+                    Sensors can observe conditions. Drones and satellites
+                    can provide aerial views. Artificial intelligence can
+                    help analyse information. Automation can support
+                    repetitive operations.
+                </p>
+
+                <p>
+                    The goal is not technology for technology's sake.
+                    The goal is better decisions, efficient resource use
+                    and a stronger connection between people and the land.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INNOVATIONS -->
+    <section class="section" id="innovations">
+
+        <div class="section-heading reveal">
+
+            <div class="eyebrow">The Innovation Map</div>
+
+            <h2>
+                Many tools.<br>
+                One field.
+            </h2>
+
+            <p>
+                Agricultural innovation brings together different
+                technologies to help farmers observe, understand and
+                respond to changing field conditions.
+            </p>
+
+        </div>
+
+
+        <div class="innovation-grid">
+
+            <article class="innovation-card reveal">
+                <span class="card-number">01</span>
+                <h3>Soil Sensors</h3>
+                <p>
+                    Sensors can monitor conditions such as soil moisture
+                    and help provide useful information for field decisions.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">02</span>
+                <h3>Smart Irrigation</h3>
+                <p>
+                    Connected irrigation systems can help manage water
+                    based on field conditions and monitoring data.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">03</span>
+                <h3>Drones</h3>
+                <p>
+                    Aerial technology can provide a broader view of crops,
+                    fields and changing agricultural conditions.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">04</span>
+                <h3>Satellite Imaging</h3>
+                <p>
+                    Satellite observations can help researchers and
+                    agricultural systems understand large areas of land.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">05</span>
+                <h3>Artificial Intelligence</h3>
+                <p>
+                    AI can analyse large amounts of agricultural data and
+                    identify patterns that support decision-making.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">06</span>
+                <h3>Robotics</h3>
+                <p>
+                    Agricultural robots are being explored for monitoring,
+                    assistance and precision-oriented field operations.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">07</span>
+                <h3>Automation</h3>
+                <p>
+                    Automation can support repetitive agricultural tasks
+                    and improve consistency in selected operations.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">08</span>
+                <h3>IoT</h3>
+                <p>
+                    Connected devices can allow information from different
+                    parts of a farm to work together.
+                </p>
+            </article>
+
+            <article class="innovation-card reveal">
+                <span class="card-number">09</span>
+                <h3>Farmer Apps</h3>
+                <p>
+                    Digital platforms can bring weather, crop, market and
+                    farm information closer to the people who need it.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA PIPELINE -->
+    <section class="pipeline-section">
+
+        <div class="section">
+
+            <div class="section-heading reveal">
+
+                <div class="eyebrow">Connected Agriculture</div>
+
+                <h2>
+                    From Field<br>
+                    to Data.
+                </h2>
+
+                <p>
+                    A modern agricultural system can turn observations
+                    from the field into information that supports action.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline">
+
+                <div class="pipeline-item reveal">
+                    <strong>FIELD</strong>
+                    <span>The crop and its environment</span>
+                </div>
+
+                <div class="pipeline-item reveal">
+                    <strong>SENSOR</strong>
+                    <span>Observe conditions</span>
+                </div>
+
+                <div class="pipeline-item reveal">
+                    <strong>DATA</strong>
+                    <span>Collect information</span>
+                </div>
+
+                <div class="pipeline-item reveal">
+                    <strong>AI</strong>
+                    <span>Analyse patterns</span>
+                </div>
+
+                <div class="pipeline-item reveal">
+                    <strong>DECISION</strong>
+                    <span>Understand the situation</span>
+                </div>
+
+                <div class="pipeline-item reveal">
+                    <strong>ACTION</strong>
+                    <span>Respond appropriately</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROBOTICS -->
+    <section class="section">
+
+        <div class="robotics">
+
+            <div class="robot-image reveal"></div>
+
+            <div class="robot-content reveal">
+
+                <div class="eyebrow">Machines Meet The Soil</div>
+
+                <h2>
+                    Robotics<br>
+                    in the Field.
+                </h2>
+
+                <p>
+                    Agricultural robotics is an emerging area where
+                    machines can assist with observation, movement and
+                    selected repetitive operations in farming environments.
+                </p>
+
+                <div class="robot-list">
+
+                    <div class="robot-item">
+                        <strong>Crop Monitoring</strong>
+                        <span>
+                            Machines can help observe crops and field
+                            conditions over time.
+                        </span>
+                    </div>
+
+                    <div class="robot-item">
+                        <strong>Harvest Assistance</strong>
+                        <span>
+                            Robotics can be explored for supporting
+                            selected harvesting activities.
+                        </span>
+                    </div>
+
+                    <div class="robot-item">
+                        <strong>Precision Operations</strong>
+                        <span>
+                            Technology can help agricultural operations
+                            become more targeted and data-informed.
+                        </span>
+                    </div>
+
+                    <div class="robot-item">
+                        <strong>Autonomous Movement</strong>
+                        <span>
+                            Future farm machines may navigate fields
+                            while using sensors to understand their surroundings.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI -->
+    <section class="section">
+
+        <div class="section-heading reveal">
+
+            <div class="eyebrow">Intelligence in Agriculture</div>
+
+            <h2>
+                When Data<br>
+                Becomes Insight.
+            </h2>
+
+            <p>
+                Artificial intelligence can help process agricultural
+                information and turn large datasets into useful patterns.
+            </p>
+
+        </div>
+
+
+        <div class="ai-grid">
+
+            <article class="ai-card reveal">
+                <h3>Crop Image Analysis</h3>
+                <p>
+                    Computer vision systems can analyse crop images
+                    and help identify visible patterns or changes.
+                </p>
+            </article>
+
+            <article class="ai-card reveal">
+                <h3>Weather Insights</h3>
+                <p>
+                    Agricultural data systems can combine weather
+                    information with field observations.
+                </p>
+            </article>
+
+            <article class="ai-card reveal">
+                <h3>Soil Monitoring</h3>
+                <p>
+                    Data from soil observations can help build a clearer
+                    picture of conditions below and around the crop.
+                </p>
+            </article>
+
+            <article class="ai-card reveal">
+                <h3>Market & Data Tools</h3>
+                <p>
+                    Digital systems can connect agricultural information
+                    with market and supply-chain data.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- TAMIL SOIL -->
+    <section class="section">
+
+        <div class="future-banner reveal">
+
+            <div class="future-banner-content">
+
+                <div class="eyebrow">
+                    Tamil Soil / Future Tools
+                </div>
+
+                <h2>
+                    Ancient Land.<br>
+                    New Ideas.
+                </h2>
+
+                <p>
+                    Tamil Nadu has a long agricultural heritage.
+                    The next chapter does not have to replace that knowledge.
+                    It can connect traditional understanding with new tools,
+                    new data and new ways of solving agricultural challenges.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRINCIPLES -->
+    <section class="section">
+
+        <div class="section-heading reveal">
+
+            <div class="eyebrow">Innovation Principles</div>
+
+            <h2>
+                Technology should<br>
+                serve the field.
+            </h2>
+
+        </div>
+
+
+        <div class="principles">
+
+            <div class="principle reveal">
+                <h3>Useful</h3>
+                <p>
+                    Innovation should solve real agricultural problems
+                    and provide meaningful value.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Sustainable</h3>
+                <p>
+                    Technology should support responsible use of soil,
+                    water and other resources.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Accessible</h3>
+                <p>
+                    Agricultural technology becomes more meaningful
+                    when it can reach the people who need it.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Human-Centered</h3>
+                <p>
+                    Farmers and communities remain at the centre
+                    of agricultural innovation.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section class="section">
+
+        <div class="section-heading reveal">
+
+            <div class="eyebrow">Looking Ahead</div>
+
+            <h2>
+                What could<br>
+                farming become?
+            </h2>
+
+        </div>
+
+
+        <div class="future-grid">
+
+            <article class="future-card reveal">
+                <h3>Connected Farms</h3>
+                <p>
+                    Different sensors and digital systems working together
+                    to create a clearer view of the farm.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Intelligent Water</h3>
+                <p>
+                    Better monitoring and data can support more informed
+                    water-management decisions.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Agri Robots</h3>
+                <p>
+                    Robots may increasingly support selected field
+                    operations and agricultural monitoring.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>AI Agriculture</h3>
+                <p>
+                    Artificial intelligence may become another layer
+                    connecting observations with agricultural decisions.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Climate Intelligence</h3>
+                <p>
+                    Weather and climate information can become increasingly
+                    important in planning resilient agricultural systems.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Global Connection</h3>
+                <p>
+                    Digital agriculture can connect local farms with
+                    wider knowledge, markets and agricultural networks.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <div class="reveal">
+
+            <div class="eyebrow">Continue Exploring UYIRMANN</div>
+
+            <h2>
+                The field is<br>
+                becoming smarter.
+            </h2>
+
+            <p>
+                Explore how technology, climate, markets and crops
+                come together to shape the future of agriculture.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="technology.html" class="cta-button">
+                    Technology
+                </a>
+
+                <a href="climate.html" class="cta-button">
+                    Climate
+                </a>
+
+                <a href="markets.html" class="cta-button">
+                    Markets
+                </a>
+
+                <a href="crops.html" class="cta-button">
+                    Crops
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE SCRIPT -->
+    <script>
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            revealObserver.unobserve(entry.target);
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+
+        /* CARD TILT EFFECT */
+
+        const cards =
+            document.querySelectorAll(
+                ".innovation-card, .future-card, .ai-card"
+            );
+
+        cards.forEach(card => {
+
+            card.addEventListener("mousemove", event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) * -4;
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) * 4;
+
+                card.style.transform =
+                    `perspective(700px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-5px)`;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+            });
+
+        });
+    </script>
+
+</body>
+</html>
