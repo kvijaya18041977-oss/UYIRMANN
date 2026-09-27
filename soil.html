@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Soil of Tamil Nadu | UYIRMANN</title>
+
+<meta name="description"
+content="Explore the soil, fertility, biodiversity and relationship between soil and agriculture in Tamil Nadu with UYIRMANN.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root{
+    --bg:#070805;
+    --bg2:#0d1009;
+    --card:rgba(28,30,17,.72);
+    --green:#79d65b;
+    --green2:#3e9d39;
+    --gold:#d9b85b;
+    --mint:#c8f5b5;
+    --text:#f5f8ed;
+    --muted:#a7ad9c;
+    --line:rgba(151,220,105,.14);
+    --shadow:0 25px 70px rgba(0,0,0,.48);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 15% 10%,rgba(110,170,60,.12),transparent 30%),
+        radial-gradient(circle at 85% 55%,rgba(180,130,40,.07),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font:inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:20px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,7,4,.72);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.logo{
+    font-size:1.35rem;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    align-items:center;
+}
+
+.nav-links a{
+    color:#c7cdbf;
+    font-size:.88rem;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+.nav-btn{
+    padding:11px 18px;
+    border:1px solid rgba(121,214,91,.35);
+    border-radius:30px;
+    color:var(--green)!important;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:94vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:145px 7% 90px;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,6,3,.94),
+            rgba(7,9,4,.62),
+            rgba(4,6,3,.72)
+        ),
+        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2200&q=90")
+        center/cover;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(121,214,91,.16),
+            transparent 32%
+        ),
+        linear-gradient(
+            to top,
+            var(--bg),
+            transparent 35%
+        );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--green);
+    font-size:.77rem;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:23px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:34px;
+    height:1px;
+    background:var(--green);
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(3.7rem,8vw,7.2rem);
+    line-height:.9;
+    letter-spacing:-4px;
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:700px;
+    color:#c7cdbf;
+    font-size:1.08rem;
+    line-height:1.9;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    padding:14px 22px;
+    border-radius:30px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#081006;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 35px rgba(121,214,91,.23);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.18);
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:var(--green);
+    color:var(--green);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section{
+    padding:110px 7%;
+}
+
+.section-head{
+    max-width:820px;
+    margin-bottom:55px;
+}
+
+.section-label{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.75rem;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.section-head h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.5rem,5vw,4.5rem);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.section-head p{
+    color:var(--muted);
+    line-height:1.85;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.intro-image{
+    min-height:540px;
+    border-radius:30px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(to top,rgba(0,0,0,.6),transparent 55%),
+        url("https://images.unsplash.com/photo-1592982537447-6f2a6a0a3a7d?auto=format&fit=crop&w=1500&q=90")
+        center/cover;
+
+    box-shadow:var(--shadow);
+}
+
+.image-caption{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+    padding:21px;
+    border-radius:18px;
+    background:rgba(0,0,0,.52);
+    backdrop-filter:blur(13px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.image-caption strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.image-caption span{
+    color:#bdc7b5;
+    font-size:.85rem;
+}
+
+.intro-text h3{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.intro-text p{
+    color:var(--muted);
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+.highlight{
+    margin-top:30px;
+    padding:24px;
+    border-left:3px solid var(--green);
+    background:rgba(121,214,91,.05);
+    color:#e1f3d8;
+    line-height:1.7;
+}
+
+/* =========================
+   SOIL TYPES
+========================= */
+
+.soil-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.soil-card{
+    min-height:330px;
+    position:relative;
+    padding:30px;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,39,20,.9),
+            rgba(10,13,7,.9)
+        );
+
+    transition:.4s;
+}
+
+.soil-card::before{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    right:-70px;
+    top:-70px;
+    background:rgba(121,214,91,.07);
+    transition:.5s;
+}
+
+.soil-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(121,214,91,.36);
+    box-shadow:0 20px 50px rgba(0,0,0,.32);
+}
+
+.soil-card:hover::before{
+    transform:scale(1.5);
+}
+
+.soil-icon{
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    background:rgba(121,214,91,.1);
+    border:1px solid rgba(121,214,91,.17);
+    font-size:1.65rem;
+    margin-bottom:25px;
+}
+
+.soil-card h3{
+    font-size:1.35rem;
+    margin-bottom:12px;
+}
+
+.soil-card .tag{
+    display:inline-block;
+    padding:6px 11px;
+    border-radius:20px;
+    font-size:.7rem;
+    color:var(--green);
+    background:rgba(121,214,91,.08);
+    margin-bottom:17px;
+}
+
+.soil-card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:.92rem;
+}
+
+/* =========================
+   SOIL ECOSYSTEM
+========================= */
+
+.ecosystem{
+    background:
+        linear-gradient(
+            rgba(6,8,4,.9),
+            rgba(6,8,4,.94)
+        ),
+        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=85")
+        center/cover fixed;
+}
+
+.eco-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.eco-card{
+    padding:30px 22px;
+    text-align:center;
+    border-radius:22px;
+    background:rgba(10,17,8,.7);
+    border:1px solid rgba(255,255,255,.07);
+    transition:.35s;
+}
+
+.eco-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(121,214,91,.28);
+}
+
+.eco-number{
+    font-size:2.4rem;
+    margin-bottom:15px;
+}
+
+.eco-card h3{
+    font-size:1rem;
+    margin-bottom:10px;
+}
+
+.eco-card p{
+    color:var(--muted);
+    font-size:.84rem;
+    line-height:1.6;
+}
+
+/* =========================
+   SOIL LIFE
+========================= */
+
+.life{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.life-image{
+    min-height:560px;
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.12),
+            rgba(0,0,0,.4)
+        ),
+        url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1500&q=90")
+        center/cover;
+
+    box-shadow:var(--shadow);
+}
+
+.life-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.5rem,5vw,4rem);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.life-content > p{
+    color:var(--muted);
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+.life-list{
+    display:grid;
+    gap:14px;
+}
+
+.life-item{
+    display:grid;
+    grid-template-columns:55px 1fr;
+    gap:15px;
+    align-items:start;
+    padding:18px;
+    border-radius:17px;
+    background:rgba(255,255,255,.025);
+    border:1px solid var(--line);
+}
+
+.life-item-icon{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:rgba(121,214,91,.09);
+    font-size:1.25rem;
+}
+
+.life-item strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.life-item span{
+    color:var(--muted);
+    font-size:.86rem;
+    line-height:1.6;
+}
+
+/* =========================
+   SOIL JOURNEY
+========================= */
+
+.journey{
+    text-align:center;
+}
+
+.journey-track{
+    max-width:1100px;
+    margin:55px auto 0;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    position:relative;
+}
+
+.journey-track::before{
+    content:"";
+    position:absolute;
+    top:38px;
+    left:10%;
+    right:10%;
+    height:1px;
+    background:rgba(121,214,91,.25);
+}
+
+.journey-item{
+    position:relative;
+    z-index:2;
+}
+
+.journey-circle{
+    width:76px;
+    height:76px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#0c1309;
+    border:1px solid rgba(121,214,91,.4);
+    font-size:1.6rem;
+    box-shadow:0 0 30px rgba(121,214,91,.08);
+}
+
+.journey-item h4{
+    margin-bottom:8px;
+}
+
+.journey-item p{
+    color:var(--muted);
+    font-size:.82rem;
+    line-height:1.5;
+    padding:0 8px;
+}
+
+/* =========================
+   SOIL BALANCE
+========================= */
+
+.balance{
+    padding-top:70px;
+}
+
+.balance-box{
+    max-width:1050px;
+    margin:auto;
+    padding:55px;
+    border-radius:30px;
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(121,214,91,.08),
+            transparent 58%
+        ),
+        rgba(16,20,10,.85);
+
+    border:1px solid var(--line);
+}
+
+.balance-box h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.4rem,5vw,4rem);
+    margin-bottom:18px;
+}
+
+.balance-box > p{
+    max-width:720px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.balance-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:40px;
+}
+
+.balance-card{
+    padding:25px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+}
+
+.balance-icon{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.balance-card h4{
+    margin-bottom:8px;
+}
+
+.balance-card p{
+    color:var(--muted);
+    font-size:.84rem;
+    line-height:1.6;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    padding:105px 7%;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(121,214,91,.1),
+            transparent 48%
+        );
+}
+
+.cta h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.8rem,6vw,5rem);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.cta p{
+    max-width:650px;
+    margin:0 auto 30px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:50px 7%;
+    border-top:1px solid rgba(255,255,255,.06);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.footer-logo{
+    font-size:1.2rem;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.footer-logo span{
+    color:var(--green);
+}
+
+footer p{
+    color:#747c6e;
+    font-size:.82rem;
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .intro,
+    .life{
+        grid-template-columns:1fr;
+    }
+
+    .soil-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .eco-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .life-image{
+        min-height:430px;
+    }
+
+    .journey-track{
+        grid-template-columns:repeat(3,1fr);
+        row-gap:35px;
+    }
+
+    .journey-track::before{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:80px 5%;
+    }
+
+    .navbar{
+        padding:18px 5%;
+    }
+
+    .hero{
+        min-height:90vh;
+        padding:120px 5% 70px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:.96rem;
+    }
+
+    .soil-grid,
+    .eco-grid,
+    .balance-grid{
+        grid-template-columns:1fr;
+    }
+
+    .intro-image,
+    .life-image{
+        min-height:340px;
+    }
+
+    .journey-track{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .balance-box{
+        padding:35px 22px;
+    }
+
+    footer{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        UYIR<span>MANN</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="crops.html">Crops</a>
+        </li>
+
+        <li>
+            <a href="districts.html">Districts</a>
+        </li>
+
+        <li>
+            <a href="farming.html">Farming</a>
+        </li>
+
+        <li>
+            <a href="technology.html">Technology</a>
+        </li>
+
+        <li>
+            <a href="about.html" class="nav-btn">
+                About UYIRMANN
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+            Soil & Agriculture
+        </div>
+
+        <h1>
+            Every Harvest<br>
+            Begins With <span>Soil.</span>
+        </h1>
+
+        <p>
+            Beneath every field is a living world of minerals, organic matter,
+            water, roots and microorganisms. Explore the foundation that
+            supports Tamil Nadu's agricultural landscapes.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#soil-types" class="btn btn-primary">
+                Explore Soil
+            </a>
+
+            <a href="crops.html" class="btn btn-outline">
+                Explore Crops
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section>
+
+    <div class="intro">
+
+        <div class="intro-image reveal">
+
+            <div class="image-caption">
+
+                <strong>
+                    The ground beneath the harvest.
+                </strong>
+
+                <span>
+                    Soil is a foundation for crops, ecosystems and food.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="intro-text reveal">
+
+            <div class="section-label">
+                01 — The Living Ground
+            </div>
+
+            <h3>
+                Soil is much more than dirt.
+            </h3>
+
+            <p>
+                Soil provides physical support for plants and contains
+                water, air, minerals and organic material that interact
+                with roots and other living organisms.
+            </p>
+
+            <p>
+                Different landscapes have different soil characteristics.
+                These differences can influence what grows well and how
+                agricultural systems develop.
+            </p>
+
+            <div class="highlight">
+
+                <strong>
+                    Healthy agriculture begins below the surface.
+                </strong>
+
+                <br>
+
+                Understanding soil helps us understand crops, water,
+                biodiversity and the wider farming ecosystem.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOIL TYPES
+========================= -->
+
+<section id="soil-types">
+
+    <div class="section-head reveal">
+
+        <div class="section-label">
+            02 — Soil Landscapes
+        </div>
+
+        <h2>
+            Different soils.<br>
+            Different landscapes.
+        </h2>
+
+        <p>
+            Tamil Nadu contains a variety of soil environments. Their
+            properties can vary according to location, climate, parent
+            material, drainage and landscape.
+        </p>
+
+    </div>
+
+
+    <div class="soil-grid">
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">🟤</div>
+
+            <span class="tag">
+                Common soil group
+            </span>
+
+            <h3>
+                Red Soil
+            </h3>
+
+            <p>
+                Red soils are found across parts of Tamil Nadu and are
+                associated with many agricultural landscapes. Their
+                characteristics vary with location and land conditions.
+            </p>
+
+        </article>
+
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">⬛</div>
+
+            <span class="tag">
+                Important agricultural soil
+            </span>
+
+            <h3>
+                Black Soil
+            </h3>
+
+            <p>
+                Black soils are known for their clay-rich characteristics
+                in many areas and can retain substantial amounts of water.
+            </p>
+
+        </article>
+
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">🌾</div>
+
+            <span class="tag">
+                River landscapes
+            </span>
+
+            <h3>
+                Alluvial Soil
+            </h3>
+
+            <p>
+                Alluvial soils develop from sediments deposited by water.
+                River and delta landscapes can contain agriculturally
+                important alluvial environments.
+            </p>
+
+        </article>
+
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">🟡</div>
+
+            <span class="tag">
+                Sandy environments
+            </span>
+
+            <h3>
+                Sandy Soil
+            </h3>
+
+            <p>
+                Sandy soils have larger particles and different drainage
+                characteristics compared with finer-textured soils.
+            </p>
+
+        </article>
+
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">🪨</div>
+
+            <span class="tag">
+                Landscape dependent
+            </span>
+
+            <h3>
+                Lateritic Soil
+            </h3>
+
+            <p>
+                Lateritic soils occur in certain landscapes where weathering
+                and rainfall conditions have influenced soil formation.
+            </p>
+
+        </article>
+
+
+        <article class="soil-card reveal">
+
+            <div class="soil-icon">🌱</div>
+
+            <span class="tag">
+                Organic-rich environments
+            </span>
+
+            <h3>
+                Coastal & Wetland Soils
+            </h3>
+
+            <p>
+                Coastal and wetland landscapes can contain distinctive soil
+                environments influenced by water, sediments and local ecology.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOIL ECOSYSTEM
+========================= -->
+
+<section class="ecosystem">
+
+    <div class="section-head reveal">
+
+        <div class="section-label">
+            03 — A Hidden Ecosystem
+        </div>
+
+        <h2>
+            A world beneath<br>
+            our feet.
+        </h2>
+
+        <p>
+            Soil contains a complex combination of physical materials,
+            water, air, organic matter and living organisms.
+        </p>
+
+    </div>
+
+
+    <div class="eco-grid">
+
+        <div class="eco-card reveal">
+
+            <div class="eco-number">
+                🪱
+            </div>
+
+            <h3>
+                Soil Organisms
+            </h3>
+
+            <p>
+                Soil can support earthworms, insects and many microscopic
+                organisms.
+            </p>
+
+        </div>
+
+
+        <div class="eco-card reveal">
+
+            <div class="eco-number">
+                🌿
+            </div>
+
+            <h3>
+                Roots
+            </h3>
+
+            <p>
+                Roots anchor plants and interact directly with the soil
+                environment.
+            </p>
+
+        </div>
+
+
+        <div class="eco-card reveal">
+
+            <div class="eco-number">
+                💧
+            </div>
+
+            <h3>
+                Water
+            </h3>
+
+            <p>
+                Soil can store and transmit water through spaces between
+                soil particles.
+            </p>
+
+        </div>
+
+
+        <div class="eco-card reveal">
+
+            <div class="eco-number">
+                🍂
+            </div>
+
+            <h3>
+                Organic Matter
+            </h3>
+
+            <p>
+                Decomposed plant and animal material contributes to soil
+                organic matter.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOIL LIFE
+========================= -->
+
+<section>
+
+    <div class="life">
+
+        <div class="life-image reveal"></div>
+
+
+        <div class="life-content reveal">
+
+            <div class="section-label">
+                04 — Soil Life
+            </div>
+
+            <h2>
+                The field's<br>
+                hidden community.
+            </h2>
+
+            <p>
+                A productive agricultural landscape is connected to the
+                living processes happening inside the soil. Roots,
+                microorganisms, organic matter, air and water all interact.
+            </p>
+
+
+            <div class="life-list">
+
+                <div class="life-item">
+
+                    <div class="life-item-icon">
+                        🌱
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Plant Roots
+                        </strong>
+
+                        <span>
+                            Roots interact with soil and help plants obtain
+                            water and nutrients.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="life-item">
+
+                    <div class="life-item-icon">
+                        🦠
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Microorganisms
+                        </strong>
+
+                        <span>
+                            Microscopic life participates in decomposition
+                            and nutrient cycling.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="life-item">
+
+                    <div class="life-item-icon">
+                        🍃
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Organic Matter
+                        </strong>
+
+                        <span>
+                            Plant residues and other organic materials
+                            contribute to the soil environment.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="life-item">
+
+                    <div class="life-item-icon">
+                        🪱
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Soil Animals
+                        </strong>
+
+                        <span>
+                            Larger soil organisms can influence the structure
+                            and biological activity of soil.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOIL JOURNEY
+========================= -->
+
+<section class="journey">
+
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;">
+
+        <div class="section-label">
+            05 — From Soil to Food
+        </div>
+
+        <h2>
+            Follow the agricultural chain.
+        </h2>
+
+        <p>
+            Soil is one part of a much larger system connecting water,
+            plants, farmers, harvests and people.
+        </p>
+
+    </div>
+
+
+    <div class="journey-track">
+
+        <div class="journey-item reveal">
+
+            <div class="journey-circle">
+                🪨
+            </div>
+
+            <h4>
+                Soil
+            </h4>
+
+            <p>
+                The foundation of the field.
+            </p>
+
+        </div>
+
+
+        <div class="journey-item reveal">
+
+            <div class="journey-circle">
+                💧
+            </div>
+
+            <h4>
+                Water
+            </h4>
+
+            <p>
+                Moves through the soil environment.
+            </p>
+
+        </div>
+
+
+        <div class="journey-item reveal">
+
+            <div class="journey-circle">
+                🌱
+            </div>
+
+            <h4>
+                Crop
+            </h4>
+
+            <p>
+                Roots interact with soil.
+            </p>
+
+        </div>
+
+
+        <div class="journey-item reveal">
+
+            <div class="journey-circle">
+                🌾
+            </div>
+
+            <h4>
+                Harvest
+            </h4>
+
+            <p>
+                Agricultural growth becomes food.
+            </p>
+
+        </div>
+
+
+        <div class="journey-item reveal">
+
+            <div class="journey-circle">
+                🍚
+            </div>
+
+            <h4>
+                People
+            </h4>
+
+            <p>
+                The field connects to everyday life.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BALANCE
+========================= -->
+
+<section class="balance">
+
+    <div class="balance-box reveal">
+
+        <div class="section-label">
+            06 — The Agricultural Balance
+        </div>
+
+        <h2>
+            Soil never works alone.
+        </h2>
+
+        <p>
+            Agriculture exists within a network of relationships between
+            soil, water, crops, climate, biodiversity and people.
+        </p>
+
+
+        <div class="balance-grid">
+
+            <div class="balance-card">
+
+                <div class="balance-icon">
+                    🪨
+                </div>
+
+                <h4>
+                    Soil
+                </h4>
+
+                <p>
+                    Provides the physical environment for roots and stores
+                    water and nutrients.
+                </p>
+
+            </div>
+
+
+            <div class="balance-card">
+
+                <div class="balance-icon">
+                    💧
+                </div>
+
+                <h4>
+                    Water
+                </h4>
+
+                <p>
+                    Moves through soil and is essential to plant growth.
+                </p>
+
+            </div>
+
+
+            <div class="balance-card">
+
+                <div class="balance-icon">
+                    🌦️
+                </div>
+
+                <h4>
+                    Climate
+                </h4>
+
+                <p>
+                    Temperature and rainfall influence soil and agricultural
+                    conditions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <div class="reveal">
+
+        <div class="section-label">
+            07 — Continue Exploring
+        </div>
+
+        <h2>
+            From the soil<br>
+            to the future.
+        </h2>
+
+        <p>
+            Discover the crops, farming traditions, water systems and
+            technologies that make Tamil Nadu agriculture a living story.
+        </p>
+
+
+        <div class="cta-buttons">
+
+            <a href="crops.html" class="btn btn-primary">
+                Explore Crops
+            </a>
+
+            <a href="water.html" class="btn btn-outline">
+                Explore Water
+            </a>
+
+            <a href="traditional.html" class="btn btn-outline">
+                Traditional Wisdom
+            </a>
+
+            <a href="technology.html" class="btn btn-outline">
+                Smart Farming
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        UYIR<span>MANN</span>
+    </div>
+
+    <p>
+        From Tamil Soil to the World. © 2026 UYIRMANN
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:0.12
+        }
+
+    );
+
+revealElements.forEach(
+    element => observer.observe(element)
+);
+
+
+/* =========================
+   SOIL CARD TILT
+========================= */
+
+document
+.querySelectorAll(".soil-card")
+.forEach(card => {
+
+    card.addEventListener("mousemove", event => {
+
+        const rect =
+            card.getBoundingClientRect();
+
+        const x =
+            event.clientX - rect.left;
+
+        const y =
+            event.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateX =
+            (y - centerY) / 40;
+
+        const rotateY =
+            (centerX - x) / 40;
+
+        card.style.transform =
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-7px)`;
+
+    });
+
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+    });
+
+});
+
+
+/* =========================
+   NAVBAR EFFECT
+========================= */
+
+window.addEventListener("scroll", () => {
+
+    const navbar =
+        document.querySelector(".navbar");
+
+    if(window.scrollY > 50){
+
+        navbar.style.background =
+            "rgba(5,7,4,.95)";
+
+    }else{
+
+        navbar.style.background =
+            "rgba(5,7,4,.72)";
+
+    }
+
+});
+
+
+/* =========================
+   IMAGE PARALLAX
+========================= */
+
+window.addEventListener("scroll", () => {
+
+    const hero =
+        document.querySelector(".hero");
+
+    const scroll =
+        window.scrollY;
+
+    if(scroll < window.innerHeight){
+
+        hero.style.backgroundPosition =
+            `center ${50 + scroll * 0.025}%`;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
