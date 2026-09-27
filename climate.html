@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Climate & Agriculture | UYIRMANN</title>
+
+  <meta name="description"
+        content="Explore the relationship between climate, rainfall, seasons, water, soil and agriculture in Tamil Nadu.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --green: #7cff9b;
+      --lime: #c9ff7a;
+      --sky: #8fdcff;
+      --deep: #040b08;
+      --white: #f4f8f4;
+      --muted: #a9b8ae;
+      --border: rgba(124,255,155,.15);
+      --glass: rgba(255,255,255,.045);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(100,180,220,.10), transparent 30%),
+        radial-gradient(circle at 85% 45%, rgba(124,255,155,.08), transparent 30%),
+        #040b08;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HERO ================= */
+
+    .climate-hero {
+      min-height: 90vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,10,7,.96) 0%,
+          rgba(2,10,7,.78) 40%,
+          rgba(2,10,7,.35) 75%,
+          rgba(2,10,7,.70) 100%
+        ),
+        url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2200&q=85")
+        center/cover;
+    }
+
+    .climate-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        #040b08 100%
+      );
+    }
+
+    .hero-content {
+      width: min(1200px, 92%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(48px, 8vw, 105px);
+      line-height: .92;
+      letter-spacing: -5px;
+      max-width: 950px;
+      margin: 25px 0;
+    }
+
+    .hero-content h1 span {
+      color: var(--green);
+    }
+
+    .hero-content p {
+      max-width: 680px;
+      color: #c5d1c9;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      border: 1px solid var(--green);
+      border-radius: 40px;
+      color: var(--green);
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .hero-btn:hover {
+      background: var(--green);
+      color: #06110b;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(124,255,155,.2);
+    }
+
+    /* ================= GENERAL ================= */
+
+    .section {
+      width: min(1200px, 92%);
+      margin: auto;
+      padding: 110px 0;
+    }
+
+    .heading {
+      margin-bottom: 55px;
+    }
+
+    .heading small {
+      color: var(--green);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .heading h2 {
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin: 15px 0;
+    }
+
+    .heading p {
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* ================= CLIMATE ELEMENTS ================= */
+
+    .climate-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .climate-card {
+      min-height: 270px;
+      padding: 30px 23px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(124,255,155,.08),
+          rgba(255,255,255,.025)
+        );
+
+      position: relative;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .climate-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124,255,155,.4);
+      box-shadow: 0 20px 45px rgba(0,0,0,.25);
+    }
+
+    .climate-card .number {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .climate-icon {
+      font-size: 42px;
+      margin: 25px 0;
+    }
+
+    .climate-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .climate-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ================= WEATHER FLOW ================= */
+
+    .weather-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .weather-step {
+      text-align: center;
+      padding: 30px 15px;
+      border-radius: 20px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: .3s;
+    }
+
+    .weather-step:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,255,155,.3);
+    }
+
+    .weather-step .icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .weather-step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .weather-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .arrow {
+      text-align: center;
+      color: var(--green);
+      font-size: 24px;
+    }
+
+    /* ================= FEATURE ================= */
+
+    .feature {
+      min-height: 540px;
+      border-radius: 30px;
+      overflow: hidden;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3,13,8,.97),
+          rgba(3,13,8,.55)
+        ),
+        url("https://images.unsplash.com/photo-1515694346937-94d85e41e620?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .feature-content {
+      padding: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-content h2 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1;
+      margin: 18px 0;
+    }
+
+    .feature-content p {
+      color: #bdc9c1;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .feature-points {
+      display: grid;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .feature-points div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-points span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 15px var(--green);
+    }
+
+    /* ================= SEASONS ================= */
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .season-card {
+      min-height: 350px;
+      padding: 32px;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(3,12,7,.98),
+          rgba(3,12,7,.18)
+        ),
+        var(--image) center/cover;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: .4s;
+    }
+
+    .season-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124,255,155,.4);
+    }
+
+    .season-card span {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .season-card h3 {
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    .season-card p {
+      color: #c0cbc3;
+      line-height: 1.6;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* ================= CLIMATE + FARM ================= */
+
+    .connection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .connection-card {
+      min-height: 270px;
+      padding: 35px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: var(--glass);
+      transition: .35s;
+    }
+
+    .connection-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,255,155,.3);
+    }
+
+    .connection-card .icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .connection-card h3 {
+      font-size: 25px;
+      margin: 0 0 12px;
+    }
+
+    .connection-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ================= CLIMATE SMART ================= */
+
+    .smart-box {
+      padding: 75px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(124,255,155,.13),
+          transparent 35%
+        ),
+        rgba(255,255,255,.025);
+    }
+
+    .smart-box h2 {
+      max-width: 750px;
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: 1;
+      margin: 15px 0;
+    }
+
+    .smart-box > p {
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .smart-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 45px;
+    }
+
+    .smart-card {
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(0,0,0,.18);
+    }
+
+    .smart-card span {
+      font-size: 30px;
+    }
+
+    .smart-card h3 {
+      margin: 17px 0 8px;
+    }
+
+    .smart-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ================= FUTURE ================= */
+
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .future-card {
+      padding: 30px;
+      border-top: 1px solid var(--border);
+      transition: .3s;
+    }
+
+    .future-card:hover {
+      background: rgba(124,255,155,.035);
+      transform: translateY(-5px);
+    }
+
+    .future-card b {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .future-card h3 {
+      font-size: 22px;
+      margin: 15px 0 10px;
+    }
+
+    .future-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta {
+      width: min(1200px, 92%);
+      margin: 30px auto 100px;
+      padding: 80px 30px;
+      text-align: center;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(124,255,155,.1),
+          transparent 60%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 6vw, 75px);
+      line-height: .95;
+      margin: 0 0 20px;
+      letter-spacing: -3px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto auto 30px;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cta-buttons a {
+      padding: 13px 20px;
+      border: 1px solid rgba(124,255,155,.35);
+      border-radius: 30px;
+      color: var(--green);
+      transition: .3s;
+    }
+
+    .cta-buttons a:hover {
+      background: var(--green);
+      color: #06110b;
+    }
+
+    /* ================= REVEAL ================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 950px) {
+
+      .climate-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .weather-flow {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .arrow {
+        display: none;
+      }
+
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .season-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .connection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .future-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .smart-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-content {
+        padding: 55px 40px;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .climate-hero {
+        min-height: 80vh;
+      }
+
+      .hero-content h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .climate-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .weather-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-content {
+        padding: 45px 25px;
+      }
+
+      .smart-box {
+        padding: 45px 25px;
+      }
+
+      .smart-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .future-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 55px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HERO ================= -->
+
+  <header class="climate-hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        UYIRMANN / CLIMATE
+      </div>
+
+      <h1>
+        Agriculture<br>
+        follows the <span>sky.</span>
+      </h1>
+
+      <p>
+        Rain, temperature, sunlight, wind and seasonal patterns
+        are all part of the environment in which agriculture
+        takes place.
+      </p>
+
+      <a href="#climate-elements" class="hero-btn">
+        Explore Climate ↓
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= INTRO ================= -->
+
+  <section class="section reveal">
+
+    <div class="heading">
+
+      <small>01 / The Big Connection</small>
+
+      <h2>
+        The field is part<br>
+        of a larger climate system.
+      </h2>
+
+      <p>
+        Agriculture does not happen in isolation. The condition
+        of the atmosphere and the availability of water influence
+        the environment in which crops grow.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CLIMATE ELEMENTS ================= -->
+
+  <section class="section reveal" id="climate-elements">
+
+    <div class="heading">
+
+      <small>02 / Climate Elements</small>
+
+      <h2>Five forces shape the field.</h2>
+
+      <p>
+        Climate is a combination of many interacting conditions.
+        Each can matter to agricultural ecosystems in different ways.
+      </p>
+
+    </div>
+
+    <div class="climate-grid">
+
+      <div class="climate-card">
+        <div class="number">01 / WATER</div>
+        <div class="climate-icon">🌧️</div>
+        <h3>Rainfall</h3>
+        <p>
+          Rain contributes to water availability and plays
+          an important role in agricultural seasons.
+        </p>
+      </div>
+
+      <div class="climate-card">
+        <div class="number">02 / HEAT</div>
+        <div class="climate-icon">☀️</div>
+        <h3>Temperature</h3>
+        <p>
+          Temperature affects crop growth, development and
+          the conditions experienced by agricultural systems.
+        </p>
+      </div>
+
+      <div class="climate-card">
+        <div class="number">03 / LIGHT</div>
+        <div class="climate-icon">🌤️</div>
+        <h3>Sunlight</h3>
+        <p>
+          Sunlight provides energy for photosynthesis and
+          is fundamental to plant growth.
+        </p>
+      </div>
+
+      <div class="climate-card">
+        <div class="number">04 / AIR</div>
+        <div class="climate-icon">💨</div>
+        <h3>Wind</h3>
+        <p>
+          Wind is part of the atmosphere and can influence
+          agricultural environments.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= WEATHER FLOW ================= -->
+
+  <section class="section reveal">
+
+    <div class="heading">
+
+      <small>03 / A Living Cycle</small>
+
+      <h2>Weather becomes part of the farm.</h2>
+
+      <p>
+        Climate conditions interact with soil, water and plants,
+        creating a constantly changing agricultural environment.
+      </p>
+
+    </div>
+
+    <div class="weather-flow">
+
+      <div class="weather-step">
+        <div class="icon">☀️</div>
+        <h3>Sun</h3>
+        <p>
+          Provides energy for plant growth.
+        </p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="weather-step">
+        <div class="icon">☁️</div>
+        <h3>Atmosphere</h3>
+        <p>
+          Temperature, clouds and air influence conditions.
+        </p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="weather-step">
+        <div class="icon">🌧️</div>
+        <h3>Rain</h3>
+        <p>
+          Adds water to landscapes and agricultural systems.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURE ================= -->
+
+  <section class="section reveal">
+
+    <div class="feature">
+
+      <div class="feature-content">
+
+        <div class="eyebrow">
+          CLIMATE & WATER
+        </div>
+
+        <h2>
+          When the rain changes,<br>
+          the field feels it.
+        </h2>
+
+        <p>
+          Rainfall patterns are closely connected with farming.
+          Too little water can create stress for agricultural
+          systems, while intense rainfall can also create
+          challenges for fields and infrastructure.
+        </p>
+
+        <div class="feature-points">
+
+          <div>
+            <span></span>
+            Rainfall timing matters
+          </div>
+
+          <div>
+            <span></span>
+            Water storage creates resilience
+          </div>
+
+          <div>
+            <span></span>
+            Soil affects how water moves
+          </div>
+
+          <div>
+            <span></span>
+            Irrigation can complement rainfall
+          </div>
+
+          <div>
+            <span></span>
+            Local conditions are important
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SEASONS ================= -->
+
+  <section class="section reveal">
+
+    <div class="heading">
+
+      <small>04 / Seasons</small>
+
+      <h2>Farming has a rhythm.</h2>
+
+      <p>
+        Agricultural activity changes through the year as
+        rainfall, temperature, water availability and crop
+        cycles change.
+      </p>
+
+    </div>
+
+    <div class="season-grid">
+
+      <div class="season-card"
+           style="--image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85');">
+
+        <span>01 / RAIN & WATER</span>
+
+        <h3>Monsoon</h3>
+
+        <p>
+          Rainfall can replenish water resources and influence
+          agricultural activity across different regions.
+        </p>
+
+      </div>
+
+      <div class="season-card"
+           style="--image:url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1200&q=85');">
+
+        <span>02 / SUN & GROWTH</span>
+
+        <h3>Warm Seasons</h3>
+
+        <p>
+          Higher temperatures and sunlight create different
+          growing conditions for crops and landscapes.
+        </p>
+
+      </div>
+
+      <div class="season-card"
+           style="--image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85');">
+
+        <span>03 / TRANSITION</span>
+
+        <h3>Changing Conditions</h3>
+
+        <p>
+          Seasonal transitions can change water availability,
+          field conditions and farming activities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONNECTION ================= -->
+
+  <section class="section reveal">
+
+    <div class="heading">
+
+      <small>05 / Climate Connections</small>
+
+      <h2>
+        Climate touches<br>
+        every layer of agriculture.
+      </h2>
+
+    </div>
+
+    <div class="connection-grid">
+
+      <div class="connection-card">
+        <div class="icon">🌱</div>
+        <h3>Climate → Crops</h3>
+        <p>
+          Growing conditions influence how different crops
+          interact with their environment.
+        </p>
+      </div>
+
+      <div class="connection-card">
+        <div class="icon">💧</div>
+        <h3>Climate → Water</h3>
+        <p>
+          Rainfall and temperature are connected with the
+          availability and movement of water.
+        </p>
+      </div>
+
+      <div class="connection-card">
+        <div class="icon">🌍</div>
+        <h3>Climate → Soil</h3>
+        <p>
+          Weather and water interact with soil over time,
+          influencing agricultural landscapes.
+        </p>
+      </div>
+
+      <div class="connection-card">
+        <div class="icon">👨‍🌾</div>
+        <h3>Climate → Farmers</h3>
+        <p>
+          Farmers work within changing environmental conditions
+          and use knowledge, observation and technology.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CLIMATE SMART ================= -->
+
+  <section class="section reveal">
+
+    <div class="smart-box">
+
+      <div class="eyebrow">
+        06 / CLIMATE-SMART AGRICULTURE
+      </div>
+
+      <h2>
+        Agriculture can become more aware of its environment.
+      </h2>
+
+      <p>
+        Modern agricultural technology can help people observe
+        environmental conditions and make better-informed
+        decisions. These approaches work alongside local
+        knowledge and traditional understanding.
+      </p>
+
+      <div class="smart-grid">
+
+        <div class="smart-card">
+          <span>🌦️</span>
+          <h3>Weather Data</h3>
+          <p>
+            Weather information can provide useful context
+            about changing field conditions.
+          </p>
+        </div>
+
+        <div class="smart-card">
+          <span>💧</span>
+          <h3>Water Monitoring</h3>
+          <p>
+            Sensors and monitoring systems can provide
+            information about water conditions.
+          </p>
+        </div>
+
+        <div class="smart-card">
+          <span>🌱</span>
+          <h3>Crop Monitoring</h3>
+          <p>
+            Images and field observations can help track
+            crop conditions.
+          </p>
+        </div>
+
+        <div class="smart-card">
+          <span>🛰️</span>
+          <h3>Satellite Data</h3>
+          <p>
+            Remote sensing can provide a wider view of
+            agricultural landscapes.
+          </p>
+        </div>
+
+        <div class="smart-card">
+          <span>📊</span>
+          <h3>Data Analysis</h3>
+          <p>
+            Data can be combined to understand patterns
+            across farms and regions.
+          </p>
+        </div>
+
+        <div class="smart-card">
+          <span>🤖</span>
+          <h3>AI & Technology</h3>
+          <p>
+            New technologies are creating additional ways
+            to analyse agricultural information.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FUTURE ================= -->
+
+  <section class="section reveal">
+
+    <div class="heading">
+
+      <small>07 / Looking Ahead</small>
+
+      <h2>
+        The future farm<br>
+        will watch the sky.
+      </h2>
+
+      <p>
+        The combination of traditional knowledge, environmental
+        observation and modern technology can create new ways
+        of understanding agricultural systems.
+      </p>
+
+    </div>
+
+    <div class="future-grid">
+
+      <div class="future-card">
+        <b>01</b>
+        <h3>Better Forecasting</h3>
+        <p>
+          Improved weather information can help people
+          understand changing environmental conditions.
+        </p>
+      </div>
+
+      <div class="future-card">
+        <b>02</b>
+        <h3>Smarter Water Systems</h3>
+        <p>
+          Monitoring can connect rainfall, storage and
+          agricultural water use.
+        </p>
+      </div>
+
+      <div class="future-card">
+        <b>03</b>
+        <h3>Climate Observation</h3>
+        <p>
+          Sensors and satellites can provide more detailed
+          environmental information.
+        </p>
+      </div>
+
+      <div class="future-card">
+        <b>04</b>
+        <h3>Resilient Landscapes</h3>
+        <p>
+          Soil, water, biodiversity and farming systems can
+          be considered together.
+        </p>
+      </div>
+
+      <div class="future-card">
+        <b>05</b>
+        <h3>Traditional Knowledge</h3>
+        <p>
+          Generations of observation remain an important
+          part of understanding local environments.
+        </p>
+      </div>
+
+      <div class="future-card">
+        <b>06</b>
+        <h3>Connected Agriculture</h3>
+        <p>
+          Digital technology can connect field observations
+          with wider agricultural knowledge.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+
+  <section class="cta reveal">
+
+    <h2>
+      The land,<br>
+      the water, the sky.
+    </h2>
+
+    <p>
+      Agriculture is a relationship between people and the
+      environment. Continue exploring the UYIRMANN story.
+    </p>
+
+    <div class="cta-buttons">
+
+      <a href="soil.html">
+        Explore Soil →
+      </a>
+
+      <a href="water.html">
+        Explore Water →
+      </a>
+
+      <a href="technology.html">
+        Smart Farming →
+      </a>
+
+      <a href="seasons.html">
+        Farming Seasons →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* Scroll reveal */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
+
+
+    /* Interactive cards */
+
+    document.querySelectorAll(
+      ".climate-card, .weather-step, .connection-card, .smart-card, .future-card"
+    ).forEach(card => {
+
+      card.addEventListener("mousemove", event => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x =
+          (event.clientX - rect.left) / rect.width - 0.5;
+
+        const y =
+          (event.clientY - rect.top) / rect.height - 0.5;
+
+        card.style.transform =
+          `perspective(700px)
+           rotateX(${y * -3}deg)
+           rotateY(${x * 3}deg)
+           translateY(-6px)`;
+
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
