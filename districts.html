@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Districts of Tamil Nadu | UYIRMANN</title>
+
+    <meta name="description"
+          content="Explore the agricultural identity, crops and farming culture of Tamil Nadu's districts with UYIRMANN.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           UYIRMANN — DISTRICTS PAGE
+           ===================================================== */
+
+        .district-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(50,150,80,.14), transparent 30%),
+                radial-gradient(circle at 90% 30%, rgba(200,160,70,.10), transparent 30%),
+                #08080f;
+            color: white;
+        }
+
+        /* HERO */
+
+        .district-hero {
+            min-height: 68vh;
+            padding: 150px 20px 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .district-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(3,15,7,.55),
+                    rgba(3,8,4,.94)
+                ),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+
+            z-index: 0;
+        }
+
+        .district-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+        }
+
+        .district-label {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 100px;
+
+            border: 1px solid rgba(255,255,255,.18);
+            background: rgba(255,255,255,.07);
+
+            backdrop-filter: blur(12px);
+
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+        .district-hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: .95;
+            letter-spacing: -4px;
+            margin: 0 0 25px;
+        }
+
+        .district-hero h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #d8f3a8,
+                    #76c893,
+                    #e9d58a
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .district-hero p {
+            max-width: 720px;
+            margin: auto;
+
+            color: rgba(255,255,255,.72);
+
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* SEARCH */
+
+        .district-search-area {
+            max-width: 1200px;
+            margin: -35px auto 60px;
+
+            padding: 0 25px;
+
+            position: relative;
+            z-index: 5;
+        }
+
+        .district-search {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 20px 25px;
+
+            border-radius: 18px;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            background: rgba(20,25,20,.88);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 16px;
+
+            backdrop-filter: blur(20px);
+        }
+
+        .district-search::placeholder {
+            color: rgba(255,255,255,.45);
+        }
+
+        .district-search:focus {
+            border-color: rgba(120,210,140,.55);
+
+            box-shadow:
+                0 0 35px rgba(70,170,90,.12);
+        }
+
+
+        /* DISTRICT GRID */
+
+        .district-grid {
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 0 25px 100px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* CARD */
+
+        .district-card {
+            position: relative;
+
+            min-height: 310px;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            border: 1px solid rgba(255,255,255,.10);
+
+            background: #10150f;
+
+            transition:
+                transform .4s ease,
+                border-color .4s ease,
+                box-shadow .4s ease;
+
+            opacity: 0;
+
+            transform: translateY(30px);
+        }
+
+        .district-card.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        .district-card:hover {
+            transform: translateY(-10px);
+
+            border-color:
+                rgba(150,220,150,.45);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.35);
+        }
+
+
+        /* IMAGE */
+
+        .district-image {
+            position: absolute;
+
+            inset: 0;
+
+            background-size: cover;
+
+            background-position: center;
+
+            transition: transform .7s ease;
+        }
+
+        .district-card:hover
+        .district-image {
+            transform: scale(1.08);
+        }
+
+        .district-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(2,7,3,.97),
+                    rgba(2,7,3,.15) 75%
+                );
+        }
+
+
+        /* CONTENT */
+
+        .district-content {
+            position: absolute;
+
+            left: 22px;
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 2;
+        }
+
+        .district-number {
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(255,255,255,.45);
+        }
+
+        .district-content h2 {
+            margin: 8px 0;
+
+            font-size: 28px;
+        }
+
+        .district-content p {
+            margin: 0 0 15px;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            color:
+                rgba(255,255,255,.68);
+        }
+
+
+        /* TAGS */
+
+        .district-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .district-tag {
+            padding: 7px 11px;
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.09);
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 10px;
+        }
+
+
+        /* NO RESULT */
+
+        .district-no-result {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            display: none;
+        }
+
+        .district-no-result h2 {
+            color: white;
+        }
+
+
+        /* INTRO */
+
+        .district-intro {
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 0 25px 110px;
+
+            text-align: center;
+        }
+
+        .district-intro small {
+            color: #9bd18b;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+        .district-intro h2 {
+            font-size:
+                clamp(2rem, 5vw, 4rem);
+
+            margin: 15px 0;
+        }
+
+        .district-intro p {
+            color:
+                rgba(255,255,255,.65);
+
+            line-height: 1.8;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+
+            .district-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .district-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .district-hero {
+                min-height: 55vh;
+
+                padding-top: 120px;
+            }
+
+            .district-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .district-hero p {
+                font-size: 15px;
+            }
+
+            .district-grid {
+                grid-template-columns: 1fr;
+
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .district-search-area {
+                padding: 0 18px;
+            }
+
+            .district-card {
+                min-height: 320px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="district-page">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="district-hero">
+
+        <div class="district-hero-content">
+
+            <div class="district-label">
+                UYIRMANN • TAMIL NADU
+            </div>
+
+            <h1>
+                Districts of
+                <span>Tamil Nadu</span>
+            </h1>
+
+            <p>
+                Every region has its own soil, water, climate,
+                crops and farming traditions. Explore the
+                agricultural diversity that connects Tamil Nadu.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEARCH
+         ===================================================== -->
+
+    <section class="district-search-area">
+
+        <input
+            type="search"
+            id="districtSearch"
+            class="district-search"
+            placeholder="🔎 Search a district..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="district-intro">
+
+        <small>LAND • WATER • FARMERS</small>
+
+        <h2>
+            38 districts.
+            One agricultural identity.
+        </h2>
+
+        <p>
+            From coastal landscapes and river-fed agricultural
+            regions to dryland farming areas and hill regions,
+            Tamil Nadu contains a remarkable variety of
+            agricultural landscapes.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         DISTRICT CARDS
+         ===================================================== -->
+
+    <main class="district-grid" id="districtGrid">
+
+
+        <!-- 01 CHENNAI -->
+
+        <article
+            class="district-card"
+            data-name="chennai">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    01 • DISTRICT
+                </span>
+
+                <h2>Chennai</h2>
+
+                <p>
+                    Tamil Nadu's major metropolitan centre,
+                    with agriculture found mainly around its
+                    wider surrounding region.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Urban
+                    </span>
+
+                    <span class="district-tag">
+                        Coastal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 02 COIMBATORE -->
+
+        <article
+            class="district-card"
+            data-name="coimbatore kovai">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    02 • DISTRICT
+                </span>
+
+                <h2>Coimbatore</h2>
+
+                <p>
+                    A major agricultural and industrial region
+                    known for diverse farming landscapes.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Agriculture
+                    </span>
+
+                    <span class="district-tag">
+                        Irrigation
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 03 THANJAVUR -->
+
+        <article
+            class="district-card"
+            data-name="thanjavur tanjavur">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1536631008558-2f2a2b8e7b2f?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    03 • DISTRICT
+                </span>
+
+                <h2>Thanjavur</h2>
+
+                <p>
+                    Closely associated with the fertile Cauvery
+                    delta and its long agricultural heritage.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Paddy
+                    </span>
+
+                    <span class="district-tag">
+                        Cauvery Delta
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 04 TIRUCHIRAPPALLI -->
+
+        <article
+            class="district-card"
+            data-name="tiruchirappalli trichy">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    04 • DISTRICT
+                </span>
+
+                <h2>Tiruchirappalli</h2>
+
+                <p>
+                    An important central Tamil Nadu region with
+                    agriculture connected to river and irrigation systems.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Agriculture
+                    </span>
+
+                    <span class="district-tag">
+                        River Region
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 05 MADURAI -->
+
+        <article
+            class="district-card"
+            data-name="madurai">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    05 • DISTRICT
+                </span>
+
+                <h2>Madurai</h2>
+
+                <p>
+                    A major southern region where agriculture,
+                    markets and traditional rural landscapes meet.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Farming
+                    </span>
+
+                    <span class="district-tag">
+                        Southern TN
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 06 TIRUNELVELI -->
+
+        <article
+            class="district-card"
+            data-name="tirunelveli nellai">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    06 • DISTRICT
+                </span>
+
+                <h2>Tirunelveli</h2>
+
+                <p>
+                    A southern agricultural landscape shaped by
+                    rivers, rainfall and varied farming systems.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Agriculture
+                    </span>
+
+                    <span class="district-tag">
+                        Southern TN
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 07 THOOTHUKUDI -->
+
+        <article
+            class="district-card"
+            data-name="thoothukudi tuticorin">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    07 • DISTRICT
+                </span>
+
+                <h2>Thoothukudi</h2>
+
+                <p>
+                    A coastal district where farming, fisheries,
+                    industry and water resources form a diverse landscape.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Coastal
+                    </span>
+
+                    <span class="district-tag">
+                        Farming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 08 ERODE -->
+
+        <article
+            class="district-card"
+            data-name="erode">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    08 • DISTRICT
+                </span>
+
+                <h2>Erode</h2>
+
+                <p>
+                    A western Tamil Nadu agricultural region with
+                    varied crop cultivation and irrigation.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Farming
+                    </span>
+
+                    <span class="district-tag">
+                        Western TN
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 09 SALEM -->
+
+        <article
+            class="district-card"
+            data-name="salem">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    09 • DISTRICT
+                </span>
+
+                <h2>Salem</h2>
+
+                <p>
+                    A region with agricultural landscapes,
+                    horticulture and varied terrain.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Horticulture
+                    </span>
+
+                    <span class="district-tag">
+                        Farming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 10 DINDIGUL -->
+
+        <article
+            class="district-card"
+            data-name="dindigul">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    10 • DISTRICT
+                </span>
+
+                <h2>Dindigul</h2>
+
+                <p>
+                    A varied agricultural region with farming,
+                    horticulture and hill landscapes.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Horticulture
+                    </span>
+
+                    <span class="district-tag">
+                        Hills
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 11 CUDDALORE -->
+
+        <article
+            class="district-card"
+            data-name="cuddalore">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    11 • DISTRICT
+                </span>
+
+                <h2>Cuddalore</h2>
+
+                <p>
+                    A coastal agricultural landscape with
+                    cultivated fields and water resources.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Coastal
+                    </span>
+
+                    <span class="district-tag">
+                        Agriculture
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- 12 TIRUPPUR -->
+
+        <article
+            class="district-card"
+            data-name="tiruppur">
+
+            <div
+                class="district-image"
+                style="
+                background-image:url(
+                'https://images.unsplash.com/photo-1523742810155-6c2b2b0e1a0d?auto=format&fit=crop&w=1000&q=80'
+                );
+                ">
+            </div>
+
+            <div class="district-content">
+
+                <span class="district-number">
+                    12 • DISTRICT
+                </span>
+
+                <h2>Tiruppur</h2>
+
+                <p>
+                    A western region where agriculture exists
+                    alongside a major textile and industrial economy.
+                </p>
+
+                <div class="district-tags">
+
+                    <span class="district-tag">
+                        Western TN
+                    </span>
+
+                    <span class="district-tag">
+                        Farming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            class="district-no-result"
+            id="districtNoResult">
+
+            <h2>No district found</h2>
+
+            <p>
+                Try another district name.
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* =====================================================
+       DISTRICT SEARCH
+       ===================================================== */
+
+    const searchBox =
+        document.getElementById("districtSearch");
+
+    const districtCards =
+        document.querySelectorAll(".district-card");
+
+    const noResult =
+        document.getElementById("districtNoResult");
+
+
+    searchBox.addEventListener(
+        "input",
+        function () {
+
+            const value =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+            let count = 0;
+
+
+            districtCards.forEach(
+                function (card) {
+
+                    const name =
+                        card.dataset.name
+                            .toLowerCase();
+
+
+                    if (
+                        name.includes(value)
+                    ) {
+
+                        card.style.display =
+                            "block";
+
+                        count++;
+
+                    } else {
+
+                        card.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+            if (count === 0) {
+
+                noResult.style.display =
+                    "block";
+
+            } else {
+
+                noResult.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add("visible");
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.08
+            }
+        );
+
+
+    districtCards.forEach(
+        function (card) {
+
+            observer.observe(card);
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
