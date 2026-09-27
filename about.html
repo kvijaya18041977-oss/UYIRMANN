@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About UYIRMANN | From Tamil Soil to the World</title>
+
+    <meta name="description"
+          content="Learn about UYIRMANN, a digital journey exploring Tamil Nadu agriculture, farming traditions, crops, farmers and agricultural innovation.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           UYIRMANN — ABOUT PAGE
+        ========================================= */
+
+        .about-page {
+            min-height: 100vh;
+            color: #fff;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(73,145,82,.16), transparent 30%),
+                radial-gradient(circle at 90% 40%, rgba(207,170,74,.08), transparent 28%),
+                #061009;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            min-height: 78vh;
+            padding: 130px 8% 90px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,11,6,.97),
+                    rgba(3,11,6,.58),
+                    rgba(3,11,6,.84)
+                ),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #061009, transparent 45%);
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            color: #d5b45c;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            line-height: .87;
+            letter-spacing: -5px;
+            margin: 20px 0 28px;
+            font-weight: 900;
+        }
+
+        .about-hero h1 span {
+            color: #8dce72;
+        }
+
+        .about-hero p {
+            max-width: 720px;
+            color: #c9d4ca;
+            font-size: 1.15rem;
+            line-height: 1.85;
+        }
+
+        /* COMMON */
+
+        .about-section {
+            padding: 105px 8%;
+        }
+
+        .section-heading {
+            max-width: 780px;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.3rem, 5vw, 4.2rem);
+            line-height: 1;
+            margin: 12px 0 20px;
+        }
+
+        .section-heading p {
+            color: #9daaa0;
+            line-height: 1.85;
+        }
+
+        /* STORY */
+
+        .about-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-visual {
+            min-height: 570px;
+            border-radius: 28px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(120deg, rgba(5,15,8,.05), rgba(5,15,8,.25)),
+                url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1400&q=85")
+                center/cover;
+        }
+
+        .story-text h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1;
+            margin: 15px 0 25px;
+        }
+
+        .story-text p {
+            color: #a2aea4;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .story-highlight {
+            margin-top: 28px;
+            padding: 22px;
+            border-left: 3px solid #8dce72;
+            background: rgba(255,255,255,.035);
+            color: #c8d3c9;
+            line-height: 1.7;
+        }
+
+        /* VALUES */
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            padding: 35px 28px;
+            border-radius: 22px;
+            background: #0b1710;
+            border: 1px solid rgba(255,255,255,.08);
+            transition: .4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(141,206,114,.35);
+        }
+
+        .value-number {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #d5b45c;
+            margin-bottom: 22px;
+        }
+
+        .value-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: #99a69c;
+            line-height: 1.7;
+            font-size: .93rem;
+        }
+
+        /* MISSION */
+
+        .mission-section {
+            background:
+                linear-gradient(
+                    rgba(4,13,7,.94),
+                    rgba(4,13,7,.97)
+                ),
+                url("https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1800&q=80")
+                center/cover fixed;
+        }
+
+        .mission-box {
+            max-width: 1050px;
+            margin: auto;
+            text-align: center;
+            padding: 70px 8%;
+            border-radius: 30px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .mission-box h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin: 15px 0 22px;
+        }
+
+        .mission-box p {
+            color: #aab6ac;
+            line-height: 1.9;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        /* JOURNEY */
+
+        .journey {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+
+        .journey-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(141,206,114,.22);
+            transform: translateX(-50%);
+        }
+
+        .journey-item {
+            width: 50%;
+            padding: 18px 50px;
+            position: relative;
+        }
+
+        .journey-item:nth-child(odd) {
+            margin-left: 50%;
+        }
+
+        .journey-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .journey-dot {
+            position: absolute;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #8dce72;
+            box-shadow: 0 0 0 7px rgba(141,206,114,.10);
+        }
+
+        .journey-item:nth-child(odd) .journey-dot {
+            left: -7px;
+        }
+
+        .journey-item:nth-child(even) .journey-dot {
+            right: -7px;
+        }
+
+        .journey-card {
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .journey-card span {
+            color: #d5b45c;
+            font-size: .72rem;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .journey-card h3 {
+            margin: 9px 0;
+            font-size: 1.4rem;
+        }
+
+        .journey-card p {
+            color: #98a49a;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* PILLARS */
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .pillar {
+            min-height: 220px;
+            padding: 30px 22px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.08);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pillar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                transparent 20%,
+                rgba(0,0,0,.9)
+            );
+        }
+
+        .pillar > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pillar:nth-child(1) {
+            background-image:
+                url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .pillar:nth-child(2) {
+            background-image:
+                url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .pillar:nth-child(3) {
+            background-image:
+                url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .pillar:nth-child(4) {
+            background-image:
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .pillar span {
+            color: #8dce72;
+            font-size: .7rem;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .pillar h3 {
+            margin: 7px 0 0;
+            font-size: 1.35rem;
+        }
+
+        /* QUOTE */
+
+        .about-quote {
+            max-width: 950px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .quote-mark {
+            color: #8dce72;
+            font-size: 5rem;
+            line-height: .5;
+        }
+
+        .about-quote blockquote {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            line-height: 1.35;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+
+        .about-quote p {
+            color: #8f9c92;
+        }
+
+        /* CTA */
+
+        .about-cta {
+            margin: 0 8% 100px;
+            padding: 75px 8%;
+            border-radius: 30px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(35,91,50,.91),
+                    rgba(7,28,15,.96)
+                ),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+        }
+
+        .about-cta h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin: 0 0 18px;
+        }
+
+        .about-cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #ccd8ce;
+            line-height: 1.8;
+        }
+
+        .about-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            background: #8dce72;
+            color: #061009;
+            text-decoration: none;
+            font-weight: 800;
+            transition: .3s ease;
+        }
+
+        .about-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+
+            .about-story {
+                grid-template-columns: 1fr;
+            }
+
+            .story-visual {
+                min-height: 450px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .about-hero {
+                padding: 120px 6% 70px;
+            }
+
+            .about-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .about-section {
+                padding: 70px 6%;
+            }
+
+            .story-visual {
+                min-height: 330px;
+            }
+
+            .values-grid,
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-box {
+                padding: 45px 25px;
+            }
+
+            .journey-line {
+                left: 12px;
+            }
+
+            .journey-item,
+            .journey-item:nth-child(odd) {
+                width: 100%;
+                margin-left: 0;
+                padding: 15px 0 15px 42px;
+                text-align: left;
+            }
+
+            .journey-item:nth-child(even) {
+                text-align: left;
+            }
+
+            .journey-item:nth-child(odd) .journey-dot,
+            .journey-item:nth-child(even) .journey-dot {
+                left: 5px;
+                right: auto;
+            }
+
+            .about-cta {
+                margin: 0 6% 70px;
+                padding: 55px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="about-page">
+
+    <!-- HERO -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content reveal">
+
+            <span class="eyebrow">
+                UYIRMANN • OUR STORY
+            </span>
+
+            <h1>
+                From Tamil
+                <span>Soil</span> to the World.
+            </h1>
+
+            <p>
+                UYIRMANN is a digital journey into the heart of Tamil Nadu
+                agriculture — connecting crops, farmers, traditional wisdom,
+                natural resources and modern agricultural innovation.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHAT IS UYIRMANN -->
+
+    <section class="about-section">
+
+        <div class="about-story">
+
+            <div class="story-visual reveal"></div>
+
+            <div class="story-text reveal">
+
+                <span class="eyebrow">
+                    WHAT IS UYIRMANN?
+                </span>
+
+                <h2>
+                    Agriculture deserves a story.
+                </h2>
+
+                <p>
+                    Agriculture is one of the foundations of everyday life.
+                    Behind the food on our tables are fields, water,
+                    seeds, knowledge, technology and the people who bring
+                    everything together.
+                </p>
+
+                <p>
+                    UYIRMANN brings these connected stories into one
+                    digital experience. It explores Tamil Nadu's crops,
+                    farming practices, agricultural traditions, districts
+                    and emerging technologies.
+                </p>
+
+                <div class="story-highlight">
+                    <strong>UYIRMANN</strong> means more than a website.
+                    It represents the connection between life, land and
+                    the future of agriculture.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+
+    <section class="about-section">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">
+                OUR PRINCIPLES
+            </span>
+
+            <h2>
+                Built around four ideas.
+            </h2>
+
+            <p>
+                UYIRMANN brings different parts of agriculture together
+                while keeping the experience simple, visual and engaging.
+            </p>
+
+        </div>
+
+
+        <div class="values-grid">
+
+            <article class="value-card reveal">
+
+                <div class="value-number">01</div>
+
+                <h3>Respect Tradition</h3>
+
+                <p>
+                    Traditional farming knowledge represents generations
+                    of observation, adaptation and connection with land.
+                </p>
+
+            </article>
+
+
+            <article class="value-card reveal">
+
+                <div class="value-number">02</div>
+
+                <h3>Understand Nature</h3>
+
+                <p>
+                    Soil, water, weather, biodiversity and seasons are
+                    closely connected to agricultural systems.
+                </p>
+
+            </article>
+
+
+            <article class="value-card reveal">
+
+                <div class="value-number">03</div>
+
+                <h3>Explore Innovation</h3>
+
+                <p>
+                    Sensors, data, artificial intelligence and automation
+                    are opening new possibilities for agriculture.
+                </p>
+
+            </article>
+
+
+            <article class="value-card reveal">
+
+                <div class="value-number">04</div>
+
+                <h3>Celebrate Farmers</h3>
+
+                <p>
+                    At the centre of agriculture are the people who
+                    cultivate, protect and manage the land.
+                </p>
+
+            </article>
+
+
+            <article class="value-card reveal">
+
+                <div class="value-number">05</div>
+
+                <h3>Share Knowledge</h3>
+
+                <p>
+                    A better understanding of agriculture can help connect
+                    people with the food systems around them.
+                </p>
+
+            </article>
+
+
+            <article class="value-card reveal">
+
+                <div class="value-number">06</div>
+
+                <h3>Think Global</h3>
+
+                <p>
+                    Tamil Nadu has a rich agricultural identity that can
+                    be explored and understood by audiences everywhere.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSION -->
+
+    <section class="about-section mission-section">
+
+        <div class="mission-box reveal">
+
+            <span class="eyebrow">
+                THE MISSION
+            </span>
+
+            <h2>
+                Make agriculture visible.
+            </h2>
+
+            <p>
+                UYIRMANN aims to create a modern digital window into
+                agriculture — one that makes the relationship between
+                land, people, knowledge and technology easier to explore.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- JOURNEY -->
+
+    <section class="about-section">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">
+                THE UYIRMANN JOURNEY
+            </span>
+
+            <h2>
+                From the roots to the future.
+            </h2>
+
+            <p>
+                The UYIRMANN experience moves through different layers
+                of agriculture, showing how they connect with one another.
+            </p>
+
+        </div>
+
+
+        <div class="journey">
+
+            <div class="journey-line"></div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>01 • LAND</span>
+
+                    <h3>The Soil</h3>
+
+                    <p>
+                        Everything begins with the land and the conditions
+                        in which agriculture takes place.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>02 • LIFE</span>
+
+                    <h3>The Crops</h3>
+
+                    <p>
+                        Crops transform sunlight, water and nutrients
+                        into food, fibre and other agricultural products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>03 • PEOPLE</span>
+
+                    <h3>The Farmers</h3>
+
+                    <p>
+                        Knowledge and decisions guide the field through
+                        every stage of the agricultural cycle.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>04 • WISDOM</span>
+
+                    <h3>The Tradition</h3>
+
+                    <p>
+                        Farming knowledge passes between generations,
+                        adapting to changing conditions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>05 • INNOVATION</span>
+
+                    <h3>The Technology</h3>
+
+                    <p>
+                        Modern tools can add new information and precision
+                        to agricultural decision-making.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="journey-item reveal">
+
+                <div class="journey-dot"></div>
+
+                <div class="journey-card">
+
+                    <span>06 • FUTURE</span>
+
+                    <h3>The Next Generation</h3>
+
+                    <p>
+                        The future of agriculture will continue to connect
+                        people, knowledge, nature and innovation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOUR PILLARS -->
+
+    <section class="about-section">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">
+                FOUR WORLDS
+            </span>
+
+            <h2>
+                One agricultural story.
+            </h2>
+
+        </div>
+
+
+        <div class="pillars">
+
+            <div class="pillar reveal">
+
+                <span>01 • NATURE</span>
+
+                <h3>Land & Water</h3>
+
+            </div>
+
+
+            <div class="pillar reveal">
+
+                <span>02 • PEOPLE</span>
+
+                <h3>Farmers & Communities</h3>
+
+            </div>
+
+
+            <div class="pillar reveal">
+
+                <span>03 • INNOVATION</span>
+
+                <h3>Technology & Data</h3>
+
+            </div>
+
+
+            <div class="pillar reveal">
+
+                <span>04 • HERITAGE</span>
+
+                <h3>Tradition & Knowledge</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="about-section">
+
+        <div class="about-quote reveal">
+
+            <div class="quote-mark">“</div>
+
+            <blockquote>
+                When we understand the soil,
+                we understand a little more about life.
+            </blockquote>
+
+            <p>
+                — UYIRMANN
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="about-cta reveal">
+
+        <h2>
+            Explore the world of UYIRMANN.
+        </h2>
+
+        <p>
+            Discover the crops, farming practices, traditional knowledge,
+            technology and stories that connect Tamil Nadu agriculture.
+        </p>
+
+        <a href="crops.html" class="about-btn">
+            Explore Crops →
+        </a>
+
+    </section>
+
+</div>
+
+
+<script>
+    /* =========================================
+       UYIRMANN — ABOUT SCRIPT
+    ========================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const observer =
+        new IntersectionObserver(
+            (entries, obs) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        obs.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.10
+            }
+        );
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+</script>
+
+</body>
+</html>
