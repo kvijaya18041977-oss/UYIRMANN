@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Water & Agriculture | UYIRMANN</title>
+
+<meta name="description"
+content="Explore the connection between water and agriculture in Tamil Nadu — rivers, tanks, rainfall, irrigation, groundwater and farm water systems.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root{
+    --bg:#050907;
+    --bg2:#08120d;
+    --card:rgba(14,28,20,.72);
+    --green:#55d98b;
+    --green2:#1e9b5c;
+    --mint:#a8ffd0;
+    --text:#f1fff6;
+    --muted:#9bb3a5;
+    --line:rgba(121,255,174,.13);
+    --shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 20% 10%,rgba(46,170,100,.12),transparent 30%),
+        radial-gradient(circle at 80% 50%,rgba(0,130,255,.08),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+/* NAVIGATION */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:20px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(4,10,7,.72);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+    font-size:1.35rem;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#c5d6cc;
+    font-size:.88rem;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+.nav-btn{
+    padding:11px 18px;
+    border:1px solid rgba(85,217,139,.35);
+    border-radius:30px;
+    color:var(--green)!important;
+}
+
+/* HERO */
+
+.hero{
+    min-height:92vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:140px 7% 90px;
+    overflow:hidden;
+    background:
+        linear-gradient(90deg,rgba(2,8,5,.92),rgba(2,8,5,.54),rgba(2,8,5,.65)),
+        url("https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=2200&q=90")
+        center/cover;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 50%,rgba(59,211,128,.16),transparent 30%),
+        linear-gradient(to top,var(--bg),transparent 35%);
+}
+
+.hero-content{
+    position:relative;
+    max-width:850px;
+    z-index:2;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color:var(--green);
+    font-size:.78rem;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:22px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:32px;
+    height:1px;
+    background:var(--green);
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(3.5rem,8vw,7rem);
+    line-height:.92;
+    letter-spacing:-4px;
+    margin-bottom:28px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:680px;
+    color:#c0d1c7;
+    font-size:1.08rem;
+    line-height:1.9;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    padding:14px 22px;
+    border-radius:30px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#031108;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(85,217,139,.25);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.18);
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:var(--green);
+    color:var(--green);
+}
+
+/* GENERAL */
+
+section{
+    padding:110px 7%;
+}
+
+.section-head{
+    max-width:800px;
+    margin-bottom:55px;
+}
+
+.section-label{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.75rem;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.section-head h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.5rem,5vw,4.4rem);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.section-head p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* INTRO */
+
+.intro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.intro-image{
+    min-height:520px;
+    border-radius:28px;
+    background:
+        linear-gradient(to top,rgba(0,0,0,.5),transparent),
+        url("https://images.unsplash.com/photo-1533128369977-8d1c7b1e8f4b?auto=format&fit=crop&w=1400&q=85")
+        center/cover;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.image-caption{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(0,0,0,.48);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.image-caption strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.image-caption span{
+    color:#b8c8be;
+    font-size:.85rem;
+}
+
+.intro-text h3{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.intro-text p{
+    color:var(--muted);
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+.highlight{
+    margin-top:30px;
+    padding:24px;
+    border-left:3px solid var(--green);
+    background:rgba(85,217,139,.05);
+    color:#d9f4e3;
+    line-height:1.7;
+}
+
+/* WATER SYSTEM */
+
+.water-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.water-card{
+    position:relative;
+    padding:32px;
+    min-height:270px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    background:linear-gradient(145deg,rgba(19,39,28,.82),rgba(7,16,11,.82));
+    overflow:hidden;
+    transition:.4s;
+}
+
+.water-card::after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    right:-50px;
+    bottom:-60px;
+    background:rgba(85,217,139,.08);
+    transition:.4s;
+}
+
+.water-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(85,217,139,.35);
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.water-card:hover::after{
+    transform:scale(1.6);
+}
+
+.icon{
+    width:55px;
+    height:55px;
+    display:grid;
+    place-items:center;
+    border-radius:16px;
+    background:rgba(85,217,139,.1);
+    border:1px solid rgba(85,217,139,.18);
+    font-size:1.7rem;
+    margin-bottom:25px;
+}
+
+.water-card h3{
+    font-size:1.3rem;
+    margin-bottom:12px;
+}
+
+.water-card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:.94rem;
+}
+
+/* JOURNEY */
+
+.journey-section{
+    background:
+        linear-gradient(rgba(5,12,8,.9),rgba(5,12,8,.94)),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2200&q=85")
+        center/cover fixed;
+}
+
+.flow{
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:0;
+    flex-wrap:wrap;
+}
+
+.flow-item{
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    position:relative;
+    padding:25px 15px;
+}
+
+.flow-circle{
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:grid;
+    place-items:center;
+    background:rgba(5,20,12,.9);
+    border:1px solid rgba(85,217,139,.35);
+    font-size:1.8rem;
+    box-shadow:0 0 30px rgba(85,217,139,.08);
+}
+
+.flow-item h4{
+    margin-bottom:8px;
+}
+
+.flow-item p{
+    color:var(--muted);
+    font-size:.85rem;
+    line-height:1.5;
+}
+
+.flow-arrow{
+    align-self:center;
+    color:var(--green);
+    font-size:1.4rem;
+}
+
+/* WISDOM */
+
+.wisdom{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
+    align-items:center;
+}
+
+.wisdom-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.5rem,5vw,4rem);
+    margin-bottom:25px;
+}
+
+.wisdom-content p{
+    color:var(--muted);
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.wisdom-list{
+    display:grid;
+    gap:15px;
+    margin-top:30px;
+}
+
+.wisdom-item{
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(255,255,255,.025);
+}
+
+.wisdom-item strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.wisdom-item span{
+    color:var(--muted);
+    font-size:.9rem;
+    line-height:1.6;
+}
+
+.wisdom-image{
+    min-height:570px;
+    border-radius:28px;
+    background:
+        linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.35)),
+        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1500&q=90")
+        center/cover;
+    box-shadow:var(--shadow);
+}
+
+/* BALANCE */
+
+.balance{
+    text-align:center;
+}
+
+.balance-box{
+    max-width:1000px;
+    margin:auto;
+    padding:55px;
+    border-radius:30px;
+    border:1px solid var(--line);
+    background:
+        radial-gradient(circle at center,rgba(85,217,139,.08),transparent 55%),
+        rgba(10,23,16,.8);
+}
+
+.balance-box h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.4rem,5vw,4rem);
+    margin-bottom:18px;
+}
+
+.balance-box > p{
+    max-width:700px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.balance-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:40px;
+}
+
+.balance-card{
+    padding:25px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+}
+
+.balance-number{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+.balance-card h4{
+    margin-bottom:7px;
+}
+
+.balance-card p{
+    color:var(--muted);
+    font-size:.85rem;
+    line-height:1.6;
+}
+
+/* CTA */
+
+.cta{
+    padding:100px 7%;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(52,190,109,.12),transparent 45%);
+}
+
+.cta h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2.7rem,6vw,5rem);
+    margin-bottom:20px;
+}
+
+.cta p{
+    color:var(--muted);
+    max-width:650px;
+    margin:0 auto 30px;
+    line-height:1.8;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:50px 7%;
+    border-top:1px solid rgba(255,255,255,.06);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.footer-logo{
+    font-size:1.2rem;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.footer-logo span{
+    color:var(--green);
+}
+
+footer p{
+    color:#718378;
+    font-size:.82rem;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .intro,
+    .wisdom{
+        grid-template-columns:1fr;
+    }
+
+    .water-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .intro-image,
+    .wisdom-image{
+        min-height:400px;
+    }
+
+    .balance-grid{
+        grid-template-columns:1fr;
+    }
+
+    .flow-arrow{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:80px 5%;
+    }
+
+    .navbar{
+        padding:18px 5%;
+    }
+
+    .hero{
+        min-height:90vh;
+        padding:120px 5% 70px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:.96rem;
+    }
+
+    .water-grid{
+        grid-template-columns:1fr;
+    }
+
+    .water-card{
+        min-height:auto;
+    }
+
+    .intro-image,
+    .wisdom-image{
+        min-height:330px;
+    }
+
+    .balance-box{
+        padding:35px 22px;
+    }
+
+    footer{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="logo">UYIR<span>MANN</span></a>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="crops.html">Crops</a></li>
+        <li><a href="districts.html">Districts</a></li>
+        <li><a href="farming.html">Farming</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="about.html" class="nav-btn">About UYIRMANN</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">Water & Agriculture</div>
+
+        <h1>
+            Water Gives<br>
+            The Field A <span>Future.</span>
+        </h1>
+
+        <p>
+            From rainfall and rivers to tanks, canals and groundwater,
+            water has always been deeply connected with agriculture in
+            Tamil Nadu. Explore the journey of water from the sky to the field.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#water-systems" class="btn btn-primary">
+                Explore Water Systems
+            </a>
+
+            <a href="traditional.html" class="btn btn-outline">
+                Discover Water Wisdom
+            </a>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- INTRO -->
+<section>
+
+    <div class="intro">
+
+        <div class="intro-image reveal">
+            <div class="image-caption">
+                <strong>Water meets the land.</strong>
+                <span>Every crop begins with a relationship between soil, water and time.</span>
+            </div>
+        </div>
+
+        <div class="intro-text reveal">
+
+            <div class="section-label">01 — The Connection</div>
+
+            <h3>Without water, agriculture cannot thrive.</h3>
+
+            <p>
+                Agriculture depends on water at many stages — from preparing
+                the land and establishing crops to supporting growth and
+                producing a harvest.
+            </p>
+
+            <p>
+                Tamil Nadu has a diverse water landscape. Rivers, reservoirs,
+                traditional tanks, canals, rainfall and groundwater all
+                contribute to the agricultural story in different regions.
+            </p>
+
+            <div class="highlight">
+                <strong>Water is more than a resource.</strong><br>
+                It connects climate, soil, crops, farmers, ecosystems and food.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WATER SYSTEMS -->
+<section id="water-systems">
+
+    <div class="section-head reveal">
+
+        <div class="section-label">02 — The Water Network</div>
+
+        <h2>Many paths.<br>One essential resource.</h2>
+
+        <p>
+            Water reaches agricultural landscapes through different natural
+            and managed systems. Each plays a different role in the farming
+            environment.
+        </p>
+
+    </div>
+
+
+    <div class="water-grid">
+
+        <article class="water-card reveal">
+            <div class="icon">🌊</div>
+            <h3>Rivers</h3>
+            <p>
+                Rivers carry freshwater across landscapes and have supported
+                farming communities for generations.
+            </p>
+        </article>
+
+        <article class="water-card reveal">
+            <div class="icon">🏞️</div>
+            <h3>Tanks</h3>
+            <p>
+                Traditional tanks can store seasonal water and form an
+                important part of Tamil Nadu's agricultural heritage.
+            </p>
+        </article>
+
+        <article class="water-card reveal">
+            <div class="icon">💧</div>
+            <h3>Canals</h3>
+            <p>
+                Canals can move stored or diverted water toward agricultural
+                areas and connect water sources with fields.
+            </p>
+        </article>
+
+        <article class="water-card reveal">
+            <div class="icon">🌧️</div>
+            <h3>Rainfall</h3>
+            <p>
+                Rain is one of the most important natural inputs in agriculture,
+                directly and indirectly supporting crops and water storage.
+            </p>
+        </article>
+
+        <article class="water-card reveal">
+            <div class="icon">🌍</div>
+            <h3>Groundwater</h3>
+            <p>
+                Water stored below the ground can support farming where
+                groundwater resources are available.
+            </p>
+        </article>
+
+        <article class="water-card reveal">
+            <div class="icon">🪣</div>
+            <h3>Farm Storage</h3>
+            <p>
+                Ponds and other storage systems can help retain water within
+                agricultural landscapes for later use.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- JOURNEY -->
+<section class="journey-section">
+
+    <div class="section-head reveal">
+
+        <div class="section-label">03 — Journey of Water</div>
+
+        <h2>From the sky<br>to the plate.</h2>
+
+        <p>
+            The agricultural journey of water connects natural processes
+            with human systems and the food we depend on.
+        </p>
+
+    </div>
+
+
+    <div class="flow">
+
+        <div class="flow-item reveal">
+            <div class="flow-circle">🌧️</div>
+            <h4>Rain</h4>
+            <p>Water enters the landscape.</p>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-item reveal">
+            <div class="flow-circle">🏞️</div>
+            <h4>Storage</h4>
+            <p>Water can collect in natural and managed systems.</p>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-item reveal">
+            <div class="flow-circle">💦</div>
+            <h4>Irrigation</h4>
+            <p>Water reaches agricultural areas.</p>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-item reveal">
+            <div class="flow-circle">🌱</div>
+            <h4>Field</h4>
+            <p>Crops interact with soil and water.</p>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-item reveal">
+            <div class="flow-circle">🍚</div>
+            <h4>Food</h4>
+            <p>The agricultural cycle reaches people.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WATER WISDOM -->
+<section>
+
+    <div class="wisdom">
+
+        <div class="wisdom-content reveal">
+
+            <div class="section-label">04 — Water Wisdom</div>
+
+            <h2>Ancient systems.<br>Modern questions.</h2>
+
+            <p>
+                Tamil agricultural landscapes have long included systems
+                designed around seasonal rainfall, water storage and
+                distribution.
+            </p>
+
+            <p>
+                Today, agriculture also uses modern technologies to observe
+                soil moisture, weather conditions and irrigation needs.
+                Traditional knowledge and modern tools can both help us
+                understand the relationship between water and farming.
+            </p>
+
+
+            <div class="wisdom-list">
+
+                <div class="wisdom-item">
+                    <strong>🏞️ Tank Systems</strong>
+                    <span>
+                        Water storage has been an important feature of many
+                        agricultural landscapes in Tamil Nadu.
+                    </span>
+                </div>
+
+                <div class="wisdom-item">
+                    <strong>🌧️ Seasonal Understanding</strong>
+                    <span>
+                        Farming traditions developed around changing rainfall
+                        and seasonal agricultural rhythms.
+                    </span>
+                </div>
+
+                <div class="wisdom-item">
+                    <strong>📡 Modern Monitoring</strong>
+                    <span>
+                        Sensors and digital systems can provide new ways to
+                        observe water and field conditions.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="wisdom-image reveal"></div>
+
+    </div>
+
+</section>
+
+
+<!-- BALANCE -->
+<section class="balance">
+
+    <div class="balance-box reveal">
+
+        <div class="section-label">05 — Water Balance</div>
+
+        <h2>Healthy fields need balance.</h2>
+
+        <p>
+            Agriculture is connected to a larger ecosystem. Water,
+            soil, plants, weather and people all interact with one another.
+        </p>
+
+
+        <div class="balance-grid">
+
+            <div class="balance-card">
+                <div class="balance-number">🌱</div>
+                <h4>Soil</h4>
+                <p>
+                    Soil stores and moves water while providing a foundation
+                    for crops.
+                </p>
+            </div>
+
+            <div class="balance-card">
+                <div class="balance-number">💧</div>
+                <h4>Water</h4>
+                <p>
+                    Water availability influences the agricultural cycle.
+                </p>
+            </div>
+
+            <div class="balance-card">
+                <div class="balance-number">🌦️</div>
+                <h4>Climate</h4>
+                <p>
+                    Rainfall and weather patterns influence farming conditions.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <div class="reveal">
+
+        <div class="section-label">06 — Continue Exploring</div>
+
+        <h2>Follow the story<br>of the soil.</h2>
+
+        <p>
+            Explore the farming traditions, technology and landscapes
+            connected to Tamil Nadu agriculture.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="traditional.html" class="btn btn-primary">
+                Traditional Wisdom
+            </a>
+
+            <a href="farming.html" class="btn btn-outline">
+                Farming Journey
+            </a>
+
+            <a href="technology.html" class="btn btn-outline">
+                Smart Farming
+            </a>
+
+            <a href="district-details.html" class="btn btn-outline">
+                Explore Districts
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-logo">
+        UYIR<span>MANN</span>
+    </div>
+
+    <p>
+        From Tamil Soil to the World. © 2026 UYIRMANN
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SCROLL REVEAL */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:0.12
+    }
+);
+
+revealElements.forEach(el => observer.observe(el));
+
+
+/* CARD TILT */
+
+document.querySelectorAll(".water-card").forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 35;
+        const rotateY = (centerX - x) / 35;
+
+        card.style.transform =
+            `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+    });
+
+});
+
+
+/* NAVBAR BACKGROUND */
+
+window.addEventListener("scroll", () => {
+
+    const nav = document.querySelector(".navbar");
+
+    if(window.scrollY > 50){
+
+        nav.style.background = "rgba(3,9,6,.94)";
+
+    }else{
+
+        nav.style.background = "rgba(4,10,7,.72)";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
