@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>From Field to Market | UYIRMANN</title>
+
+  <meta name="description"
+        content="Explore the journey of agricultural products from Tamil Nadu's fields to markets, processing, retail and consumers.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ================================
+       UYIRMANN — MARKETS PAGE
+       ================================ */
+
+    :root {
+      --green: #7cff9b;
+      --green-dark: #123d2a;
+      --green-deep: #06150f;
+      --lime: #c9ff7a;
+      --gold: #e5c66b;
+      --white: #f4f8f4;
+      --muted: #a8b8ae;
+      --glass: rgba(255,255,255,0.055);
+      --border: rgba(124,255,155,0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(60,130,80,.16), transparent 30%),
+        radial-gradient(circle at 85% 35%, rgba(100,160,70,.08), transparent 28%),
+        #050b08;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HERO */
+
+    .market-hero {
+      min-height: 88vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3,12,8,.96) 0%,
+          rgba(3,12,8,.82) 38%,
+          rgba(3,12,8,.38) 72%,
+          rgba(3,12,8,.75) 100%
+        ),
+        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2200&q=85")
+        center/cover;
+    }
+
+    .market-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, transparent 65%, #050b08 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      width: min(1200px, 92%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      padding: 100px 0 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(48px, 8vw, 105px);
+      line-height: .92;
+      max-width: 900px;
+      margin: 0 0 28px;
+      letter-spacing: -5px;
+    }
+
+    .hero-content h1 span {
+      color: var(--green);
+    }
+
+    .hero-content p {
+      max-width: 650px;
+      color: #c5d0c9;
+      font-size: 19px;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      padding: 15px 24px;
+      border: 1px solid var(--green);
+      border-radius: 40px;
+      color: var(--green);
+      transition: .3s;
+      font-weight: bold;
+    }
+
+    .hero-button:hover {
+      background: var(--green);
+      color: #06150f;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 35px rgba(124,255,155,.18);
+    }
+
+    /* GENERAL */
+
+    .section {
+      width: min(1200px, 92%);
+      margin: auto;
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 55px;
+    }
+
+    .section-heading small {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(36px, 5vw, 65px);
+      line-height: 1;
+      margin: 15px 0;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* VALUE CHAIN */
+
+    .chain {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .chain-item {
+      position: relative;
+      min-height: 220px;
+      padding: 28px 20px;
+      background: linear-gradient(
+        145deg,
+        rgba(124,255,155,.09),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .chain-item::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -45px;
+      top: -45px;
+      border-radius: 50%;
+      background: rgba(124,255,155,.08);
+    }
+
+    .chain-item:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124,255,155,.45);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+
+    .chain-number {
+      color: var(--green);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .chain-icon {
+      font-size: 38px;
+      margin: 25px 0 18px;
+    }
+
+    .chain-item h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .chain-item p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* MARKET TYPES */
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .market-card {
+      min-height: 280px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      background: var(--glass);
+      position: relative;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .market-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(124,255,155,.35);
+    }
+
+    .market-card .number {
+      font-size: 50px;
+      color: rgba(124,255,155,.12);
+      font-weight: 900;
+      position: absolute;
+      right: 20px;
+      top: 8px;
+    }
+
+    .market-card .icon {
+      font-size: 34px;
+      margin-bottom: 30px;
+    }
+
+    .market-card h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .market-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* FEATURE */
+
+    .feature {
+      min-height: 500px;
+      border-radius: 30px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(4,16,10,.97),
+          rgba(4,16,10,.65)
+        ),
+        url("https://images.unsplash.com/photo-1523742816100-9a86c3f8fdb0?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .feature-content {
+      padding: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-content h2 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1;
+      margin: 15px 0 25px;
+    }
+
+    .feature-content p {
+      color: #bdc9c1;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .feature-list {
+      margin-top: 25px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .feature-list div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #dce6df;
+    }
+
+    .feature-list span {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--green);
+    }
+
+    /* WHY MARKETS */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .why-card {
+      padding: 28px 20px;
+      border-top: 1px solid var(--border);
+      transition: .3s;
+    }
+
+    .why-card:hover {
+      background: rgba(124,255,155,.04);
+      transform: translateY(-5px);
+    }
+
+    .why-card strong {
+      color: var(--green);
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .why-card h3 {
+      font-size: 19px;
+      margin: 15px 0 10px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* DIGITAL */
+
+    .digital {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .digital-image {
+      height: 520px;
+      border-radius: 28px;
+      background:
+        linear-gradient(
+          rgba(3,15,9,.2),
+          rgba(3,15,9,.55)
+        ),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1300&q=85")
+        center/cover;
+    }
+
+    .digital-content h2 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1;
+      margin: 15px 0 25px;
+    }
+
+    .digital-content > p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .digital-items {
+      margin-top: 35px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .digital-item {
+      display: flex;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .digital-item b {
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .digital-item h4 {
+      margin: 0 0 5px;
+    }
+
+    .digital-item p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* JOURNEY */
+
+    .journey {
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .journey-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(
+        transparent,
+        rgba(124,255,155,.5),
+        transparent
+      );
+    }
+
+    .journey-step {
+      width: 50%;
+      padding: 25px 50px;
+      position: relative;
+    }
+
+    .journey-step:nth-child(odd) {
+      margin-left: 50%;
+    }
+
+    .journey-step:nth-child(even) {
+      text-align: right;
+    }
+
+    .journey-dot {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      background: #050b08;
+      top: 35px;
+      box-shadow: 0 0 18px rgba(124,255,155,.5);
+    }
+
+    .journey-step:nth-child(odd) .journey-dot {
+      left: -7px;
+    }
+
+    .journey-step:nth-child(even) .journey-dot {
+      right: -7px;
+    }
+
+    .journey-step span {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .journey-step h3 {
+      font-size: 26px;
+      margin: 10px 0;
+    }
+
+    .journey-step p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* CTA */
+
+    .cta {
+      width: min(1200px, 92%);
+      margin: 30px auto 100px;
+      padding: 80px 50px;
+      text-align: center;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(124,255,155,.11),
+          transparent 60%
+        ),
+        rgba(255,255,255,.025);
+    }
+
+    .cta h2 {
+      font-size: clamp(38px, 6vw, 70px);
+      margin: 0 0 18px;
+      letter-spacing: -2px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto auto 30px;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cta-buttons a {
+      padding: 13px 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(124,255,155,.35);
+      color: var(--green);
+      transition: .3s;
+    }
+
+    .cta-buttons a:hover {
+      background: var(--green);
+      color: #06150f;
+    }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+
+      .chain {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .market-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-content {
+        padding: 50px 35px;
+      }
+
+      .digital {
+        grid-template-columns: 1fr;
+      }
+
+      .digital-image {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .market-hero {
+        min-height: 80vh;
+      }
+
+      .hero-content h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .chain {
+        grid-template-columns: 1fr;
+      }
+
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-content {
+        padding: 40px 25px;
+      }
+
+      .digital-image {
+        height: 300px;
+      }
+
+      .journey-line {
+        left: 10px;
+      }
+
+      .journey-step,
+      .journey-step:nth-child(odd),
+      .journey-step:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        text-align: left;
+        padding: 25px 25px 25px 40px;
+      }
+
+      .journey-step:nth-child(odd) .journey-dot,
+      .journey-step:nth-child(even) .journey-dot {
+        left: 4px;
+        right: auto;
+      }
+
+      .cta {
+        padding: 55px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HERO ================= -->
+
+  <header class="market-hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        UYIRMANN / VALUE CHAIN
+      </div>
+
+      <h1>
+        From <span>Field</span><br>
+        to Market.
+      </h1>
+
+      <p>
+        A harvest is not the end of a farmer's journey.
+        It begins another journey — through collection,
+        sorting, transport, processing, markets and finally
+        to the people who consume it.
+      </p>
+
+      <a href="#value-chain" class="hero-button">
+        Explore the Journey ↓
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= INTRO ================= -->
+
+  <section class="section reveal">
+
+    <div class="section-heading">
+
+      <small>01 / The Journey</small>
+
+      <h2>
+        A crop travels<br>
+        far beyond the field.
+      </h2>
+
+      <p>
+        Agriculture connects farms with an entire network of
+        people, places and systems. Every stage can add value
+        to what begins as a seed in the soil.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= VALUE CHAIN ================= -->
+
+  <section class="section reveal" id="value-chain">
+
+    <div class="section-heading">
+
+      <small>02 / Value Chain</small>
+
+      <h2>The path from soil to society.</h2>
+
+      <p>
+        The agricultural value chain links the work done on the
+        farm with the wider food and consumer system.
+      </p>
+
+    </div>
+
+    <div class="chain">
+
+      <div class="chain-item">
+        <div class="chain-number">01</div>
+        <div class="chain-icon">🌱</div>
+        <h3>Farmer</h3>
+        <p>
+          Crops begin with farmers, land, seeds,
+          knowledge and months of care.
+        </p>
+      </div>
+
+      <div class="chain-item">
+        <div class="chain-number">02</div>
+        <div class="chain-icon">📦</div>
+        <h3>Collection</h3>
+        <p>
+          Harvested produce can be collected and
+          brought together for the next stage.
+        </p>
+      </div>
+
+      <div class="chain-item">
+        <div class="chain-number">03</div>
+        <div class="chain-icon">🔎</div>
+        <h3>Sorting</h3>
+        <p>
+          Produce may be sorted, graded and prepared
+          according to quality and destination.
+        </p>
+      </div>
+
+      <div class="chain-item">
+        <div class="chain-number">04</div>
+        <div class="chain-icon">🚚</div>
+        <h3>Transport</h3>
+        <p>
+          Agricultural products move between farms,
+          collection points, markets and processing units.
+        </p>
+      </div>
+
+      <div class="chain-item">
+        <div class="chain-number">05</div>
+        <div class="chain-icon">🏪</div>
+        <h3>Market</h3>
+        <p>
+          Produce can reach wholesale markets, local
+          markets, retailers or other buyers.
+        </p>
+      </div>
+
+      <div class="chain-item">
+        <div class="chain-number">06</div>
+        <div class="chain-icon">🍚</div>
+        <h3>Consumer</h3>
+        <p>
+          The journey ultimately connects agriculture
+          with households and communities.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MARKET TYPES ================= -->
+
+  <section class="section reveal">
+
+    <div class="section-heading">
+
+      <small>03 / Market Worlds</small>
+
+      <h2>Different roads.<br>One harvest.</h2>
+
+      <p>
+        Agricultural products can move through different channels
+        depending on the crop, location, scale and purpose.
+      </p>
+
+    </div>
+
+    <div class="market-grid">
+
+      <article class="market-card">
+        <div class="number">01</div>
+        <div class="icon">🌾</div>
+        <h3>Farm Gate</h3>
+        <p>
+          Produce may be sold or transferred close to where
+          it is harvested.
+        </p>
+      </article>
+
+      <article class="market-card">
+        <div class="number">02</div>
+        <div class="icon">🧺</div>
+        <h3>Local Markets</h3>
+        <p>
+          Local trading spaces connect agricultural produce
+          with nearby communities and buyers.
+        </p>
+      </article>
+
+      <article class="market-card">
+        <div class="number">03</div>
+        <div class="icon">🏬</div>
+        <h3>Wholesale</h3>
+        <p>
+          Larger quantities can move through wholesale
+          networks and distribution channels.
+        </p>
+      </article>
+
+      <article class="market-card">
+        <div class="number">04</div>
+        <div class="icon">⚙️</div>
+        <h3>Processing</h3>
+        <p>
+          Crops can become ingredients or processed food
+          products before reaching consumers.
+        </p>
+      </article>
+
+      <article class="market-card">
+        <div class="number">05</div>
+        <div class="icon">🛒</div>
+        <h3>Retail</h3>
+        <p>
+          Shops and retail systems create another connection
+          between agricultural products and consumers.
+        </p>
+      </article>
+
+      <article class="market-card">
+        <div class="number">06</div>
+        <div class="icon">📱</div>
+        <h3>Direct & Digital</h3>
+        <p>
+          Digital platforms can create new ways to discover,
+          communicate and connect agricultural products.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURE ================= -->
+
+  <section class="section reveal">
+
+    <div class="feature">
+
+      <div class="feature-content">
+
+        <div class="eyebrow">
+          VALUE BEYOND HARVEST
+        </div>
+
+        <h2>
+          The harvest<br>
+          can become more.
+        </h2>
+
+        <p>
+          Agriculture is not only about producing a crop.
+          Storage, grading, processing, packaging, branding
+          and distribution can all influence how agricultural
+          products reach people.
+        </p>
+
+        <div class="feature-list">
+
+          <div>
+            <span></span>
+            Better handling after harvest
+          </div>
+
+          <div>
+            <span></span>
+            Sorting and grading
+          </div>
+
+          <div>
+            <span></span>
+            Processing and transformation
+          </div>
+
+          <div>
+            <span></span>
+            Packaging and presentation
+          </div>
+
+          <div>
+            <span></span>
+            Stronger connections with consumers
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= WHY MARKETS MATTER ================= -->
+
+  <section class="section reveal">
+
+    <div class="section-heading">
+
+      <small>04 / Why Markets Matter</small>
+
+      <h2>When agriculture connects.</h2>
+
+      <p>
+        Markets are part of the larger system that connects
+        farmers, agricultural products and consumers.
+      </p>
+
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <strong>01</strong>
+        <h3>Price Discovery</h3>
+        <p>
+          Markets provide spaces where agricultural products
+          can be exchanged and valued.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <strong>02</strong>
+        <h3>Access</h3>
+        <p>
+          Market connections can link agricultural producers
+          with different groups of buyers.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <strong>03</strong>
+        <h3>Quality</h3>
+        <p>
+          Sorting, grading and handling can help communicate
+          product characteristics.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <strong>04</strong>
+        <h3>Less Waste</h3>
+        <p>
+          Better storage, transportation and handling can
+          support efficient movement of produce.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <strong>05</strong>
+        <h3>Connection</h3>
+        <p>
+          Markets create a bridge between the people who
+          grow food and the people who use it.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DIGITAL AGRICULTURE ================= -->
+
+  <section class="section reveal">
+
+    <div class="digital">
+
+      <div class="digital-image"></div>
+
+      <div class="digital-content">
+
+        <div class="eyebrow">
+          05 / DIGITAL AGRICULTURE
+        </div>
+
+        <h2>
+          The market is<br>
+          becoming digital.
+        </h2>
+
+        <p>
+          Technology is creating new ways to connect agricultural
+          information, logistics, markets and consumers.
+        </p>
+
+        <div class="digital-items">
+
+          <div class="digital-item">
+            <b>01</b>
+            <div>
+              <h4>Farmer Platforms</h4>
+              <p>
+                Digital tools can help farmers access
+                information and services.
+              </p>
+            </div>
+          </div>
+
+          <div class="digital-item">
+            <b>02</b>
+            <div>
+              <h4>Digital Listings</h4>
+              <p>
+                Online systems can help agricultural products
+                become easier to discover.
+              </p>
+            </div>
+          </div>
+
+          <div class="digital-item">
+            <b>03</b>
+            <div>
+              <h4>Traceability</h4>
+              <p>
+                Digital records can help track information
+                across parts of a supply chain.
+              </p>
+            </div>
+          </div>
+
+          <div class="digital-item">
+            <b>04</b>
+            <div>
+              <h4>Data & Logistics</h4>
+              <p>
+                Data can support planning, transportation
+                and coordination.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CROP JOURNEY ================= -->
+
+  <section class="section reveal">
+
+    <div class="section-heading">
+
+      <small>06 / One Crop's Journey</small>
+
+      <h2>Follow it from field to plate.</h2>
+
+      <p>
+        Imagine a crop moving through a complete agricultural
+        journey — from growing in the soil to becoming part
+        of everyday life.
+      </p>
+
+    </div>
+
+    <div class="journey">
+
+      <div class="journey-line"></div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>01 / FIELD</span>
+        <h3>It begins with the soil.</h3>
+        <p>
+          A crop grows through the interaction of soil,
+          water, climate, seeds and farmer knowledge.
+        </p>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>02 / HARVEST</span>
+        <h3>The crop leaves the field.</h3>
+        <p>
+          Harvest transforms months of growth into an
+          agricultural product ready for its next journey.
+        </p>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>03 / MOVEMENT</span>
+        <h3>It starts moving.</h3>
+        <p>
+          Collection and transportation connect farms
+          with other parts of the value chain.
+        </p>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>04 / VALUE</span>
+        <h3>It can become something new.</h3>
+        <p>
+          Processing can transform agricultural products
+          into ingredients, foods and other useful products.
+        </p>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>05 / MARKET</span>
+        <h3>It reaches buyers.</h3>
+        <p>
+          Different market channels connect agricultural
+          products with businesses and consumers.
+        </p>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-dot"></div>
+        <span>06 / TABLE</span>
+        <h3>It becomes part of life.</h3>
+        <p>
+          At the end of the journey, agriculture becomes
+          food, nutrition, ingredients and everyday products.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+
+  <section class="cta reveal">
+
+    <h2>
+      The field is<br>
+      only the beginning.
+    </h2>
+
+    <p>
+      Explore the crops, people, technology, food systems
+      and landscapes that connect Tamil Nadu's agriculture
+      with the wider world.
+    </p>
+
+    <div class="cta-buttons">
+
+      <a href="agri-food.html">
+        Agriculture & Food →
+      </a>
+
+      <a href="crops.html">
+        Explore Crops →
+      </a>
+
+      <a href="technology.html">
+        Smart Farming →
+      </a>
+
+      <a href="farmer-life.html">
+        Farmer Life →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* Scroll Reveal */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* Subtle card movement */
+
+    document.querySelectorAll(
+      ".chain-item, .market-card, .why-card, .digital-item"
+    ).forEach(card => {
+
+      card.addEventListener("mousemove", e => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x =
+          (e.clientX - rect.left) / rect.width - 0.5;
+
+        const y =
+          (e.clientY - rect.top) / rect.height - 0.5;
+
+        card.style.transform =
+          `perspective(700px)
+           rotateX(${y * -3}deg)
+           rotateY(${x * 3}deg)
+           translateY(-6px)`;
+
+      });
+
+      card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
