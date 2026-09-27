@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crops of Tamil Nadu | UYIRMANN</title>
+
+    <meta
+        name="description"
+        content="Explore the crops of Tamil Nadu — rice, banana, coconut, sugarcane, millets, cotton, groundnut and more."
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           UYIRMANN CROPS PAGE
+           Additional styles for this page only
+           ===================================================== */
+
+        .crops-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(66, 150, 80, 0.14), transparent 30%),
+                radial-gradient(circle at 80% 30%, rgba(180, 130, 50, 0.10), transparent 30%),
+                #08080f;
+            color: #fff;
+        }
+
+        .crops-hero {
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 150px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crops-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    rgba(5, 20, 10, 0.60),
+                    rgba(5, 10, 8, 0.90)
+                ),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+            z-index: 0;
+        }
+
+        .crops-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 950px;
+        }
+
+        .crops-label {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.20);
+            border-radius: 100px;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .crops-hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.95;
+            margin: 0 0 25px;
+            letter-spacing: -4px;
+        }
+
+        .crops-hero h1 span {
+            background: linear-gradient(90deg, #d9f99d, #76c893, #f0d58a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .crops-hero p {
+            max-width: 700px;
+            margin: auto;
+            color: rgba(255,255,255,0.72);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .crop-controls {
+            max-width: 1200px;
+            margin: -35px auto 60px;
+            padding: 0 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .crop-search {
+            width: 100%;
+            padding: 20px 25px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(20,25,20,0.85);
+            color: white;
+            outline: none;
+            font-size: 16px;
+            backdrop-filter: blur(20px);
+            box-sizing: border-box;
+        }
+
+        .crop-search::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        .crop-search:focus {
+            border-color: rgba(120,200,130,0.6);
+            box-shadow: 0 0 30px rgba(80,160,90,0.12);
+        }
+
+        .crop-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px 100px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .crop-item {
+            position: relative;
+            min-height: 350px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.10);
+            background: #10150f;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .crop-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(150,220,150,0.45);
+        }
+
+        .crop-item-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .crop-item:hover .crop-item-image {
+            transform: scale(1.08);
+        }
+
+        .crop-item-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(3,8,4,0.95),
+                    rgba(3,8,4,0.15) 70%
+                );
+        }
+
+        .crop-item-content {
+            position: absolute;
+            left: 22px;
+            right: 22px;
+            bottom: 22px;
+            z-index: 2;
+        }
+
+        .crop-number {
+            color: rgba(255,255,255,0.45);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .crop-item h2 {
+            font-size: 27px;
+            margin: 8px 0;
+        }
+
+        .crop-item p {
+            color: rgba(255,255,255,0.68);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .crop-tag {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 11px;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 70px 20px;
+            color: rgba(255,255,255,0.55);
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            .crop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .crops-hero {
+                min-height: 55vh;
+                padding-top: 120px;
+            }
+
+            .crops-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .crops-hero p {
+                font-size: 15px;
+            }
+
+            .crop-grid {
+                grid-template-columns: 1fr;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .crop-controls {
+                padding: 0 18px;
+            }
+
+            .crop-item {
+                min-height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="crops-page">
+
+    <!-- HERO -->
+    <section class="crops-hero">
+
+        <div class="crops-hero-content">
+
+            <div class="crops-label">
+                UYIRMANN • CROPS
+            </div>
+
+            <h1>
+                Crops of <span>Tamil Nadu</span>
+            </h1>
+
+            <p>
+                From the golden paddy fields of the Cauvery delta
+                to coconut groves, banana plantations and millet lands —
+                discover the crops that grow from Tamil soil.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="crop-controls">
+
+        <input
+            type="search"
+            id="cropSearch"
+            class="crop-search"
+            placeholder="🔎 Search crops..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <!-- CROPS -->
+    <main class="crop-grid" id="cropGrid">
+
+        <!-- PADDY -->
+        <article class="crop-item" data-name="paddy rice nel">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1536631008558-2f2a2b8e7b2f?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">01 • GRAIN</span>
+
+                <h2>Paddy</h2>
+
+                <p>
+                    One of the most important food crops associated
+                    with the agricultural landscape of Tamil Nadu.
+                </p>
+
+                <span class="crop-tag">Rice • நெல்</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- BANANA -->
+        <article class="crop-item" data-name="banana vazhai">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">02 • FRUIT</span>
+
+                <h2>Banana</h2>
+
+                <p>
+                    A major fruit crop grown across many parts of
+                    Tamil Nadu in warm and irrigated conditions.
+                </p>
+
+                <span class="crop-tag">Fruit • வாழை</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- COCONUT -->
+        <article class="crop-item" data-name="coconut thengai">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">03 • TREE CROP</span>
+
+                <h2>Coconut</h2>
+
+                <p>
+                    Coconut palms form an important part of the
+                    agricultural and cultural landscape of Tamil Nadu.
+                </p>
+
+                <span class="crop-tag">Tree Crop • தென்னை</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- MILLET -->
+        <article class="crop-item" data-name="millet kambu ragi thinai">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1504306669098-0d4f7b5c7c9f?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">04 • GRAIN</span>
+
+                <h2>Millets</h2>
+
+                <p>
+                    Traditional grains including pearl millet,
+                    finger millet and several other millet varieties.
+                </p>
+
+                <span class="crop-tag">Traditional Grain • சிறுதானியம்</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- SUGARCANE -->
+        <article class="crop-item" data-name="sugarcane karumbu">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">05 • CASH CROP</span>
+
+                <h2>Sugarcane</h2>
+
+                <p>
+                    A tall crop cultivated for its sweet stalk
+                    and used extensively in sugar production.
+                </p>
+
+                <span class="crop-tag">Cash Crop • கரும்பு</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- COTTON -->
+        <article class="crop-item" data-name="cotton paruthi">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1596707324218-4f9e5f2c6f6b?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">06 • FIBRE</span>
+
+                <h2>Cotton</h2>
+
+                <p>
+                    A major fibre crop whose soft fibres are used
+                    in textile production.
+                </p>
+
+                <span class="crop-tag">Fibre • பருத்தி</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- GROUNDNUT -->
+        <article class="crop-item" data-name="groundnut peanut verkadalai">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1567892737950-30c9c9e9f4f6?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">07 • OILSEED</span>
+
+                <h2>Groundnut</h2>
+
+                <p>
+                    An important oilseed and food crop cultivated
+                    in several agricultural regions.
+                </p>
+
+                <span class="crop-tag">Oilseed • வேர்க்கடலை</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PULSES -->
+        <article class="crop-item" data-name="pulses dal legumes ulundhu payaru">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1515543904379-3d757afe72e9?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">08 • PULSE</span>
+
+                <h2>Pulses</h2>
+
+                <p>
+                    Various pulses provide an important source of
+                    plant protein and form part of Tamil farming.
+                </p>
+
+                <span class="crop-tag">Legumes • பருப்பு</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- VEGETABLES -->
+        <article class="crop-item" data-name="vegetables tomato brinjal onion">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">09 • VEGETABLE</span>
+
+                <h2>Vegetables</h2>
+
+                <p>
+                    Tomato, brinjal, onion and many other vegetables
+                    are cultivated throughout Tamil Nadu.
+                </p>
+
+                <span class="crop-tag">Vegetables • காய்கறிகள்</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- MAIZE -->
+        <article class="crop-item" data-name="maize corn cholam">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">10 • GRAIN</span>
+
+                <h2>Maize</h2>
+
+                <p>
+                    Maize is cultivated for food, feed and several
+                    agricultural and industrial uses.
+                </p>
+
+                <span class="crop-tag">Grain • மக்காச்சோளம்</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- SORGHUM -->
+        <article class="crop-item" data-name="sorghum cholam jowar">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">11 • MILLET</span>
+
+                <h2>Sorghum</h2>
+
+                <p>
+                    A hardy cereal crop traditionally grown in
+                    drier agricultural regions.
+                </p>
+
+                <span class="crop-tag">Millet • சோளம்</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- SESAME -->
+        <article class="crop-item" data-name="sesame gingelly ellu">
+
+            <div
+                class="crop-item-image"
+                style="background-image:url('https://images.unsplash.com/photo-1598514982901-ae627f8a4d5d?auto=format&fit=crop&w=1000&q=80');">
+            </div>
+
+            <div class="crop-item-content">
+
+                <span class="crop-number">12 • OILSEED</span>
+
+                <h2>Sesame</h2>
+
+                <p>
+                    Sesame is cultivated for its small oil-rich
+                    seeds and is part of traditional agriculture.
+                </p>
+
+                <span class="crop-tag">Oilseed • எள்</span>
+
+            </div>
+
+        </article>
+
+
+        <div class="no-results" id="noResults">
+            <h2>No crop found</h2>
+            <p>Try searching for another crop.</p>
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+    /* =====================================================
+       CROP SEARCH
+       ===================================================== */
+
+    const searchInput = document.getElementById("cropSearch");
+    const cropItems = document.querySelectorAll(".crop-item");
+    const noResults = document.getElementById("noResults");
+
+    searchInput.addEventListener("input", function () {
+
+        const searchValue = this.value
+            .toLowerCase()
+            .trim();
+
+        let visibleCount = 0;
+
+        cropItems.forEach(function (crop) {
+
+            const cropName = crop.dataset.name.toLowerCase();
+
+            if (cropName.includes(searchValue)) {
+
+                crop.style.display = "block";
+                visibleCount++;
+
+            } else {
+
+                crop.style.display = "none";
+
+            }
+
+        });
+
+        if (visibleCount === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
+
+    });
+
+
+    /* =====================================================
+       SIMPLE SCROLL REVEAL
+       ===================================================== */
+
+    const observer = new IntersectionObserver(
+        function(entries) {
+
+            entries.forEach(function(entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.08
+        }
+    );
+
+
+    cropItems.forEach(function(item) {
+
+        item.style.opacity = "0";
+        item.style.transform = "translateY(25px)";
+        item.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
+
+        observer.observe(item);
+
+    });
+</script>
+
+</body>
+</html>
