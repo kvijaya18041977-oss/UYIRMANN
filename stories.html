@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Stories | UYIRMANN</title>
+    <meta name="description"
+        content="Stories, challenges, traditions and innovations connected to farming in Tamil Nadu — UYIRMANN.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           UYIRMANN — FARMER STORIES
+        ========================================= */
+
+        .stories-page {
+            background:
+                radial-gradient(circle at 10% 10%, rgba(42, 124, 72, .16), transparent 30%),
+                radial-gradient(circle at 90% 30%, rgba(190, 150, 55, .10), transparent 28%),
+                #07100b;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* HERO */
+        .stories-hero {
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 130px 8% 90px;
+            background:
+                linear-gradient(90deg, rgba(4, 12, 7, .96), rgba(4, 12, 7, .55), rgba(4, 12, 7, .82)),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .stories-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #07100b, transparent 35%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: #d7b65b;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 7vw, 6.8rem);
+            line-height: .95;
+            margin: 0 0 25px;
+            font-weight: 900;
+            letter-spacing: -3px;
+        }
+
+        .hero-content h1 span {
+            color: #82c96b;
+        }
+
+        .hero-content p {
+            max-width: 680px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d1dbd2;
+        }
+
+        /* SECTION */
+        .story-section {
+            padding: 100px 8%;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin: 10px 0 18px;
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            color: #aebbb0;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* STORY GRID */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .story-card {
+            min-height: 460px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #0c1710;
+            transition: transform .4s ease, border-color .4s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(130,201,107,.45);
+        }
+
+        .story-image {
+            height: 290px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .story-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #0c1710, transparent 55%);
+        }
+
+        .story-card:nth-child(1) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1530507629858-e3759c3c8b8a?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-card:nth-child(2) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-card:nth-child(3) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1523742818616-eef8a9d4a5d5?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-card:nth-child(4) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-card:nth-child(5) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-card:nth-child(6) .story-image {
+            background-image:
+                url("https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=1000&q=80");
+        }
+
+        .story-content {
+            padding: 0 25px 28px;
+            margin-top: -15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-tag {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 30px;
+            background: rgba(130,201,107,.12);
+            color: #91d579;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 13px;
+        }
+
+        .story-content h3 {
+            font-size: 1.45rem;
+            margin: 0 0 10px;
+        }
+
+        .story-content p {
+            color: #9eaaa0;
+            line-height: 1.65;
+            font-size: .93rem;
+        }
+
+        /* FEATURE STORY */
+        .feature-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 580px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #0d1911;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .feature-image {
+            background:
+                linear-gradient(90deg, transparent, rgba(8,16,10,.2)),
+                url("https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=1400&q=85")
+                center/cover;
+        }
+
+        .feature-content {
+            padding: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-content h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.05;
+            margin: 15px 0 25px;
+        }
+
+        .feature-content p {
+            color: #aeb9af;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .story-points {
+            display: grid;
+            gap: 13px;
+            margin-top: 20px;
+        }
+
+        .story-point {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.035);
+        }
+
+        .story-point strong {
+            color: #8ed376;
+        }
+
+        /* CHALLENGES */
+        .challenge-section {
+            background:
+                linear-gradient(rgba(5,13,8,.93), rgba(5,13,8,.97)),
+                url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80")
+                center/cover fixed;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .challenge {
+            padding: 32px 25px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.035);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .challenge-number {
+            font-size: 2rem;
+            color: #d5b454;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .challenge h3 {
+            margin-bottom: 10px;
+        }
+
+        .challenge p {
+            color: #9ca99e;
+            line-height: 1.7;
+            font-size: .9rem;
+        }
+
+        /* QUOTE */
+        .story-quote {
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .story-quote .quote-mark {
+            font-size: 5rem;
+            color: #7ebf68;
+            line-height: .7;
+        }
+
+        .story-quote blockquote {
+            font-size: clamp(1.6rem, 4vw, 3rem);
+            line-height: 1.35;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+
+        .story-quote p {
+            color: #9ca99e;
+        }
+
+        /* CTA */
+        .stories-cta {
+            margin: 0 8% 100px;
+            padding: 75px 8%;
+            border-radius: 30px;
+            text-align: center;
+            background:
+                linear-gradient(120deg, rgba(36,93,52,.85), rgba(9,31,17,.95)),
+                url("https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+            border: 1px solid rgba(130,201,107,.2);
+        }
+
+        .stories-cta h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin: 0 0 15px;
+        }
+
+        .stories-cta p {
+            color: #d1ddd3;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            background: #8acb70;
+            color: #07100b;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform .3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .story-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .challenge-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-story {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-image {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .stories-hero {
+                min-height: 70vh;
+                padding: 120px 6% 70px;
+            }
+
+            .hero-content h1 {
+                letter-spacing: -1px;
+            }
+
+            .story-section {
+                padding: 70px 6%;
+            }
+
+            .story-grid,
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-content {
+                padding: 40px 28px;
+            }
+
+            .feature-image {
+                min-height: 300px;
+            }
+
+            .stories-cta {
+                margin: 0 6% 70px;
+                padding: 55px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="stories-page">
+
+    <!-- HERO -->
+    <section class="stories-hero">
+        <div class="hero-content reveal">
+            <span class="eyebrow">UYIRMANN • FARMER STORIES</span>
+
+            <h1>
+                Voices of the
+                <span>Field.</span>
+            </h1>
+
+            <p>
+                Behind every harvest is a person, a family, a tradition,
+                a challenge and a dream. Explore the human side of Tamil
+                Nadu's agricultural landscape.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="story-section">
+        <div class="section-heading reveal">
+            <span class="eyebrow">THE PEOPLE</span>
+
+            <h2>Every field has a story.</h2>
+
+            <p>
+                Agriculture is more than crops and soil. It is knowledge
+                passed between generations, decisions made under changing
+                weather, careful use of water and the determination to
+                keep producing food for communities.
+            </p>
+        </div>
+
+
+        <!-- STORY CARDS -->
+        <div class="story-grid">
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Paddy</span>
+
+                    <h3>The Paddy Farmer</h3>
+
+                    <p>
+                        From preparing the soil to watching the rice fields
+                        turn golden, paddy farming reflects patience,
+                        planning and close attention to water.
+                    </p>
+                </div>
+            </article>
+
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Millets</span>
+
+                    <h3>The Millet Grower</h3>
+
+                    <p>
+                        Traditional grains are finding new attention as
+                        farmers explore crops that can fit different soils,
+                        seasons and water conditions.
+                    </p>
+                </div>
+            </article>
+
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Innovation</span>
+
+                    <h3>The Young Agri Innovator</h3>
+
+                    <p>
+                        A new generation is bringing sensors, data,
+                        mobile applications and creative ideas into
+                        agricultural work.
+                    </p>
+                </div>
+            </article>
+
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Tradition</span>
+
+                    <h3>The Keeper of Seeds</h3>
+
+                    <p>
+                        Seed knowledge connects today's farms with
+                        agricultural traditions that have developed
+                        across generations.
+                    </p>
+                </div>
+            </article>
+
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Community</span>
+
+                    <h3>The Farming Family</h3>
+
+                    <p>
+                        Farming often involves more than one person.
+                        Families share knowledge, responsibilities and
+                        decisions throughout the agricultural season.
+                    </p>
+                </div>
+            </article>
+
+
+            <article class="story-card reveal">
+                <div class="story-image"></div>
+
+                <div class="story-content">
+                    <span class="story-tag">Coastal Farming</span>
+
+                    <h3>The Coastal Farmer</h3>
+
+                    <p>
+                        Near Tamil Nadu's coast, agriculture exists within
+                        a landscape shaped by water, weather and changing
+                        environmental conditions.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURE -->
+    <section class="story-section">
+        <div class="feature-story reveal">
+
+            <div class="feature-image"></div>
+
+            <div class="feature-content">
+                <span class="eyebrow">BEYOND THE HARVEST</span>
+
+                <h2>
+                    A farmer's work
+                    doesn't end at the field.
+                </h2>
+
+                <p>
+                    Farming involves decisions every day — what to plant,
+                    when to irrigate, how to protect the crop and when
+                    the harvest is ready.
+                </p>
+
+                <p>
+                    Traditional knowledge and modern technology can work
+                    together to help farmers respond to changing
+                    agricultural conditions.
+                </p>
+
+                <div class="story-points">
+
+                    <div class="story-point">
+                        <strong>01</strong>
+                        <span>Understand the land</span>
+                    </div>
+
+                    <div class="story-point">
+                        <strong>02</strong>
+                        <span>Respect the season</span>
+                    </div>
+
+                    <div class="story-point">
+                        <strong>03</strong>
+                        <span>Use resources carefully</span>
+                    </div>
+
+                    <div class="story-point">
+                        <strong>04</strong>
+                        <span>Adapt with knowledge</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CHALLENGES -->
+    <section class="story-section challenge-section">
+
+        <div class="section-heading reveal">
+            <span class="eyebrow">THE REALITY</span>
+
+            <h2>Farming takes resilience.</h2>
+
+            <p>
+                Agricultural decisions are influenced by many connected
+                factors. Understanding these challenges helps us understand
+                the people behind the food we eat.
+            </p>
+        </div>
+
+
+        <div class="challenge-grid">
+
+            <div class="challenge reveal">
+                <div class="challenge-number">01</div>
+
+                <h3>Water</h3>
+
+                <p>
+                    Irrigation planning and careful water management are
+                    important parts of agricultural decision-making.
+                </p>
+            </div>
+
+
+            <div class="challenge reveal">
+                <div class="challenge-number">02</div>
+
+                <h3>Weather</h3>
+
+                <p>
+                    Rainfall, temperature and seasonal variation can
+                    influence farming activities and crop growth.
+                </p>
+            </div>
+
+
+            <div class="challenge reveal">
+                <div class="challenge-number">03</div>
+
+                <h3>Soil</h3>
+
+                <p>
+                    Healthy soil provides the foundation for productive
+                    agriculture and long-term land stewardship.
+                </p>
+            </div>
+
+
+            <div class="challenge reveal">
+                <div class="challenge-number">04</div>
+
+                <h3>Markets</h3>
+
+                <p>
+                    Farmers also make decisions within a wider system
+                    involving transportation, demand and markets.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+    <section class="story-section">
+
+        <div class="story-quote reveal">
+
+            <div class="quote-mark">“</div>
+
+            <blockquote>
+                The story of agriculture is also the story of
+                people caring for the land that feeds them.
+            </blockquote>
+
+            <p>— UYIRMANN</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="stories-cta reveal">
+
+        <h2>From Farmer to Future.</h2>
+
+        <p>
+            Tamil Nadu's agricultural story continues to evolve —
+            connecting traditional wisdom, responsible farming and
+            new technology.
+        </p>
+
+        <a href="technology.html" class="cta-button">
+            Explore Smart Farming →
+        </a>
+
+    </section>
+
+</div>
+
+
+<script>
+    /* =========================================
+       UYIRMANN — STORIES PAGE SCRIPT
+    ========================================= */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+
+    /* CARD MOUSE EFFECT */
+
+    const cards = document.querySelectorAll(".story-card");
+
+    cards.forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateX =
+                ((y / rect.height) - 0.5) * -4;
+
+            const rotateY =
+                ((x / rect.width) - 0.5) * 4;
+
+            card.style.transform =
+                `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.transform =
+                "translateY(0) rotateX(0) rotateY(0)";
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
