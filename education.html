@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agricultural Knowledge | UYIRMANN</title>
+
+    <meta name="description"
+          content="Explore agricultural knowledge, farmer learning, traditional wisdom, modern farming and the future of agricultural education with UYIRMANN.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --green: #0d3b2a;
+            --green2: #1d6246;
+            --lime: #a4d96c;
+            --gold: #d7b66b;
+            --dark: #050806;
+            --dark2: #0a120d;
+            --text: #edf5ef;
+            --muted: #aab8ae;
+            --border: rgba(164,217,108,.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(35,100,65,.18), transparent 32%),
+                radial-gradient(circle at 90% 75%, rgba(140,190,90,.08), transparent 35%),
+                var(--dark);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .edu-hero {
+            min-height: 82vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2,8,5,.95),
+                    rgba(2,8,5,.7),
+                    rgba(2,8,5,.2)
+                ),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .edu-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0,
+                    transparent 120px,
+                    rgba(164,217,108,.025) 121px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            width: min(1180px, 92%);
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: .88;
+            letter-spacing: -5px;
+            margin: 18px 0;
+            max-width: 850px;
+        }
+
+        .hero-content h1 span {
+            color: var(--lime);
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            color: #d0ddd3;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background: var(--lime);
+            color: #071008;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(164,217,108,.2);
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .section {
+            width: min(1180px, 92%);
+            margin: auto;
+            padding: 100px 0;
+        }
+
+        .heading {
+            max-width: 760px;
+            margin-bottom: 50px;
+        }
+
+        .heading h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: .98;
+            letter-spacing: -2px;
+            margin: 14px 0 20px;
+        }
+
+        .heading p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .intro-image {
+            min-height: 480px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    transparent 45%,
+                    rgba(0,0,0,.75)
+                ),
+                url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+        }
+
+        .intro-content h3 {
+            font-size: 34px;
+            margin-top: 0;
+        }
+
+        .intro-content p {
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        /* =========================
+           KNOWLEDGE AREAS
+        ========================= */
+
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .knowledge-card {
+            min-height: 245px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.065),
+                    rgba(255,255,255,.02)
+                );
+            transition: .35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .knowledge-card::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            right: -55px;
+            top: -55px;
+            background: rgba(164,217,108,.07);
+        }
+
+        .knowledge-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(164,217,108,.45);
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+        }
+
+        .number {
+            color: var(--lime);
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .knowledge-card h3 {
+            font-size: 24px;
+            margin: 25px 0 12px;
+        }
+
+        .knowledge-card p {
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* =========================
+           LEARNING PATH
+        ========================= */
+
+        .learning-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(15,61,46,.32),
+                    rgba(0,0,0,.15)
+                );
+            border-top: 1px solid rgba(164,217,108,.08);
+            border-bottom: 1px solid rgba(164,217,108,.08);
+        }
+
+        .learning-path {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .learning-step {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px;
+        }
+
+        .learning-step strong {
+            display: block;
+            color: var(--lime);
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .learning-step span {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           TRADITION + MODERN
+        ========================= */
+
+        .knowledge-dual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .dual-card {
+            min-height: 400px;
+            padding: 45px;
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .traditional-card {
+            background:
+                linear-gradient(
+                    transparent 20%,
+                    rgba(3,8,5,.9)
+                ),
+                url("https://images.unsplash.com/photo-1595521624992-48a59aef95b3?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+        }
+
+        .modern-card {
+            background:
+                linear-gradient(
+                    transparent 20%,
+                    rgba(3,8,5,.9)
+                ),
+                url("https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+        }
+
+        .dual-card h3 {
+            font-size: 34px;
+            margin: 10px 0;
+        }
+
+        .dual-card p {
+            color: #d0ddd3;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =========================
+           FARMER LEARNING
+        ========================= */
+
+        .farmer-learning {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .big-number {
+            font-size: clamp(6rem, 14vw, 12rem);
+            line-height: .75;
+            font-weight: bold;
+            color: rgba(164,217,108,.12);
+        }
+
+        .farmer-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1;
+            margin: 0 0 20px;
+        }
+
+        .farmer-content p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .farmer-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .farmer-point {
+            padding: 20px;
+            border-left: 2px solid var(--lime);
+            background: rgba(255,255,255,.035);
+        }
+
+        .farmer-point strong {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .farmer-point span {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           YOUNG MINDS
+        ========================= */
+
+        .young-section {
+            min-height: 520px;
+            border-radius: 32px;
+            padding: 65px;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2,8,5,.94),
+                    rgba(2,8,5,.5)
+                ),
+                url("https://images.unsplash.com/photo-1523742816118-0d7f8c8e6a1b?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+        }
+
+        .young-content {
+            max-width: 680px;
+        }
+
+        .young-content h2 {
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            line-height: .95;
+            margin: 12px 0 20px;
+        }
+
+        .young-content p {
+            color: #d0ddd3;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           PRINCIPLES
+        ========================= */
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .principle {
+            padding: 30px 24px;
+            border-top: 2px solid var(--lime);
+            background: rgba(255,255,255,.035);
+        }
+
+        .principle h3 {
+            font-size: 21px;
+            margin-top: 0;
+        }
+
+        .principle p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FUTURE
+        ========================= */
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .future-card {
+            padding: 30px;
+            min-height: 220px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(164,217,108,.07),
+                    rgba(255,255,255,.025)
+                );
+            transition: .3s;
+        }
+
+        .future-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(164,217,108,.4);
+        }
+
+        .future-card h3 {
+            margin: 0 0 15px;
+            font-size: 23px;
+        }
+
+        .future-card p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            text-align: center;
+            padding: 110px 20px;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(35,105,68,.24),
+                    transparent 60%
+                );
+        }
+
+        .cta h2 {
+            font-size: clamp(2.7rem, 6vw, 5.5rem);
+            line-height: .95;
+            margin: 15px 0 20px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .cta-button {
+            padding: 14px 22px;
+            border: 1px solid rgba(164,217,108,.3);
+            border-radius: 50px;
+            background: rgba(255,255,255,.035);
+            transition: .3s;
+        }
+
+        .cta-button:hover {
+            background: var(--lime);
+            color: #071008;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .intro,
+            .farmer-learning {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .learning-path {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .knowledge-dual {
+                grid-template-columns: 1fr;
+            }
+
+            .principles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .future-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .young-section {
+                min-height: 450px;
+                padding: 45px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .edu-hero {
+                min-height: 78vh;
+            }
+
+            .hero-content h1 {
+                letter-spacing: -2px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .knowledge-grid,
+            .future-grid,
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-path {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .farmer-points {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image {
+                min-height: 320px;
+            }
+
+            .young-section {
+                padding: 35px 25px;
+            }
+
+            .dual-card {
+                min-height: 340px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="edu-hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                UYIRMANN / AGRICULTURAL KNOWLEDGE
+            </div>
+
+            <h1>
+                Learn.<br>
+                Grow.<br>
+                <span>Share.</span>
+            </h1>
+
+            <p>
+                Agriculture is knowledge passed from one generation
+                to another — and knowledge continues to evolve.
+                Explore the ideas, skills, traditions and technologies
+                shaping the future of farming.
+            </p>
+
+            <a href="#knowledge" class="hero-btn">
+                Explore Knowledge ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+    <section class="section">
+
+        <div class="intro reveal">
+
+            <div class="intro-image"></div>
+
+            <div class="intro-content">
+
+                <div class="eyebrow">
+                    Knowledge Is Part of Agriculture
+                </div>
+
+                <h3>
+                    A field can teach — but people can teach each other too.
+                </h3>
+
+                <p>
+                    Farming involves observation, experience, planning,
+                    adaptation and continuous learning.
+                </p>
+
+                <p>
+                    Traditional agricultural knowledge can exist alongside
+                    modern science, digital tools and new research.
+                </p>
+
+                <p>
+                    UYIRMANN brings these different worlds together
+                    to make agriculture easier to explore and understand.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KNOWLEDGE -->
+    <section class="section" id="knowledge">
+
+        <div class="heading reveal">
+
+            <div class="eyebrow">
+                The Knowledge Landscape
+            </div>
+
+            <h2>
+                Agriculture has<br>
+                many lessons.
+            </h2>
+
+            <p>
+                From understanding soil to exploring technology,
+                agricultural knowledge reaches far beyond simply
+                growing a crop.
+            </p>
+
+        </div>
+
+
+        <div class="knowledge-grid">
+
+            <article class="knowledge-card reveal">
+                <span class="number">01</span>
+                <h3>Soil</h3>
+                <p>
+                    Understand soil as the foundation of crop growth,
+                    water movement and agricultural productivity.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">02</span>
+                <h3>Water</h3>
+                <p>
+                    Learn how rainfall, storage, irrigation and
+                    water management connect to farming.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">03</span>
+                <h3>Crops</h3>
+                <p>
+                    Explore crop diversity, growing conditions,
+                    food systems and agricultural value.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">04</span>
+                <h3>Seasons</h3>
+                <p>
+                    Agriculture follows changing seasons, weather
+                    patterns and local field conditions.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">05</span>
+                <h3>Tradition</h3>
+                <p>
+                    Generations of farmers have developed knowledge
+                    about seeds, soil, water and seasonal rhythms.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">06</span>
+                <h3>Technology</h3>
+                <p>
+                    Sensors, data, AI and digital tools are creating
+                    new ways to understand agricultural systems.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">07</span>
+                <h3>Markets</h3>
+                <p>
+                    Agricultural learning also includes understanding
+                    how food moves from farms to consumers.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">08</span>
+                <h3>Climate</h3>
+                <p>
+                    Weather and climate knowledge can help explain
+                    how environmental conditions affect farming.
+                </p>
+            </article>
+
+            <article class="knowledge-card reveal">
+                <span class="number">09</span>
+                <h3>People</h3>
+                <p>
+                    Agriculture is ultimately connected to farmers,
+                    families, communities and consumers.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING PATH -->
+    <section class="learning-section">
+
+        <div class="section">
+
+            <div class="heading reveal">
+
+                <div class="eyebrow">
+                    A Learning Journey
+                </div>
+
+                <h2>
+                    Start with the land.
+                </h2>
+
+                <p>
+                    Agricultural understanding can grow step by step,
+                    from observing the land to exploring modern systems.
+                </p>
+
+            </div>
+
+
+            <div class="learning-path">
+
+                <div class="learning-step reveal">
+                    <strong>LAND</strong>
+                    <span>Understand soil and landscape.</span>
+                </div>
+
+                <div class="learning-step reveal">
+                    <strong>WATER</strong>
+                    <span>Understand rainfall and irrigation.</span>
+                </div>
+
+                <div class="learning-step reveal">
+                    <strong>CROP</strong>
+                    <span>Understand plants and growth.</span>
+                </div>
+
+                <div class="learning-step reveal">
+                    <strong>PEOPLE</strong>
+                    <span>Understand farmers and communities.</span>
+                </div>
+
+                <div class="learning-step reveal">
+                    <strong>FUTURE</strong>
+                    <span>Explore science and technology.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRADITION + MODERN -->
+    <section class="section">
+
+        <div class="heading reveal">
+
+            <div class="eyebrow">
+                Two Sources of Knowledge
+            </div>
+
+            <h2>
+                Old wisdom.<br>
+                New thinking.
+            </h2>
+
+        </div>
+
+
+        <div class="knowledge-dual">
+
+            <article class="dual-card traditional-card reveal">
+
+                <div class="eyebrow">
+                    Heritage
+                </div>
+
+                <h3>
+                    Traditional Knowledge
+                </h3>
+
+                <p>
+                    Knowledge built through generations of observation,
+                    experience, seasonal understanding and community practice.
+                </p>
+
+            </article>
+
+
+            <article class="dual-card modern-card reveal">
+
+                <div class="eyebrow">
+                    Innovation
+                </div>
+
+                <h3>
+                    Modern Knowledge
+                </h3>
+
+                <p>
+                    Science, research, digital tools, data and technology
+                    are creating new ways to understand agriculture.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FARMER LEARNING -->
+    <section class="section">
+
+        <div class="farmer-learning">
+
+            <div class="big-number reveal">
+                01
+            </div>
+
+            <div class="farmer-content reveal">
+
+                <div class="eyebrow">
+                    Learning From the Field
+                </div>
+
+                <h2>
+                    Experience is<br>
+                    knowledge too.
+                </h2>
+
+                <p>
+                    Farmers continuously observe their fields and respond
+                    to changing conditions. That practical experience is
+                    an important part of agricultural knowledge.
+                </p>
+
+                <div class="farmer-points">
+
+                    <div class="farmer-point">
+                        <strong>Observation</strong>
+                        <span>Watch the crop, soil and surroundings.</span>
+                    </div>
+
+                    <div class="farmer-point">
+                        <strong>Timing</strong>
+                        <span>Understand seasonal agricultural rhythms.</span>
+                    </div>
+
+                    <div class="farmer-point">
+                        <strong>Adaptation</strong>
+                        <span>Respond when conditions change.</span>
+                    </div>
+
+                    <div class="farmer-point">
+                        <strong>Experience</strong>
+                        <span>Learn from previous seasons and outcomes.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- YOUNG MINDS -->
+    <section class="section">
+
+        <div class="young-section reveal">
+
+            <div class="young-content">
+
+                <div class="eyebrow">
+                    The Next Generation
+                </div>
+
+                <h2>
+                    Young minds can<br>
+                    reshape agriculture.
+                </h2>
+
+                <p>
+                    Agriculture needs people who can connect biology,
+                    engineering, environmental science, data, design
+                    and technology.
+                </p>
+
+                <p>
+                    Learning about agriculture today can lead to new
+                    ideas for the farms of tomorrow.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRINCIPLES -->
+    <section class="section">
+
+        <div class="heading reveal">
+
+            <div class="eyebrow">
+                Better Agricultural Learning
+            </div>
+
+            <h2>
+                Knowledge should<br>
+                be connected.
+            </h2>
+
+        </div>
+
+
+        <div class="principles">
+
+            <div class="principle reveal">
+                <h3>Observe</h3>
+                <p>
+                    Begin by understanding what is happening
+                    around the field.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Question</h3>
+                <p>
+                    Ask why conditions change and how systems
+                    influence one another.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Connect</h3>
+                <p>
+                    Link traditional knowledge with science
+                    and modern technology.
+                </p>
+            </div>
+
+            <div class="principle reveal">
+                <h3>Share</h3>
+                <p>
+                    Knowledge becomes more valuable when it
+                    can reach other people.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section class="section">
+
+        <div class="heading reveal">
+
+            <div class="eyebrow">
+                Agriculture Education of Tomorrow
+            </div>
+
+            <h2>
+                The classroom<br>
+                can be a field.
+            </h2>
+
+        </div>
+
+
+        <div class="future-grid">
+
+            <article class="future-card reveal">
+                <h3>Digital Learning</h3>
+                <p>
+                    Agriculture can be explored through websites,
+                    apps, videos, maps and interactive platforms.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Field Data</h3>
+                <p>
+                    Real-world observations can become learning
+                    material for understanding agricultural systems.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Smart Farming</h3>
+                <p>
+                    Modern agricultural technologies create new
+                    areas for learning and experimentation.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Research</h3>
+                <p>
+                    Scientific research continues to expand what
+                    we know about crops, soil, water and climate.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Community Knowledge</h3>
+                <p>
+                    Farmers and communities can contribute practical
+                    knowledge to wider agricultural understanding.
+                </p>
+            </article>
+
+            <article class="future-card reveal">
+                <h3>Global Agriculture</h3>
+                <p>
+                    Digital connections allow agricultural ideas
+                    and knowledge to travel across regions and countries.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <div class="reveal">
+
+            <div class="eyebrow">
+                Continue Exploring UYIRMANN
+            </div>
+
+            <h2>
+                Knowledge<br>
+                keeps growing.
+            </h2>
+
+            <p>
+                Explore the land, crops, farmers, traditions and
+                technologies that connect Tamil soil with the world.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="traditional.html" class="cta-button">
+                    Tradition
+                </a>
+
+                <a href="technology.html" class="cta-button">
+                    Technology
+                </a>
+
+                <a href="crops.html" class="cta-button">
+                    Crops
+                </a>
+
+                <a href="innovation.html" class="cta-button">
+                    Innovation
+                </a>
+
+                <a href="about.html" class="cta-button">
+                    About UYIRMANN
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCRIPT -->
+    <script>
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+
+        /* CARD TILT */
+
+        const cards =
+            document.querySelectorAll(
+                ".knowledge-card, .future-card"
+            );
+
+        cards.forEach(card => {
+
+            card.addEventListener("mousemove", event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - .5) * -4;
+
+                const rotateY =
+                    ((x / rect.width) - .5) * 4;
+
+                card.style.transform =
+                    `perspective(700px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-6px)`;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
