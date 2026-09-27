@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agriculture Gallery | UYIRMANN</title>
+    <meta name="description"
+          content="Explore the visual world of Tamil Nadu agriculture through fields, crops, water, farmers and farming technology.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           UYIRMANN — AGRICULTURE GALLERY
+        ========================================= */
+
+        .gallery-page {
+            min-height: 100vh;
+            color: #fff;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(74,145,81,.15), transparent 28%),
+                radial-gradient(circle at 90% 50%, rgba(208,169,72,.09), transparent 30%),
+                #061009;
+        }
+
+        /* HERO */
+
+        .gallery-hero {
+            min-height: 75vh;
+            padding: 130px 8% 90px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,11,6,.96),
+                    rgba(3,11,6,.50),
+                    rgba(3,11,6,.82)
+                ),
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .gallery-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #061009, transparent 45%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            color: #d6b65d;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.2rem, 8vw, 7rem);
+            line-height: .9;
+            letter-spacing: -4px;
+            margin: 20px 0 25px;
+            font-weight: 900;
+        }
+
+        .hero-content h1 span {
+            color: #8dce72;
+        }
+
+        .hero-content p {
+            max-width: 700px;
+            color: #c9d4ca;
+            font-size: 1.12rem;
+            line-height: 1.85;
+        }
+
+        /* COMMON */
+
+        .gallery-section {
+            padding: 100px 8%;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1;
+            margin: 12px 0 18px;
+        }
+
+        .section-heading p {
+            color: #9daaa0;
+            line-height: 1.8;
+        }
+
+        /* FILTER */
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            border: 1px solid rgba(255,255,255,.10);
+            background: rgba(255,255,255,.04);
+            color: #c7d0c8;
+            padding: 11px 19px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #8dce72;
+            color: #061009;
+            border-color: #8dce72;
+        }
+
+        /* MASONRY-STYLE GALLERY */
+
+        .gallery-grid {
+            columns: 3 280px;
+            column-gap: 18px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            background: #0c1710;
+            border: 1px solid rgba(255,255,255,.06);
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform .6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 35px 20px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,.90));
+            opacity: 0;
+            transform: translateY(15px);
+            transition: .4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-overlay span {
+            color: #8dce72;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .gallery-overlay h3 {
+            margin: 6px 0 0;
+            font-size: 1.25rem;
+        }
+
+        /* FEATURE */
+
+        .visual-feature {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            min-height: 570px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #0b1710;
+        }
+
+        .visual-main {
+            background:
+                linear-gradient(90deg, transparent, rgba(5,14,8,.2)),
+                url("https://images.unsplash.com/photo-1523742818616-eef8a9d4a5d5?auto=format&fit=crop&w=1500&q=85")
+                center/cover;
+        }
+
+        .visual-text {
+            padding: 55px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .visual-text h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.05;
+            margin: 15px 0 20px;
+        }
+
+        .visual-text p {
+            color: #9eaaa0;
+            line-height: 1.8;
+        }
+
+        .visual-stat {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .visual-stat div {
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.04);
+        }
+
+        .visual-stat strong {
+            display: block;
+            color: #8dce72;
+            font-size: 1.4rem;
+        }
+
+        .visual-stat small {
+            color: #8f9b92;
+        }
+
+        /* PHOTO STORIES */
+
+        .photo-stories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .photo-story {
+            min-height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            transition: .4s ease;
+        }
+
+        .photo-story:hover {
+            transform: translateY(-7px);
+        }
+
+        .photo-story:nth-child(1) {
+            background-image:
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .photo-story:nth-child(2) {
+            background-image:
+                url("https://images.unsplash.com/photo-1530507629858-e3759c3c8b8a?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .photo-story:nth-child(3) {
+            background-image:
+                url("https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .photo-story:nth-child(4) {
+            background-image:
+                url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .photo-story::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.85), transparent 55%);
+        }
+
+        .photo-story-content {
+            position: absolute;
+            bottom: 22px;
+            left: 22px;
+            right: 22px;
+            z-index: 2;
+        }
+
+        .photo-story-content span {
+            color: #8dce72;
+            font-size: .7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .photo-story-content h3 {
+            margin: 7px 0 0;
+        }
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,.94);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 88vh;
+            border-radius: 15px;
+            object-fit: contain;
+            box-shadow: 0 20px 80px rgba(0,0,0,.6);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.2);
+            background: rgba(255,255,255,.08);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* CTA */
+
+        .gallery-cta {
+            margin: 0 8% 100px;
+            padding: 75px 8%;
+            text-align: center;
+            border-radius: 30px;
+
+            background:
+                linear-gradient(120deg, rgba(35,92,51,.90), rgba(7,29,15,.95)),
+                url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+        }
+
+        .gallery-cta h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin: 0 0 18px;
+        }
+
+        .gallery-cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #cbd7cd;
+            line-height: 1.8;
+        }
+
+        .gallery-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            background: #8dce72;
+            color: #061009;
+            text-decoration: none;
+            font-weight: 800;
+            transition: .3s;
+        }
+
+        .gallery-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .visual-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-main {
+                min-height: 400px;
+            }
+
+            .photo-stories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .gallery-hero {
+                padding: 120px 6% 70px;
+            }
+
+            .hero-content h1 {
+                letter-spacing: -2px;
+            }
+
+            .gallery-section {
+                padding: 70px 6%;
+            }
+
+            .gallery-grid {
+                columns: 1;
+            }
+
+            .visual-main {
+                min-height: 300px;
+            }
+
+            .visual-text {
+                padding: 35px 25px;
+            }
+
+            .photo-stories {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-cta {
+                margin: 0 6% 70px;
+                padding: 55px 25px;
+            }
+
+            .gallery-overlay {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="gallery-page">
+
+    <!-- HERO -->
+
+    <section class="gallery-hero">
+
+        <div class="hero-content reveal">
+
+            <span class="eyebrow">
+                UYIRMANN • VISUAL JOURNEY
+            </span>
+
+            <h1>
+                See the
+                <span>soil.</span>
+            </h1>
+
+            <p>
+                Fields, crops, water, people and technology —
+                explore the visual side of Tamil Nadu agriculture.
+                Every photograph tells a different part of the story.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section class="gallery-section">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">THE GALLERY</span>
+
+            <h2>A world shaped by farming.</h2>
+
+            <p>
+                Agriculture connects landscapes, communities and
+                generations. Explore different scenes from the
+                agricultural world through this visual collection.
+            </p>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div class="filter-bar reveal">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="fields">
+                Fields
+            </button>
+
+            <button class="filter-btn" data-filter="crops">
+                Crops
+            </button>
+
+            <button class="filter-btn" data-filter="people">
+                People
+            </button>
+
+            <button class="filter-btn" data-filter="nature">
+                Nature
+            </button>
+
+            <button class="filter-btn" data-filter="technology">
+                Technology
+            </button>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item reveal" data-category="fields">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85"
+                    alt="Agricultural field">
+
+                <div class="gallery-overlay">
+                    <span>Fields</span>
+                    <h3>The Open Field</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="crops">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534773728080-33d31da27ae5?auto=format&fit=crop&w=1000&q=85"
+                    alt="Green agricultural crops">
+
+                <div class="gallery-overlay">
+                    <span>Crops</span>
+                    <h3>Growing Green</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="nature">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Green plants in nature">
+
+                <div class="gallery-overlay">
+                    <span>Nature</span>
+                    <h3>Life Around the Field</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="people">
+
+                <img
+                    src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1000&q=85"
+                    alt="Person working in agriculture">
+
+                <div class="gallery-overlay">
+                    <span>People</span>
+                    <h3>Hands of Agriculture</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="fields">
+
+                <img
+                    src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=85"
+                    alt="Large crop field">
+
+                <div class="gallery-overlay">
+                    <span>Fields</span>
+                    <h3>Lines of the Land</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="technology">
+
+                <img
+                    src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1000&q=85"
+                    alt="Modern agriculture technology">
+
+                <div class="gallery-overlay">
+                    <span>Technology</span>
+                    <h3>Smart Agriculture</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="crops">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523742818616-eef8a9d4a5d5?auto=format&fit=crop&w=1000&q=85"
+                    alt="Crop field">
+
+                <div class="gallery-overlay">
+                    <span>Crops</span>
+                    <h3>Rows of Growth</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="nature">
+
+                <img
+                    src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=85"
+                    alt="Plants growing">
+
+                <div class="gallery-overlay">
+                    <span>Nature</span>
+                    <h3>Green Life</h3>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal" data-category="people">
+
+                <img
+                    src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1000&q=85"
+                    alt="Agricultural landscape">
+
+                <div class="gallery-overlay">
+                    <span>People</span>
+                    <h3>Life on the Land</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE -->
+
+    <section class="gallery-section">
+
+        <div class="visual-feature reveal">
+
+            <div class="visual-main"></div>
+
+            <div class="visual-text">
+
+                <span class="eyebrow">
+                    THE AGRICULTURAL LANDSCAPE
+                </span>
+
+                <h2>
+                    Where every shade of green has a story.
+                </h2>
+
+                <p>
+                    A farm is a living landscape. Soil, sunlight,
+                    water, plants, people and technology interact
+                    throughout the growing season.
+                </p>
+
+                <div class="visual-stat">
+
+                    <div>
+                        <strong>SOIL</strong>
+                        <small>The foundation</small>
+                    </div>
+
+                    <div>
+                        <strong>WATER</strong>
+                        <small>The lifeline</small>
+                    </div>
+
+                    <div>
+                        <strong>SEED</strong>
+                        <small>The beginning</small>
+                    </div>
+
+                    <div>
+                        <strong>HARVEST</strong>
+                        <small>The result</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PHOTO STORIES -->
+
+    <section class="gallery-section">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">FOUR PERSPECTIVES</span>
+
+            <h2>One landscape. Many stories.</h2>
+
+        </div>
+
+
+        <div class="photo-stories">
+
+            <div class="photo-story reveal">
+                <div class="photo-story-content">
+                    <span>01 • LAND</span>
+                    <h3>The Fields</h3>
+                </div>
+            </div>
+
+
+            <div class="photo-story reveal">
+                <div class="photo-story-content">
+                    <span>02 • CROP</span>
+                    <h3>The Growth</h3>
+                </div>
+            </div>
+
+
+            <div class="photo-story reveal">
+                <div class="photo-story-content">
+                    <span>03 • NATURE</span>
+                    <h3>The Ecosystem</h3>
+                </div>
+            </div>
+
+
+            <div class="photo-story reveal">
+                <div class="photo-story-content">
+                    <span>04 • FUTURE</span>
+                    <h3>The Innovation</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="gallery-cta reveal">
+
+        <h2>
+            From the field to the future.
+        </h2>
+
+        <p>
+            The agricultural landscape is changing. Discover the
+            technologies helping farmers observe, understand and
+            manage their fields with greater precision.
+        </p>
+
+        <a href="technology.html" class="gallery-btn">
+            Explore Technology →
+        </a>
+
+    </section>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+        ×
+    </button>
+
+    <img id="lightboxImage" src="" alt="Expanded agriculture photograph">
+
+</div>
+
+
+<script>
+    /* =========================================
+       UYIRMANN — GALLERY SCRIPT
+    ========================================= */
+
+    /* SCROLL REVEAL */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.10
+            }
+        );
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+
+    /* FILTER SYSTEM */
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+    const galleryItems =
+        document.querySelectorAll(".gallery-item");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            const filter =
+                button.dataset.filter;
+
+            galleryItems.forEach(item => {
+
+                if (
+                    filter === "all" ||
+                    item.dataset.category === filter
+                ) {
+
+                    item.style.display = "block";
+
+                    setTimeout(() => {
+                        item.style.opacity = "1";
+                    }, 20);
+
+                } else {
+
+                    item.style.opacity = "0";
+
+                    setTimeout(() => {
+                        item.style.display = "none";
+                    }, 250);
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+    /* LIGHTBOX */
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    const lightboxImage =
+        document.getElementById("lightboxImage");
+
+    const lightboxClose =
+        document.getElementById("lightboxClose");
+
+
+    galleryItems.forEach(item => {
+
+        const image =
+            item.querySelector("img");
+
+        item.addEventListener("click", () => {
+
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        });
+
+    });
+
+
+    function closeLightbox() {
+
+        lightbox.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    lightboxClose.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        event => {
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+        }
+    );
+</script>
+
+</body>
+</html>
