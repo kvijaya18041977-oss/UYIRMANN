@@ -4093,3 +4093,12 @@ footer {
     }
 
 }
+.farm-reset {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.farm-action:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
