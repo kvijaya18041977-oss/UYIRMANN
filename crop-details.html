@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Crop Explorer | UYIRMANN</title>
+<meta name="description" content="Explore the crops of Tamil Nadu with UYIRMANN — their importance, uses, farming context and connection to Tamil soil.">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ================================
+   UYIRMANN CROP EXPLORER
+================================ */
+
+:root{
+    --green:#0b3d2e;
+    --green2:#126b4f;
+    --lime:#9be15d;
+    --gold:#d6b45a;
+    --dark:#050908;
+    --card:rgba(255,255,255,.055);
+    --line:rgba(255,255,255,.11);
+    --text:#f2f7f3;
+    --muted:#aab9b1;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(18,107,79,.18), transparent 30%),
+        radial-gradient(circle at 90% 40%, rgba(155,225,93,.07), transparent 25%),
+        var(--dark);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+/* HERO */
+
+.crop-hero{
+    min-height:70vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(90deg,rgba(3,10,7,.95),rgba(3,10,7,.55),rgba(3,10,7,.25)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+}
+
+.crop-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,var(--dark),transparent 45%);
+}
+
+.crop-hero-content{
+    position:relative;
+    z-index:2;
+    width:min(1150px,92%);
+    margin:auto;
+    padding:100px 0 70px;
+}
+
+.eyebrow{
+    color:var(--lime);
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.crop-hero h1{
+    font-size:clamp(48px,8vw,100px);
+    line-height:.95;
+    margin:0;
+    max-width:900px;
+    letter-spacing:-4px;
+}
+
+.crop-hero h1 span{
+    color:var(--lime);
+}
+
+.crop-hero p{
+    max-width:650px;
+    color:#d1ddd6;
+    font-size:18px;
+    line-height:1.8;
+    margin-top:28px;
+}
+
+/* CONTAINER */
+
+.crop-container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* SEARCH */
+
+.explorer{
+    margin-top:-55px;
+    position:relative;
+    z-index:5;
+}
+
+.explorer-panel{
+    background:rgba(8,20,15,.88);
+    backdrop-filter:blur(18px);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
+
+.search-box{
+    display:flex;
+    gap:12px;
+}
+
+.search-box input{
+    flex:1;
+    padding:18px 20px;
+    border-radius:14px;
+    border:1px solid var(--line);
+    outline:none;
+    background:#0c1712;
+    color:white;
+    font-size:16px;
+}
+
+.search-box input:focus{
+    border-color:var(--lime);
+}
+
+.search-box button{
+    border:0;
+    border-radius:14px;
+    padding:0 25px;
+    background:var(--lime);
+    color:#07110c;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.crop-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.crop-nav button{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    color:#dce7e0;
+    padding:10px 15px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.crop-nav button:hover,
+.crop-nav button.active{
+    background:var(--lime);
+    color:#07110c;
+    border-color:var(--lime);
+}
+
+/* MAIN PROFILE */
+
+.profile{
+    margin:70px 0;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:35px;
+    align-items:stretch;
+}
+
+.crop-image{
+    min-height:540px;
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+    background-size:cover;
+    background-position:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.crop-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);
+}
+
+.image-label{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    z-index:2;
+}
+
+.image-label small{
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.image-label h2{
+    font-size:42px;
+    margin:8px 0 0;
+}
+
+/* PROFILE INFO */
+
+.profile-info{
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:var(--card);
+    padding:35px;
+}
+
+.profile-info h2{
+    margin-top:0;
+    font-size:40px;
+}
+
+.profile-info > p{
+    color:var(--muted);
+    line-height:1.8;
+    font-size:16px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin:20px 0 30px;
+}
+
+.tag{
+    padding:8px 13px;
+    border-radius:30px;
+    background:rgba(155,225,93,.1);
+    color:var(--lime);
+    border:1px solid rgba(155,225,93,.2);
+    font-size:13px;
+}
+
+.quick-facts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.fact{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(0,0,0,.15);
+}
+
+.fact span{
+    display:block;
+    color:#87968e;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.fact strong{
+    font-size:15px;
+}
+
+/* SECTIONS */
+
+.detail-sections{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.detail-card{
+    padding:27px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    transition:.3s;
+}
+
+.detail-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(155,225,93,.35);
+}
+
+.detail-number{
+    font-size:12px;
+    color:var(--lime);
+    letter-spacing:2px;
+}
+
+.detail-card h3{
+    margin:13px 0;
+    font-size:21px;
+}
+
+.detail-card p{
+    color:var(--muted);
+    line-height:1.75;
+    margin:0;
+}
+
+/* WHY IT MATTERS */
+
+.why{
+    margin:80px 0;
+    padding:65px;
+    border-radius:30px;
+    background:
+        linear-gradient(120deg,rgba(18,107,79,.5),rgba(6,17,12,.95)),
+        url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    border:1px solid rgba(155,225,93,.18);
+}
+
+.why span{
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.why h2{
+    font-size:clamp(32px,5vw,60px);
+    max-width:700px;
+    margin:15px 0;
+}
+
+.why p{
+    max-width:700px;
+    color:#d0ddd5;
+    line-height:1.8;
+}
+
+/* OTHER CROPS */
+
+.other{
+    margin-bottom:100px;
+}
+
+.section-heading{
+    margin-bottom:25px;
+}
+
+.section-heading span{
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.section-heading h2{
+    font-size:40px;
+    margin:10px 0;
+}
+
+.other-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.other-card{
+    padding:22px;
+    border-radius:18px;
+    border:1px solid var(--line);
+    background:var(--card);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.other-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--lime);
+}
+
+.other-card h3{
+    margin:0 0 8px;
+}
+
+.other-card p{
+    color:#89978f;
+    font-size:13px;
+    margin:0;
+}
+
+/* CTA */
+
+.crop-cta{
+    text-align:center;
+    padding:80px 20px;
+    border-top:1px solid var(--line);
+}
+
+.crop-cta h2{
+    font-size:clamp(35px,6vw,65px);
+    margin:0 0 15px;
+}
+
+.crop-cta p{
+    color:var(--muted);
+}
+
+.cta-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.cta-buttons a{
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:50px;
+    font-weight:bold;
+    border:1px solid var(--line);
+    color:white;
+    transition:.25s;
+}
+
+.cta-buttons a.primary{
+    background:var(--lime);
+    color:#07110c;
+    border-color:var(--lime);
+}
+
+.cta-buttons a:hover{
+    transform:translateY(-3px);
+}
+
+/* NO RESULT */
+
+.no-result{
+    display:none;
+    text-align:center;
+    padding:35px;
+    color:#87968e;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail-sections{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .other-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .crop-image{
+        min-height:400px;
+    }
+}
+
+@media(max-width:600px){
+
+    .crop-hero{
+        min-height:65vh;
+    }
+
+    .crop-hero h1{
+        letter-spacing:-2px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        padding:15px;
+    }
+
+    .detail-sections,
+    .other-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile-info{
+        padding:24px;
+    }
+
+    .profile-info h2{
+        font-size:32px;
+    }
+
+    .quick-facts{
+        grid-template-columns:1fr;
+    }
+
+    .why{
+        padding:35px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="crop-hero">
+    <div class="crop-hero-content reveal">
+        <div class="eyebrow">UYIRMANN / CROP EXPLORER</div>
+
+        <h1>
+            Know the<br>
+            <span>Crop.</span>
+        </h1>
+
+        <p>
+            Explore the crops connected to Tamil Nadu's agricultural landscape —
+            from paddy fields and coconut groves to millets, pulses, oilseeds and
+            modern agricultural production.
+        </p>
+    </div>
+</section>
+
+
+<!-- EXPLORER -->
+<section class="explorer">
+    <div class="crop-container">
+
+        <div class="explorer-panel reveal">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="cropSearch"
+                    placeholder="Search a crop... e.g. Paddy"
+                >
+
+                <button onclick="searchCrop()">
+                    Explore
+                </button>
+            </div>
+
+            <div class="crop-nav" id="cropNav"></div>
+
+            <div class="no-result" id="noResult">
+                No crop found. Try another name.
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROFILE -->
+<main class="crop-container">
+
+<section class="profile">
+
+    <div class="profile-grid">
+
+        <div
+            class="crop-image reveal"
+            id="cropImage"
+        >
+            <div class="image-label">
+                <small>Tamil Nadu Crop</small>
+                <h2 id="imageCropName">Paddy</h2>
+            </div>
+        </div>
+
+
+        <div class="profile-info reveal">
+
+            <div class="eyebrow">
+                CROP PROFILE
+            </div>
+
+            <h2 id="cropName">Paddy</h2>
+
+            <p id="cropOverview">
+                Paddy is one of the most important food crops associated with
+                Tamil Nadu and plays a major role in the state's agricultural
+                landscape.
+            </p>
+
+            <div class="tags" id="cropTags"></div>
+
+            <div class="quick-facts">
+
+                <div class="fact">
+                    <span>Category</span>
+                    <strong id="cropCategory">Food Crop</strong>
+                </div>
+
+                <div class="fact">
+                    <span>Known For</span>
+                    <strong id="cropKnown">Rice production</strong>
+                </div>
+
+                <div class="fact">
+                    <span>Farm Context</span>
+                    <strong id="cropContext">Wetland agriculture</strong>
+                </div>
+
+                <div class="fact">
+                    <span>Importance</span>
+                    <strong id="cropImportance">Food & livelihood</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="detail-sections">
+
+        <article class="detail-card reveal">
+            <div class="detail-number">01 / OVERVIEW</div>
+            <h3>What is it?</h3>
+            <p id="detailOverview"></p>
+        </article>
+
+        <article class="detail-card reveal">
+            <div class="detail-number">02 / CONDITIONS</div>
+            <h3>Growing Context</h3>
+            <p id="detailConditions"></p>
+        </article>
+
+        <article class="detail-card reveal">
+            <div class="detail-number">03 / VALUE</div>
+            <h3>Why it matters</h3>
+            <p id="detailValue"></p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- WHY -->
+<section class="why reveal">
+
+    <span>Beyond the Field</span>
+
+    <h2>
+        Every crop carries a story.
+    </h2>
+
+    <p id="whyText">
+        A crop is more than something grown in a field. It can connect food,
+        livelihoods, landscapes, traditions, markets and agricultural knowledge.
+        Understanding crops helps us understand the people and places behind
+        our food.
+    </p>
+
+</section>
+
+
+<!-- OTHER CROPS -->
+<section class="other">
+
+    <div class="section-heading reveal">
+        <span>Explore More</span>
+        <h2>Other crops</h2>
+    </div>
+
+    <div class="other-grid" id="otherCrops"></div>
+
+</section>
+
+</main>
+
+
+<!-- CTA -->
+<section class="crop-cta">
+
+    <div class="crop-container">
+
+        <div class="reveal">
+
+            <div class="eyebrow">
+                KEEP EXPLORING
+            </div>
+
+            <h2>
+                From crop to<br>
+                <span style="color:var(--lime)">future.</span>
+            </h2>
+
+            <p>
+                Discover farming seasons, traditional knowledge and the
+                technologies shaping tomorrow's agriculture.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="crops.html" class="primary">
+                    Crop Collection
+                </a>
+
+                <a href="seasons.html">
+                    Farming Seasons
+                </a>
+
+                <a href="technology.html">
+                    Smart Farming
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================
+   UYIRMANN CROP DATABASE
+===================================== */
+
+const crops = {
+
+    paddy:{
+        name:"Paddy",
+        image:"https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1200&q=85",
+        category:"Food Crop",
+        known:"Rice production",
+        context:"Wetland agriculture",
+        importance:"Food & livelihood",
+        tags:["Rice","Staple Food","Wetland","Tamil Nadu"],
+        overview:"Paddy is a major food crop in Tamil Nadu and an important part of the state's agricultural identity. After processing, paddy becomes rice, a staple food for millions of people.",
+        conditions:"Paddy is commonly associated with areas where water can be managed during cultivation. Its production is closely connected with irrigation systems, rainfall patterns, soil conditions and seasonal farming.",
+        value:"Rice supports food supply, farming communities, agricultural markets and many activities connected with processing and distribution.",
+        why:"Paddy fields are deeply connected with Tamil Nadu's farming landscape. They show how land, water, seasons and farmer knowledge work together."
+    },
+
+    banana:{
+        name:"Banana",
+        image:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=1200&q=85",
+        category:"Fruit Crop",
+        known:"Fruit & food",
+        context:"Irrigated cultivation",
+        importance:"Food & trade",
+        tags:["Fruit","Plantation","Food","Trade"],
+        overview:"Banana is an important fruit crop grown in several parts of Tamil Nadu. Different banana varieties are valued for food, cooking and local markets.",
+        conditions:"Banana generally grows in warm conditions and benefits from suitable soil, moisture and careful crop management. Farming practices vary according to local conditions and variety.",
+        value:"Banana contributes to food supply and provides income opportunities for farming and market communities.",
+        why:"A banana plant can connect a farm to homes, markets, food businesses and regional agricultural trade."
+    },
+
+    coconut:{
+        name:"Coconut",
+        image:"https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=85",
+        category:"Plantation Crop",
+        known:"Nut, oil & fibre",
+        context:"Long-term cultivation",
+        importance:"Food & livelihoods",
+        tags:["Coconut","Oil","Fibre","Plantation"],
+        overview:"Coconut is a versatile crop used for food, oil, fibre and many traditional products. Coconut palms are a familiar part of tropical agricultural landscapes.",
+        conditions:"Coconut cultivation depends on suitable warmth, soil conditions and access to moisture. Palms require long-term care compared with many seasonal crops.",
+        value:"Different parts of the coconut palm can have economic uses, making it valuable to farmers and processing communities.",
+        why:"The coconut palm demonstrates how one crop can provide several useful products and support different parts of an agricultural economy."
+    },
+
+    millets:{
+        name:"Millets",
+        image:"https://images.unsplash.com/photo-1599909533730-f9d7a8d8b7a8?auto=format&fit=crop&w=1200&q=85",
+        category:"Nutri-Cereal",
+        known:"Traditional grains",
+        context:"Dryland farming",
+        importance:"Food diversity",
+        tags:["Millets","Nutrition","Dryland","Heritage"],
+        overview:"Millets are a group of hardy grains with a long history in traditional agriculture. They include crops such as finger millet, pearl millet and foxtail millet.",
+        conditions:"Many millet crops are suited to farming environments where water availability can be more limited than in intensive wetland cultivation.",
+        value:"Millets contribute to food diversity and are increasingly discussed as part of resilient and diversified agricultural systems.",
+        why:"Millets connect traditional food knowledge with modern interest in diverse crops and climate-aware agriculture."
+    },
+
+    sugarcane:{
+        name:"Sugarcane",
+        image:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=85",
+        category:"Commercial Crop",
+        known:"Sugar production",
+        context:"Irrigated agriculture",
+        importance:"Industry & farming",
+        tags:["Sugar","Commercial","Industry","Crop"],
+        overview:"Sugarcane is a tall grass cultivated primarily for the production of sugar and related products. It is an important commercial crop in suitable agricultural regions.",
+        conditions:"Sugarcane has a relatively long crop cycle and depends on appropriate water availability, soil conditions and crop management.",
+        value:"Sugarcane connects farms with sugar mills, processing industries, transport networks and agricultural markets.",
+        why:"Sugarcane shows the connection between farming and large-scale food processing industries."
+    },
+
+    cotton:{
+        name:"Cotton",
+        image:"https://images.unsplash.com/photo-1586771107445-d3ca888129ce?auto=format&fit=crop&w=1200&q=85",
+        category:"Fibre Crop",
+        known:"Natural fibre",
+        context:"Commercial farming",
+        importance:"Textile industry",
+        tags:["Fibre","Textile","Commercial","Cotton"],
+        overview:"Cotton is cultivated for its natural fibre, which is used extensively in textile production. It is an important crop within the agricultural and industrial chain.",
+        conditions:"Cotton production depends on suitable climate, soil, water availability and protection from crop pests and diseases.",
+        value:"Cotton connects farmers to ginning, spinning, textile manufacturing and clothing industries.",
+        why:"The journey of cotton demonstrates how a field crop can become part of clothing and textile products around the world."
+    },
+
+    groundnut:{
+        name:"Groundnut",
+        image:"https://images.unsplash.com/photo-1599599810694-b5ac4dd8d6f4?auto=format&fit=crop&w=1200&q=85",
+        category:"Oilseed Crop",
+        known:"Oil & food",
+        context:"Field cultivation",
+        importance:"Food & oil",
+        tags:["Oilseed","Food","Protein","Field Crop"],
+        overview:"Groundnut is an important oilseed and food crop. The seeds are used for food and oil, making the crop valuable in both household and commercial settings.",
+        conditions:"Groundnut is commonly grown in well-drained soils and requires crop management suited to local rainfall and irrigation conditions.",
+        value:"Groundnut contributes to food, edible oil production and agricultural income.",
+        why:"Groundnut demonstrates the many ways a single crop can contribute to both direct food consumption and processing."
+    },
+
+    pulses:{
+        name:"Pulses",
+        image:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=1200&q=85",
+        category:"Food Crop",
+        known:"Protein-rich grains",
+        context:"Field & dryland farming",
+        importance:"Food diversity",
+        tags:["Pulses","Protein","Food","Soil"],
+        overview:"Pulses include crops such as green gram, black gram, red gram and other edible legumes. They are important sources of plant-based protein.",
+        conditions:"Different pulse crops suit different environments. Many are incorporated into diverse cropping systems and can fit into seasonal agricultural cycles.",
+        value:"Pulses support dietary diversity and form an important part of food systems.",
+        why:"Pulses show how crop diversity can contribute to both human nutrition and more varied farming systems."
+    },
+
+    vegetables:{
+        name:"Vegetables",
+        image:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=85",
+        category:"Horticultural Crop",
+        known:"Fresh food",
+        context:"Intensive cultivation",
+        importance:"Daily nutrition",
+        tags:["Vegetables","Horticulture","Food","Markets"],
+        overview:"Vegetables represent a wide group of crops grown for fresh consumption. Tamil Nadu farms produce many types of vegetables for local and regional markets.",
+        conditions:"Vegetable production varies greatly by crop. Farmers manage soil, water, nutrients, pests and harvesting according to the specific vegetable being grown.",
+        value:"Vegetables are closely connected to everyday food supply and local agricultural markets.",
+        why:"Vegetable farms create a direct connection between agricultural fields, markets and everyday meals."
+    },
+
+    maize:{
+        name:"Maize",
+        image:"https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=1200&q=85",
+        category:"Cereal Crop",
+        known:"Grain & feed",
+        context:"Field cultivation",
+        importance:"Food & feed",
+        tags:["Maize","Cereal","Feed","Industry"],
+        overview:"Maize is a versatile cereal crop used for food, animal feed and various industrial applications.",
+        conditions:"Maize can be cultivated under different farming systems depending on local climate, soil and water conditions.",
+        value:"Its uses across food, feed and industry make maize an important part of agricultural supply chains.",
+        why:"Maize demonstrates how one crop can serve multiple purposes across food and agricultural industries."
+    },
+
+    sorghum:{
+        name:"Sorghum",
+        image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85",
+        category:"Millet / Cereal",
+        known:"Grain & dryland crop",
+        context:"Dryland farming",
+        importance:"Food & feed",
+        tags:["Sorghum","Dryland","Grain","Traditional"],
+        overview:"Sorghum is a cereal crop that has long been associated with dryland agriculture. It can be used for food and animal feed.",
+        conditions:"Sorghum is valued in agricultural systems where crops need to perform under relatively challenging water conditions, although exact requirements vary by variety and location.",
+        value:"Sorghum contributes to food and feed systems and adds diversity to agricultural production.",
+        why:"Sorghum represents the knowledge of growing useful crops in landscapes where water availability can be variable."
+    },
+
+    sesame:{
+        name:"Sesame",
+        image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=85",
+        category:"Oilseed Crop",
+        known:"Sesame oil & seeds",
+        context:"Field cultivation",
+        importance:"Food & oil",
+        tags:["Sesame","Oilseed","Traditional","Food"],
+        overview:"Sesame is an oilseed crop cultivated for its seeds and oil. It has a long history as a food crop in South Asian agricultural traditions.",
+        conditions:"Sesame can be grown in different seasonal farming systems depending on local climate, soil and moisture conditions.",
+        value:"Sesame seeds and oil are used in food preparation and contribute to agricultural markets.",
+        why:"Sesame connects traditional food culture with crop production and oil processing."
+    }
+
+};
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const cropName = document.getElementById("cropName");
+const cropOverview = document.getElementById("cropOverview");
+const cropCategory = document.getElementById("cropCategory");
+const cropKnown = document.getElementById("cropKnown");
+const cropContext = document.getElementById("cropContext");
+const cropImportance = document.getElementById("cropImportance");
+const cropTags = document.getElementById("cropTags");
+
+const detailOverview = document.getElementById("detailOverview");
+const detailConditions = document.getElementById("detailConditions");
+const detailValue = document.getElementById("detailValue");
+
+const cropImage = document.getElementById("cropImage");
+const imageCropName = document.getElementById("imageCropName");
+const whyText = document.getElementById("whyText");
+
+const cropNav = document.getElementById("cropNav");
+const otherCrops = document.getElementById("otherCrops");
+
+
+/* =====================================
+   BUILD NAVIGATION
+===================================== */
+
+Object.keys(crops).forEach(key => {
+
+    const button = document.createElement("button");
+
+    button.textContent = crops[key].name;
+
+    button.dataset.crop = key;
+
+    button.addEventListener("click", () => {
+        showCrop(key);
+    });
+
+    cropNav.appendChild(button);
+
+});
+
+
+/* =====================================
+   SHOW CROP
+===================================== */
+
+function showCrop(key){
+
+    const crop = crops[key];
+
+    if(!crop) return;
+
+    cropName.textContent = crop.name;
+    imageCropName.textContent = crop.name;
+
+    cropOverview.textContent = crop.overview;
+
+    cropCategory.textContent = crop.category;
+    cropKnown.textContent = crop.known;
+    cropContext.textContent = crop.context;
+    cropImportance.textContent = crop.importance;
+
+    detailOverview.textContent = crop.overview;
+    detailConditions.textContent = crop.conditions;
+    detailValue.textContent = crop.value;
+
+    whyText.textContent = crop.why;
+
+    cropImage.style.backgroundImage =
+        `url("${crop.image}")`;
+
+    cropTags.innerHTML = "";
+
+    crop.tags.forEach(tag => {
+
+        const span = document.createElement("span");
+
+        span.className = "tag";
+
+        span.textContent = tag;
+
+        cropTags.appendChild(span);
+
+    });
+
+
+    document.querySelectorAll(".crop-nav button")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.crop === key
+            );
+
+        });
+
+
+    buildOtherCrops(key);
+
+    window.scrollTo({
+        top:document.querySelector(".profile").offsetTop - 50,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   OTHER CROPS
+===================================== */
+
+function buildOtherCrops(current){
+
+    otherCrops.innerHTML = "";
+
+    Object.keys(crops)
+        .filter(key => key !== current)
+        .slice(0,8)
+        .forEach(key => {
+
+            const crop = crops[key];
+
+            const card = document.createElement("div");
+
+            card.className = "other-card";
+
+            card.innerHTML = `
+                <h3>${crop.name}</h3>
+                <p>${crop.category}</p>
+            `;
+
+            card.addEventListener("click", () => {
+                showCrop(key);
+            });
+
+            otherCrops.appendChild(card);
+
+        });
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+function searchCrop(){
+
+    const input =
+        document.getElementById("cropSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const noResult =
+        document.getElementById("noResult");
+
+    if(!input){
+
+        noResult.style.display = "none";
+
+        showCrop("paddy");
+
+        return;
+    }
+
+
+    const found =
+        Object.keys(crops).find(key => {
+
+            const crop = crops[key];
+
+            return (
+                crop.name.toLowerCase().includes(input) ||
+                crop.category.toLowerCase().includes(input) ||
+                crop.tags.some(tag =>
+                    tag.toLowerCase().includes(input)
+                )
+            );
+
+        });
+
+
+    if(found){
+
+        noResult.style.display = "none";
+
+        showCrop(found);
+
+    }else{
+
+        noResult.style.display = "block";
+
+    }
+
+}
+
+
+/* =====================================
+   ENTER KEY SEARCH
+===================================== */
+
+document
+    .getElementById("cropSearch")
+    .addEventListener("keydown", event => {
+
+        if(event.key === "Enter"){
+            searchCrop();
+        }
+
+    });
+
+
+/* =====================================
+   SCROLL REVEAL
+===================================== */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    revealObserver.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el => revealObserver.observe(el));
+
+
+/* =====================================
+   INITIAL CROP
+===================================== */
+
+showCrop("paddy");
+
+</script>
+
+</body>
+</html>
