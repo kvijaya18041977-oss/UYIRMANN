@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search | UYIRMANN</title>
+    <meta name="description" content="Search UYIRMANN for crops, districts, farming, technology, soil, water, stories and more.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           UYIRMANN SEARCH PAGE
+        ===================================================== */
+
+        :root {
+            --search-bg: #050b08;
+            --search-card: rgba(14, 28, 22, 0.82);
+            --search-border: rgba(115, 180, 135, 0.18);
+            --search-green: #7ed39a;
+            --search-light: #dff5e5;
+            --search-muted: #91a79a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(49, 116, 72, 0.16), transparent 30%),
+                radial-gradient(circle at 85% 35%, rgba(34, 92, 57, 0.12), transparent 30%),
+                var(--search-bg);
+            color: var(--search-light);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HERO */
+
+        .search-hero {
+            min-height: 58vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 70px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    rgba(3, 10, 6, 0.68),
+                    rgba(3, 10, 6, 0.88)
+                ),
+                url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+        }
+
+        .search-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent 49%,
+                    rgba(126, 211, 154, 0.05) 50%,
+                    transparent 51%
+                );
+            background-size: 80px 80px;
+            opacity: 0.35;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(126, 211, 154, 0.3);
+            border-radius: 50px;
+            color: var(--search-green);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            background: rgba(5, 18, 10, 0.5);
+        }
+
+        .search-hero h1 {
+            font-size: clamp(45px, 8vw, 92px);
+            margin: 0;
+            line-height: 0.95;
+            letter-spacing: -4px;
+            font-weight: 800;
+        }
+
+        .search-hero h1 span {
+            color: var(--search-green);
+        }
+
+        .search-hero p {
+            max-width: 680px;
+            margin: 28px auto 0;
+            color: #b6c8bc;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* SEARCH BOX */
+
+        .search-wrapper {
+            max-width: 850px;
+            margin: -42px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid rgba(126, 211, 154, 0.28);
+            border-radius: 20px;
+            background: rgba(8, 20, 13, 0.94);
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 20px 70px rgba(0, 0, 0, 0.45),
+                0 0 35px rgba(60, 150, 85, 0.08);
+        }
+
+        .search-icon {
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+            flex-shrink: 0;
+        }
+
+        #searchInput {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            padding: 15px 5px;
+        }
+
+        #searchInput::placeholder {
+            color: #71877a;
+        }
+
+        .clear-btn {
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(126, 211, 154, 0.08);
+            color: #9ab7a2;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.25s ease;
+        }
+
+        .clear-btn:hover {
+            background: rgba(126, 211, 154, 0.18);
+            color: white;
+        }
+
+        /* CONTENT */
+
+        .search-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 75px 20px 100px;
+        }
+
+        .search-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .search-heading h2 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .result-count {
+            color: var(--search-muted);
+            font-size: 14px;
+        }
+
+        /* FILTERS */
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--search-border);
+            background: rgba(13, 29, 21, 0.7);
+            color: #9eb4a5;
+            border-radius: 50px;
+            padding: 10px 17px;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(92, 171, 113, 0.16);
+            border-color: rgba(126, 211, 154, 0.5);
+            color: var(--search-green);
+        }
+
+        /* RESULTS GRID */
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .result-card {
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--search-border);
+            border-radius: 22px;
+            background: var(--search-card);
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        .result-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(126, 211, 154, 0.45);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-image {
+            height: 125px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(5, 11, 8, 0.95)
+            );
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-type {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--search-green);
+            margin-bottom: 8px;
+        }
+
+        .card-content h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+
+        .card-content p {
+            margin: 0 0 16px;
+            color: #8fa497;
+            line-height: 1.55;
+            font-size: 14px;
+        }
+
+        .card-link {
+            color: var(--search-green);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* EMPTY */
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+            border: 1px dashed rgba(126, 211, 154, 0.2);
+            border-radius: 24px;
+            background: rgba(10, 23, 16, 0.45);
+        }
+
+        .no-results .big-icon {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .no-results h3 {
+            margin: 0 0 10px;
+            font-size: 26px;
+        }
+
+        .no-results p {
+            margin: 0;
+            color: var(--search-muted);
+        }
+
+        /* FEATURE */
+
+        .search-feature {
+            margin-top: 90px;
+            padding: 55px;
+            border-radius: 30px;
+            border: 1px solid rgba(126, 211, 154, 0.15);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(31, 74, 47, 0.35),
+                    rgba(7, 18, 11, 0.8)
+                );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-feature::after {
+            content: "UYIRMANN";
+            position: absolute;
+            right: -30px;
+            bottom: -35px;
+            font-size: 110px;
+            font-weight: 900;
+            color: rgba(126, 211, 154, 0.035);
+            pointer-events: none;
+        }
+
+        .search-feature h2 {
+            margin: 0 0 15px;
+            font-size: 38px;
+        }
+
+        .search-feature p {
+            max-width: 700px;
+            color: #9caf9f;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* QUICK LINKS */
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .quick-link {
+            padding: 11px 17px;
+            border-radius: 50px;
+            border: 1px solid rgba(126, 211, 154, 0.18);
+            color: #a9bbaf;
+            background: rgba(5, 15, 9, 0.45);
+            transition: 0.25s ease;
+        }
+
+        .quick-link:hover {
+            color: var(--search-green);
+            border-color: rgba(126, 211, 154, 0.45);
+            transform: translateY(-2px);
+        }
+
+        /* BACK HOME */
+
+        .back-home {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(126, 211, 154, 0.28);
+            color: var(--search-green);
+            transition: 0.25s ease;
+        }
+
+        .home-btn:hover {
+            background: rgba(126, 211, 154, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ANIMATION */
+
+        @keyframes cardIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .search-feature {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .search-hero {
+                min-height: 52vh;
+                padding-top: 90px;
+            }
+
+            .search-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .search-hero p {
+                font-size: 16px;
+            }
+
+            .search-wrapper {
+                margin-top: -35px;
+            }
+
+            .search-box {
+                border-radius: 17px;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search-feature {
+                padding: 32px 22px;
+                border-radius: 22px;
+            }
+
+            .search-feature h2 {
+                font-size: 29px;
+            }
+
+            .filters {
+                gap: 7px;
+            }
+
+            .filter-btn {
+                font-size: 13px;
+                padding: 9px 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="search-hero">
+        <div class="hero-content">
+
+            <div class="hero-label">
+                UYIRMANN • Explore Agriculture
+            </div>
+
+            <h1>
+                Search <span>UYIRMANN.</span>
+            </h1>
+
+            <p>
+                Explore Tamil Nadu's crops, districts, farming traditions,
+                soil, water, technology, stories and the future of agriculture.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- SEARCH BOX -->
+    <div class="search-wrapper">
+
+        <div class="search-box">
+
+            <div class="search-icon">
+                🔎
+            </div>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search crops, districts, farming, technology..."
+                autocomplete="off"
+            >
+
+            <button
+                class="clear-btn"
+                id="clearSearch"
+                aria-label="Clear search"
+            >
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="search-main">
+
+        <div class="search-heading">
+
+            <div>
+                <h2>Explore the knowledge.</h2>
+            </div>
+
+            <div class="result-count" id="resultCount">
+                23 results
+            </div>
+
+        </div>
+
+
+        <!-- FILTERS -->
+        <div class="filters">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="crops">
+                🌾 Crops
+            </button>
+
+            <button class="filter-btn" data-filter="districts">
+                🗺️ Districts
+            </button>
+
+            <button class="filter-btn" data-filter="farming">
+                🚜 Farming
+            </button>
+
+            <button class="filter-btn" data-filter="nature">
+                🌱 Nature
+            </button>
+
+            <button class="filter-btn" data-filter="technology">
+                🤖 Technology
+            </button>
+
+            <button class="filter-btn" data-filter="culture">
+                🪔 Culture
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div class="results-grid" id="resultsGrid"></div>
+
+
+        <!-- NO RESULTS -->
+        <div class="no-results" id="noResults">
+
+            <div class="big-icon">
+                🌱
+            </div>
+
+            <h3>No results found</h3>
+
+            <p>
+                Try another word such as
+                <strong>paddy</strong>,
+                <strong>water</strong>,
+                <strong>soil</strong>,
+                <strong>technology</strong> or
+                <strong>farmer</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE -->
+        <section class="search-feature">
+
+            <h2>Don't know where to start?</h2>
+
+            <p>
+                Begin with one part of the agricultural journey.
+                Discover the crops grown across Tamil Nadu,
+                explore its farming regions, understand traditional
+                knowledge, or see how technology is changing agriculture.
+            </p>
+
+            <div class="quick-links">
+
+                <a href="crops.html" class="quick-link">
+                    🌾 Explore Crops
+                </a>
+
+                <a href="districts.html" class="quick-link">
+                    🗺️ Explore Districts
+                </a>
+
+                <a href="farming.html" class="quick-link">
+                    🚜 Farming
+                </a>
+
+                <a href="soil.html" class="quick-link">
+                    🌱 Soil
+                </a>
+
+                <a href="water.html" class="quick-link">
+                    💧 Water
+                </a>
+
+                <a href="technology.html" class="quick-link">
+                    🤖 Technology
+                </a>
+
+                <a href="traditional.html" class="quick-link">
+                    🪔 Tradition
+                </a>
+
+                <a href="stories.html" class="quick-link">
+                    📖 Stories
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOME -->
+        <div class="back-home">
+
+            <a href="index.html" class="home-btn">
+                ← Back to UYIRMANN
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* =====================================================
+           UYIRMANN SEARCH DATABASE
+        ===================================================== */
+
+        const pages = [
+
+            {
+                title: "Crops of Tamil Nadu",
+                type: "crops",
+                keywords: "crop crops paddy rice banana coconut millet millets sugarcane cotton groundnut pulses vegetables maize sorghum sesame agriculture",
+                description: "Explore important crops and agricultural products of Tamil Nadu.",
+                link: "crops.html",
+                image: "https://images.unsplash.com/photo-1536633058222-2c7d3bca8e4f?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Know the Crop",
+                type: "crops",
+                keywords: "crop details paddy banana coconut millet sugarcane cotton groundnut pulses maize sorghum sesame",
+                description: "Discover crop profiles, growing context and agricultural importance.",
+                link: "crop-details.html",
+                image: "https://images.unsplash.com/photo-1536633058222-2c7d3bca8e4f?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Districts of Tamil Nadu",
+                type: "districts",
+                keywords: "district districts tamil nadu chennai coimbatore thanjavur madurai tirunelveli thoothukudi erode salem dindigul cuddalore tiruppur",
+                description: "Explore agricultural landscapes across Tamil Nadu's districts.",
+                link: "districts.html",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Know the Land",
+                type: "districts",
+                keywords: "district land agriculture thanjavur coimbatore madurai tirunelveli thoothukudi erode salem dindigul cuddalore tiruppur",
+                description: "Discover the agricultural character of different districts.",
+                link: "district-details.html",
+                image: "https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "From Soil to Harvest",
+                type: "farming",
+                keywords: "farming farm agriculture soil harvest seed sowing irrigation nutrition protection growth",
+                description: "Follow the farming journey from preparing the land to harvest.",
+                link: "farming.html",
+                image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Life in the Field",
+                type: "farming",
+                keywords: "farmer life field farm daily farming water weather soil market people",
+                description: "Explore the rhythm, challenges and human side of farming.",
+                link: "farmer-life.html",
+                image: "https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Wisdom of the Soil",
+                type: "culture",
+                keywords: "traditional tradition traditional farming native seeds tools water wisdom tamil culture heritage farmers",
+                description: "Discover traditional agricultural knowledge and farming heritage.",
+                link: "traditional.html",
+                image: "https://images.unsplash.com/photo-1523742810674-9c1d3e0c6c7c?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Farming Meets Technology",
+                type: "technology",
+                keywords: "technology smart farming sensors irrigation drones satellite artificial intelligence apps weather data imaging automation",
+                description: "Explore how technology is transforming modern agriculture.",
+                link: "technology.html",
+                image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ce?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Voices of the Field",
+                type: "farming",
+                keywords: "stories farmer stories paddy millet innovator seeds family coastal farmer",
+                description: "Explore stories and perspectives connected to farming life.",
+                link: "stories.html",
+                image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Farming Follows the Seasons",
+                type: "farming",
+                keywords: "seasons season kuruvai samba navarai monsoon crop calendar planting harvest",
+                description: "Understand the rhythm of agriculture through the seasons.",
+                link: "seasons.html",
+                image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "See the Soil",
+                type: "nature",
+                keywords: "soil red black alluvial sandy lateritic coastal wetland roots microorganisms organic matter soil health",
+                description: "Explore soil types, soil life and the foundation of agriculture.",
+                link: "soil.html",
+                image: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Water Gives the Field a Future",
+                type: "nature",
+                keywords: "water irrigation rivers tanks canals rainfall groundwater storage farming water wisdom",
+                description: "Explore the relationship between water and agriculture.",
+                link: "water.html",
+                image: "https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "From Field to Market",
+                type: "farming",
+                keywords: "market markets farmer collection sorting transport wholesale processing retail consumer digital agriculture",
+                description: "Follow agricultural products from the field to the market.",
+                link: "markets.html",
+                image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "From Soil to Food",
+                type: "farming",
+                keywords: "food agriculture rice banana millet coconut vegetables pulses harvest processing food culture",
+                description: "Discover how agriculture connects soil, crops and food.",
+                link: "agri-food.html",
+                image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Agriculture Follows the Sky",
+                type: "nature",
+                keywords: "climate rainfall temperature sunlight wind monsoon weather climate agriculture forecasting",
+                description: "Explore the relationship between climate, weather and farming.",
+                link: "climate.html",
+                image: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "The Future Is Growing",
+                type: "technology",
+                keywords: "innovation future sensors drones artificial intelligence robotics automation iot apps smart agriculture",
+                description: "Explore agricultural innovation and future farming technologies.",
+                link: "innovation.html",
+                image: "https://images.unsplash.com/photo-1581092919535-7146ff5f9f3d?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Learn. Grow. Share.",
+                type: "culture",
+                keywords: "education learning agricultural knowledge soil water crops seasons technology research young farmers",
+                description: "Explore agricultural learning, knowledge and future education.",
+                link: "education.html",
+                image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "A Farm Is an Ecosystem",
+                type: "nature",
+                keywords: "ecosystem biodiversity pollinators birds insects trees wetlands soil nature habitat food web",
+                description: "Discover the living systems that support agriculture.",
+                link: "ecosystem.html",
+                image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Gallery",
+                type: "nature",
+                keywords: "gallery photos images fields crops people nature technology farming",
+                description: "See UYIRMANN through fields, crops, people and technology.",
+                link: "gallery.html",
+                image: "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "About UYIRMANN",
+                type: "culture",
+                keywords: "about uyirmann mission tradition farmers nature innovation future tamil soil world",
+                description: "Learn about the idea and mission behind UYIRMANN.",
+                link: "about.html",
+                image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "From Tamil Soil to the World",
+                type: "culture",
+                keywords: "uyirmann tamil soil world agriculture tamil nadu farming global",
+                description: "Explore UYIRMANN's journey from Tamil soil to the world.",
+                link: "index.html",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Farmer Stories",
+                type: "farming",
+                keywords: "farmer people field stories life agriculture farming family",
+                description: "Explore the people and stories behind agriculture.",
+                link: "stories.html",
+                image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Smart Agriculture",
+                type: "technology",
+                keywords: "smart agriculture digital farming ai robotics sensors data automation",
+                description: "Discover digital tools and intelligent farming systems.",
+                link: "innovation.html",
+                image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80"
+            },
+
+            {
+                title: "Agricultural Ecosystem",
+                type: "nature",
+                keywords: "ecosystem nature biodiversity soil water plants insects birds farming",
+                description: "Understand how agriculture connects with nature.",
+                link: "ecosystem.html",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+            }
+
+        ];
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const searchInput = document.getElementById("searchInput");
+        const resultsGrid = document.getElementById("resultsGrid");
+        const resultCount = document.getElementById("resultCount");
+        const noResults = document.getElementById("noResults");
+        const clearSearch = document.getElementById("clearSearch");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+        let currentFilter = "all";
+
+
+        /* =====================================================
+           RENDER RESULTS
+        ===================================================== */
+
+        function renderResults() {
+
+            const searchTerm = searchInput.value
+                .toLowerCase()
+                .trim();
+
+            let filtered = pages.filter(page => {
+
+                const matchesSearch =
+                    searchTerm === "" ||
+                    page.title.toLowerCase().includes(searchTerm) ||
+                    page.keywords.toLowerCase().includes(searchTerm) ||
+                    page.description.toLowerCase().includes(searchTerm);
+
+                const matchesFilter =
+                    currentFilter === "all" ||
+                    page.type === currentFilter;
+
+                return matchesSearch && matchesFilter;
+
+            });
+
+
+            resultsGrid.innerHTML = "";
+
+
+            resultCount.textContent =
+                `${filtered.length} result${filtered.length !== 1 ? "s" : ""}`;
+
+
+            if (filtered.length === 0) {
+
+                noResults.style.display = "block";
+
+                return;
+
+            }
+
+
+            noResults.style.display = "none";
+
+
+            filtered.forEach((page, index) => {
+
+                const card = document.createElement("article");
+
+                card.className = "result-card";
+
+                card.style.animationDelay =
+                    `${index * 0.045}s`;
+
+
+                card.innerHTML = `
+
+                    <a href="${page.link}">
+
+                        <div
+                            class="card-image"
+                            style="background-image:url('${page.image}')">
+                        </div>
+
+                        <div class="card-content">
+
+                            <span class="card-type">
+                                ${getTypeName(page.type)}
+                            </span>
+
+                            <h3>
+                                ${page.title}
+                            </h3>
+
+                            <p>
+                                ${page.description}
+                            </p>
+
+                            <span class="card-link">
+                                Explore →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                `;
+
+
+                resultsGrid.appendChild(card);
+
+            });
+
+        }
+
+
+        /* =====================================================
+           TYPE NAME
+        ===================================================== */
+
+        function getTypeName(type) {
+
+            const names = {
+
+                crops: "Crops",
+
+                districts: "Districts",
+
+                farming: "Farming",
+
+                nature: "Nature",
+
+                technology: "Technology",
+
+                culture: "Culture"
+
+            };
+
+            return names[type] || "UYIRMANN";
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        searchInput.addEventListener(
+            "input",
+            renderResults
+        );
+
+
+        /* =====================================================
+           CLEAR
+        ===================================================== */
+
+        clearSearch.addEventListener(
+            "click",
+            () => {
+
+                searchInput.value = "";
+
+                searchInput.focus();
+
+                renderResults();
+
+            }
+        );
+
+
+        /* =====================================================
+           FILTERS
+        ===================================================== */
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove("active");
+                    });
+
+                    button.classList.add("active");
+
+                    currentFilter =
+                        button.dataset.filter;
+
+                    renderResults();
+
+                }
+            );
+
+        });
+
+
+        /* =====================================================
+           KEYBOARD SHORTCUT
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "/" &&
+                    document.activeElement !== searchInput
+                ) {
+
+                    event.preventDefault();
+
+                    searchInput.focus();
+
+                }
+
+                if (event.key === "Escape") {
+
+                    searchInput.value = "";
+
+                    renderResults();
+
+                    searchInput.blur();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        renderResults();
+
+    </script>
+
+</body>
+</html>
