@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Traditional Farming | UYIRMANN</title>
+
+    <meta name="description"
+          content="Explore traditional farming knowledge, native seeds, irrigation systems and agricultural heritage of Tamil Nadu.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(111, 83, 35, 0.18), transparent 30%),
+                radial-gradient(circle at 90% 50%, rgba(50, 110, 65, 0.15), transparent 30%),
+                #090e09;
+            color: #f5f5ef;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* HERO */
+
+        .trad-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+
+            background:
+                linear-gradient(
+                    rgba(12, 14, 8, 0.55),
+                    rgba(7, 13, 8, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .trad-hero-content {
+            max-width: 950px;
+        }
+
+        .trad-label {
+            display: inline-block;
+            padding: 9px 18px;
+            border: 1px solid rgba(222, 191, 112, 0.45);
+            border-radius: 50px;
+            color: #e5ca83;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .trad-hero h1 {
+            margin: 0;
+            font-size: clamp(48px, 8vw, 105px);
+            line-height: .95;
+            letter-spacing: -5px;
+        }
+
+        .trad-hero h1 span {
+            color: #d9b85f;
+        }
+
+        .trad-hero p {
+            max-width: 760px;
+            margin: 30px auto 0;
+            color: #d0d0c4;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* MAIN */
+
+        .trad-container {
+            width: min(1350px, 92%);
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        .heading {
+            max-width: 800px;
+            margin: 0 auto 65px;
+            text-align: center;
+        }
+
+        .heading small {
+            color: #d9b85f;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .heading h2 {
+            font-size: clamp(34px, 5vw, 60px);
+            margin: 15px 0;
+        }
+
+        .heading h2 span {
+            color: #d9b85f;
+        }
+
+        .heading p {
+            color: #aeb4a9;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* HERITAGE GRID */
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .heritage-card {
+            min-height: 330px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+
+            background: #10160f;
+            border: 1px solid rgba(255,255,255,.08);
+
+            opacity: 0;
+            transform: translateY(35px);
+
+            transition: .5s ease;
+        }
+
+        .heritage-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .heritage-card:hover {
+            transform: translateY(-9px);
+            border-color: rgba(217,184,95,.4);
+        }
+
+        .heritage-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: .6s ease;
+        }
+
+        .heritage-card:hover .heritage-image {
+            transform: scale(1.08);
+        }
+
+        .heritage-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    transparent 10%,
+                    rgba(7,12,7,.92) 90%
+                );
+        }
+
+        .heritage-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px;
+        }
+
+        .heritage-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .heritage-content h3 {
+            margin: 0 0 10px;
+            font-size: 25px;
+        }
+
+        .heritage-content p {
+            margin: 0;
+            color: #c1c7bd;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* KNOWLEDGE */
+
+        .knowledge {
+            margin-top: 110px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .knowledge-image {
+            min-height: 500px;
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    rgba(4,12,6,.12),
+                    rgba(4,12,6,.25)
+                ),
+                url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1200&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .knowledge-content small {
+            color: #d9b85f;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .knowledge-content h2 {
+            font-size: clamp(35px,5vw,58px);
+            line-height: 1.05;
+            margin: 15px 0 25px;
+        }
+
+        .knowledge-content h2 span {
+            color: #d9b85f;
+        }
+
+        .knowledge-content > p {
+            color: #b3bbb0;
+            line-height: 1.8;
+        }
+
+        .knowledge-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .knowledge-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .knowledge-number {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(217,184,95,.1);
+            border: 1px solid rgba(217,184,95,.3);
+            color: #e5ca83;
+            font-size: 13px;
+        }
+
+        .knowledge-item h4 {
+            margin: 0 0 5px;
+            font-size: 17px;
+        }
+
+        .knowledge-item p {
+            margin: 0;
+            color: #9fa99f;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* NATIVE SEEDS */
+
+        .seed-section {
+            margin-top: 120px;
+        }
+
+        .seed-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .seed-card {
+            padding: 30px 22px;
+            border-radius: 22px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.02)
+                );
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            transition: .35s;
+        }
+
+        .seed-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(217,184,95,.35);
+        }
+
+        .seed-icon {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .seed-card h3 {
+            margin: 0 0 10px;
+        }
+
+        .seed-card p {
+            margin: 0;
+            color: #aab4aa;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        /* WATER */
+
+        .water-section {
+            margin-top: 120px;
+            padding: 75px 30px;
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(39,86,56,.24),
+                    rgba(255,255,255,.025)
+                );
+
+            border: 1px solid rgba(126,228,155,.12);
+        }
+
+        .water-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .water-content h2 {
+            font-size: clamp(35px,5vw,58px);
+            margin: 0 0 20px;
+        }
+
+        .water-content h2 span {
+            color: #7ee49b;
+        }
+
+        .water-content p {
+            color: #adb9ae;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .water-items {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .water-item {
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(0,0,0,.18);
+        }
+
+        .water-item div {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .water-item h3 {
+            margin: 0 0 8px;
+        }
+
+        .water-item p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* QUOTE */
+
+        .trad-quote {
+            margin-top: 120px;
+            text-align: center;
+            padding: 80px 25px;
+        }
+
+        .trad-quote p {
+            max-width: 900px;
+            margin: auto;
+            font-size: clamp(26px,4vw,43px);
+            line-height: 1.35;
+            font-weight: 700;
+        }
+
+        .trad-quote span {
+            display: block;
+            margin-top: 25px;
+            color: #d9b85f;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+
+        .trad-footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,.06);
+            color: #818a81;
+        }
+
+        .trad-footer strong {
+            color: #d9b85f;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+            .heritage-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .seed-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 750px) {
+            .trad-hero {
+                background-attachment: scroll;
+            }
+
+            .trad-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .knowledge {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-image {
+                min-height: 350px;
+            }
+
+            .water-items {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .trad-container {
+                width: 90%;
+                padding: 65px 0;
+            }
+
+            .heritage-grid,
+            .seed-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .heritage-card {
+                min-height: 300px;
+            }
+
+            .knowledge-image {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="trad-hero">
+
+        <div class="trad-hero-content">
+
+            <div class="trad-label">
+                UYIRMANN • Agricultural Heritage
+            </div>
+
+            <h1>
+                Wisdom of the<br>
+                <span>Soil</span>
+            </h1>
+
+            <p>
+                Long before modern machines and digital agriculture,
+                Tamil farmers developed knowledge shaped by soil,
+                seasons, water, seeds and generations of experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="trad-container">
+
+        <!-- INTRO -->
+
+        <section class="heading">
+
+            <small>TRADITIONAL AGRICULTURE</small>
+
+            <h2>
+                Knowledge Passed <span>Through Generations</span>
+            </h2>
+
+            <p>
+                Traditional agriculture is not simply about old tools.
+                It includes observations, farming practices, local crops,
+                water management and knowledge developed over generations.
+            </p>
+
+        </section>
+
+
+        <!-- HERITAGE -->
+
+        <section class="heritage-grid">
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1592982537447-6f2a6a0a0f9b?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">🐂</div>
+
+                    <h3>Traditional Tools</h3>
+
+                    <p>
+                        Agricultural tools were designed around local
+                        materials, crops and farming conditions.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">🌾</div>
+
+                    <h3>Native Crops</h3>
+
+                    <p>
+                        Traditional crop varieties are closely connected
+                        with local climates, soils and food cultures.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">🌱</div>
+
+                    <h3>Seed Knowledge</h3>
+
+                    <p>
+                        Farmers have traditionally selected and preserved
+                        seeds from crops suited to their local conditions.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1536633053001-2c3c6f7e6c1a?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">💧</div>
+
+                    <h3>Water Wisdom</h3>
+
+                    <p>
+                        Tanks, ponds, canals and other systems helped
+                        communities manage seasonal water resources.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">🌦️</div>
+
+                    <h3>Seasonal Knowledge</h3>
+
+                    <p>
+                        Farmers observed rainfall, winds, temperature
+                        and seasons while planning agricultural activities.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="heritage-card">
+
+                <div class="heritage-image"
+                     style="background-image:url('https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1000&q=80');">
+                </div>
+
+                <div class="heritage-overlay"></div>
+
+                <div class="heritage-content">
+
+                    <div class="heritage-icon">👨‍🌾</div>
+
+                    <h3>Community Farming</h3>
+
+                    <p>
+                        Agricultural knowledge was shared within farming
+                        communities through practice and experience.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- KNOWLEDGE -->
+
+        <section class="knowledge">
+
+            <div class="knowledge-image"></div>
+
+            <div class="knowledge-content">
+
+                <small>LOCAL KNOWLEDGE</small>
+
+                <h2>
+                    Farmers Read<br>
+                    the <span>Land</span>
+                </h2>
+
+                <p>
+                    Traditional farmers often depended on careful
+                    observation of their surroundings. The land,
+                    plants, animals, clouds and water all provided
+                    information useful for agricultural decisions.
+                </p>
+
+                <div class="knowledge-list">
+
+                    <div class="knowledge-item">
+
+                        <div class="knowledge-number">01</div>
+
+                        <div>
+                            <h4>Observe the Soil</h4>
+
+                            <p>
+                                Soil texture, moisture and condition
+                                influence farming decisions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="knowledge-item">
+
+                        <div class="knowledge-number">02</div>
+
+                        <div>
+                            <h4>Understand the Season</h4>
+
+                            <p>
+                                Agricultural activities have traditionally
+                                been connected with seasonal patterns.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="knowledge-item">
+
+                        <div class="knowledge-number">03</div>
+
+                        <div>
+                            <h4>Protect the Seed</h4>
+
+                            <p>
+                                Saving suitable seeds helped farmers
+                                prepare for future cultivation.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="knowledge-item">
+
+                        <div class="knowledge-number">04</div>
+
+                        <div>
+                            <h4>Respect Water</h4>
+
+                            <p>
+                                Managing available water was essential
+                                for farming communities.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEEDS -->
+
+        <section class="seed-section">
+
+            <div class="heading">
+
+                <small>SEED HERITAGE</small>
+
+                <h2>
+                    A World of <span>Native Seeds</span>
+                </h2>
+
+                <p>
+                    Tamil Nadu has a long history of diverse agricultural
+                    crops and locally adapted varieties.
+                </p>
+
+            </div>
+
+
+            <div class="seed-grid">
+
+                <article class="seed-card">
+
+                    <div class="seed-icon">🌾</div>
+
+                    <h3>Traditional Rice</h3>
+
+                    <p>
+                        Traditional rice varieties represent an important
+                        part of South Indian agricultural heritage.
+                    </p>
+
+                </article>
+
+
+                <article class="seed-card">
+
+                    <div class="seed-icon">🌿</div>
+
+                    <h3>Millets</h3>
+
+                    <p>
+                        Millets have long been cultivated in dryland
+                        regions and form part of traditional food systems.
+                    </p>
+
+                </article>
+
+
+                <article class="seed-card">
+
+                    <div class="seed-icon">🫘</div>
+
+                    <h3>Pulses</h3>
+
+                    <p>
+                        Pulses have traditionally been grown as important
+                        food crops in many farming regions.
+                    </p>
+
+                </article>
+
+
+                <article class="seed-card">
+
+                    <div class="seed-icon">🌱</div>
+
+                    <h3>Oilseeds</h3>
+
+                    <p>
+                        Crops such as sesame and groundnut have a long
+                        connection with agriculture in Tamil Nadu.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- WATER -->
+
+        <section class="water-section">
+
+            <div class="water-content">
+
+                <h2>
+                    Water is <span>Life</span>
+                </h2>
+
+                <p>
+                    Traditional water management played an important role
+                    in agriculture across Tamil Nadu. Communities developed
+                    systems for storing, distributing and using seasonal water.
+                </p>
+
+
+                <div class="water-items">
+
+                    <div class="water-item">
+
+                        <div>🏞️</div>
+
+                        <h3>Tanks</h3>
+
+                        <p>
+                            Water-storage tanks have historically supported
+                            agriculture and local communities.
+                        </p>
+
+                    </div>
+
+
+                    <div class="water-item">
+
+                        <div>💧</div>
+
+                        <h3>Ponds</h3>
+
+                        <p>
+                            Ponds can store rainwater and contribute to
+                            local water availability.
+                        </p>
+
+                    </div>
+
+
+                    <div class="water-item">
+
+                        <div>🌊</div>
+
+                        <h3>Canals</h3>
+
+                        <p>
+                            Irrigation channels have helped move water
+                            toward agricultural lands.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUOTE -->
+
+        <section class="trad-quote">
+
+            <p>
+                “The future of farming can grow stronger
+                when knowledge from the past meets innovation.”
+            </p>
+
+            <span>
+                UYIRMANN • From Tamil Soil to the World
+            </span>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="trad-footer">
+
+        <p>
+            <strong>UYIRMANN</strong>
+            — From Tamil Soil to the World.
+        </p>
+
+        <p>
+            Preserving agricultural knowledge for the future.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* SCROLL REVEAL */
+
+        const cards =
+            document.querySelectorAll(".heritage-card");
+
+        const observer =
+            new IntersectionObserver(
+                function(entries) {
+
+                    entries.forEach(function(entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        cards.forEach(function(card, index) {
+
+            card.style.transitionDelay =
+                (index * 0.07) + "s";
+
+            observer.observe(card);
+
+        });
+
+
+        /* HERO PARALLAX */
+
+        const hero =
+            document.querySelector(".trad-hero");
+
+        window.addEventListener("scroll", function() {
+
+            if (window.innerWidth > 750) {
+
+                hero.style.backgroundPosition =
+                    "center " + (window.scrollY * 0.22) + "px";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
