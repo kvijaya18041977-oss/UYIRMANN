@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Farming Technology | UYIRMANN</title>
+
+    <meta name="description"
+          content="Discover smart farming technology including sensors, drones, AI, precision agriculture and automated irrigation.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(0, 180, 120, .13), transparent 30%),
+                radial-gradient(circle at 85% 35%, rgba(0, 130, 190, .12), transparent 30%),
+                #050b0b;
+            color: #f2f8f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* HERO */
+
+        .tech-hero {
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+
+            background:
+                linear-gradient(
+                    rgba(2, 12, 10, .55),
+                    rgba(2, 10, 8, .92)
+                ),
+                url("https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .tech-hero-content {
+            max-width: 1000px;
+        }
+
+        .tech-label {
+            display: inline-block;
+            padding: 9px 18px;
+            border: 1px solid rgba(85, 230, 180, .4);
+            border-radius: 50px;
+            color: #62e8bd;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .tech-hero h1 {
+            margin: 0;
+            font-size: clamp(48px, 8vw, 105px);
+            line-height: .94;
+            letter-spacing: -5px;
+        }
+
+        .tech-hero h1 span {
+            color: #55e6b2;
+        }
+
+        .tech-hero p {
+            max-width: 760px;
+            margin: 30px auto 0;
+            color: #c2d2cc;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* MAIN */
+
+        .tech-container {
+            width: min(1350px, 92%);
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        .heading {
+            max-width: 820px;
+            margin: 0 auto 65px;
+            text-align: center;
+        }
+
+        .heading small {
+            color: #55e6b2;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .heading h2 {
+            font-size: clamp(35px, 5vw, 60px);
+            margin: 15px 0;
+        }
+
+        .heading h2 span {
+            color: #55e6b2;
+        }
+
+        .heading p {
+            color: #aabbb4;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* TECHNOLOGY GRID */
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .tech-card {
+            position: relative;
+            padding: 35px 28px;
+            min-height: 300px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.065),
+                    rgba(255,255,255,.018)
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            overflow: hidden;
+            transition: .4s ease;
+
+            opacity: 0;
+            transform: translateY(35px);
+        }
+
+        .tech-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-card::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            right: -70px;
+            top: -70px;
+
+            border-radius: 50%;
+            background: rgba(85,230,178,.08);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-9px);
+            border-color: rgba(85,230,178,.4);
+            box-shadow: 0 25px 60px rgba(0,0,0,.35);
+        }
+
+        .tech-icon {
+            font-size: 42px;
+            margin-bottom: 22px;
+        }
+
+        .tech-card h3 {
+            margin: 0 0 13px;
+            font-size: 24px;
+        }
+
+        .tech-card p {
+            margin: 0;
+            color: #aabbb4;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* FEATURE */
+
+        .tech-feature {
+            margin-top: 120px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tech-feature-image {
+            min-height: 510px;
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    rgba(0,10,8,.15),
+                    rgba(0,10,8,.3)
+                ),
+                url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 30px 80px rgba(0,0,0,.35);
+        }
+
+        .tech-feature-content small {
+            color: #55e6b2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .tech-feature-content h2 {
+            font-size: clamp(35px, 5vw, 60px);
+            line-height: 1.05;
+            margin: 15px 0 25px;
+        }
+
+        .tech-feature-content h2 span {
+            color: #55e6b2;
+        }
+
+        .tech-feature-content > p {
+            color: #adbcb6;
+            line-height: 1.8;
+        }
+
+        .feature-points {
+            margin-top: 30px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .feature-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-check {
+            width: 35px;
+            height: 35px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: rgba(85,230,178,.1);
+            border: 1px solid rgba(85,230,178,.3);
+
+            color: #55e6b2;
+        }
+
+        .feature-point div:last-child {
+            color: #bdc9c4;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* SMART FARM FLOW */
+
+        .flow-section {
+            margin-top: 120px;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .flow-item {
+            position: relative;
+            padding: 30px 18px;
+            text-align: center;
+
+            border-radius: 20px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .flow-item:not(:last-child)::after {
+            content: "→";
+
+            position: absolute;
+            right: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            color: #55e6b2;
+            font-size: 24px;
+            z-index: 3;
+        }
+
+        .flow-icon {
+            font-size: 34px;
+            margin-bottom: 14px;
+        }
+
+        .flow-item h3 {
+            margin: 0 0 8px;
+            font-size: 17px;
+        }
+
+        .flow-item p {
+            margin: 0;
+            color: #96a69f;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* FUTURE */
+
+        .future-section {
+            margin-top: 120px;
+            padding: 80px 30px;
+            text-align: center;
+
+            border-radius: 32px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(30,130,95,.18),
+                    transparent 65%
+                );
+
+            border: 1px solid rgba(85,230,178,.15);
+        }
+
+        .future-section h2 {
+            font-size: clamp(35px, 5vw, 60px);
+            margin: 0 0 20px;
+        }
+
+        .future-section h2 span {
+            color: #55e6b2;
+        }
+
+        .future-section > p {
+            max-width: 780px;
+            margin: auto;
+            color: #aabbb4;
+            line-height: 1.8;
+        }
+
+        .future-grid {
+            max-width: 1050px;
+            margin: 45px auto 0;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .future-card {
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(0,0,0,.18);
+        }
+
+        .future-card div {
+            font-size: 35px;
+            margin-bottom: 13px;
+        }
+
+        .future-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .future-card p {
+            margin: 0;
+            color: #99aaa3;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* QUOTE */
+
+        .tech-quote {
+            padding: 100px 20px 30px;
+            text-align: center;
+        }
+
+        .tech-quote p {
+            max-width: 900px;
+            margin: auto;
+
+            font-size: clamp(26px, 4vw, 43px);
+            line-height: 1.35;
+            font-weight: 700;
+        }
+
+        .tech-quote span {
+            display: block;
+            margin-top: 25px;
+
+            color: #55e6b2;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+
+        .tech-footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+
+            border-top: 1px solid rgba(255,255,255,.06);
+
+            color: #7e8d87;
+        }
+
+        .tech-footer strong {
+            color: #55e6b2;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+
+            .tech-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .flow {
+                grid-template-columns: repeat(3,1fr);
+                gap: 20px;
+            }
+
+            .flow-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .future-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .tech-hero {
+                background-attachment: scroll;
+            }
+
+            .tech-hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .tech-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-feature-image {
+                min-height: 350px;
+            }
+
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .tech-container {
+                width: 90%;
+                padding: 65px 0;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-card {
+                min-height: auto;
+            }
+
+            .tech-feature-image {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="tech-hero">
+
+        <div class="tech-hero-content">
+
+            <div class="tech-label">
+                UYIRMANN • Smart Agriculture
+            </div>
+
+            <h1>
+                Farming<br>
+                Meets <span>Technology</span>
+            </h1>
+
+            <p>
+                From soil sensors to drones and intelligent irrigation,
+                modern technology is creating new ways to understand
+                crops, save resources and support farmers.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="tech-container">
+
+        <!-- INTRO -->
+
+        <section class="heading">
+
+            <small>SMART FARMING</small>
+
+            <h2>
+                The Farm of the <span>Future</span>
+            </h2>
+
+            <p>
+                Smart agriculture combines farming knowledge with
+                technology and data to help farmers monitor conditions
+                and make informed decisions.
+            </p>
+
+        </section>
+
+
+        <!-- TECHNOLOGY CARDS -->
+
+        <section class="tech-grid">
+
+            <article class="tech-card">
+
+                <div class="tech-icon">📡</div>
+
+                <h3>Soil Sensors</h3>
+
+                <p>
+                    Sensors can monitor conditions such as soil moisture
+                    and help farmers understand what is happening below
+                    the surface.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">💧</div>
+
+                <h3>Smart Irrigation</h3>
+
+                <p>
+                    Automated irrigation systems can use sensor information
+                    to manage water delivery according to crop conditions.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">🚁</div>
+
+                <h3>Drones</h3>
+
+                <p>
+                    Agricultural drones can capture aerial images that
+                    help farmers observe crop fields and identify areas
+                    that may need attention.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">🛰️</div>
+
+                <h3>Satellite Monitoring</h3>
+
+                <p>
+                    Satellite imagery can provide information about
+                    large agricultural areas and changes in vegetation.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">🤖</div>
+
+                <h3>Artificial Intelligence</h3>
+
+                <p>
+                    AI systems can analyse agricultural data and support
+                    tasks such as crop monitoring and pattern detection.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">📱</div>
+
+                <h3>Farmer Apps</h3>
+
+                <p>
+                    Digital tools can provide farmers with information,
+                    records, alerts and other agricultural services.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">🌦️</div>
+
+                <h3>Weather Data</h3>
+
+                <p>
+                    Weather information can help farmers plan irrigation,
+                    planting and other agricultural activities.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">📷</div>
+
+                <h3>Crop Imaging</h3>
+
+                <p>
+                    Cameras and imaging systems can help monitor plant
+                    growth and detect visible changes in crops.
+                </p>
+
+            </article>
+
+
+            <article class="tech-card">
+
+                <div class="tech-icon">⚙️</div>
+
+                <h3>Farm Automation</h3>
+
+                <p>
+                    Automated equipment can assist with selected farming
+                    operations and reduce repetitive manual work.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- FEATURE -->
+
+        <section class="tech-feature">
+
+            <div class="tech-feature-image"></div>
+
+
+            <div class="tech-feature-content">
+
+                <small>01 • PRECISION AGRICULTURE</small>
+
+                <h2>
+                    Less Waste.<br>
+                    <span>More Precision.</span>
+                </h2>
+
+                <p>
+                    Precision agriculture uses information from fields,
+                    sensors, machines and other sources to help farmers
+                    understand variation within their farmland.
+                </p>
+
+                <div class="feature-points">
+
+                    <div class="feature-point">
+
+                        <div class="feature-check">✓</div>
+
+                        <div>
+                            Monitor field conditions instead of treating
+                            every part of a field exactly the same.
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-point">
+
+                        <div class="feature-check">✓</div>
+
+                        <div>
+                            Use data to support decisions about water,
+                            nutrients and crop management.
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-point">
+
+                        <div class="feature-check">✓</div>
+
+                        <div>
+                            Combine farmer experience with digital
+                            information and modern tools.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SMART FARM FLOW -->
+
+        <section class="flow-section">
+
+            <div class="heading">
+
+                <small>HOW IT WORKS</small>
+
+                <h2>
+                    From <span>Field Data</span> to Action
+                </h2>
+
+                <p>
+                    Smart farming systems can connect sensors,
+                    software and farmers into a continuous information cycle.
+                </p>
+
+            </div>
+
+
+            <div class="flow">
+
+                <article class="flow-item">
+
+                    <div class="flow-icon">🌱</div>
+
+                    <h3>Field</h3>
+
+                    <p>
+                        Crops and soil generate information.
+                    </p>
+
+                </article>
+
+
+                <article class="flow-item">
+
+                    <div class="flow-icon">📡</div>
+
+                    <h3>Sensors</h3>
+
+                    <p>
+                        Devices collect measurements.
+                    </p>
+
+                </article>
+
+
+                <article class="flow-item">
+
+                    <div class="flow-icon">☁️</div>
+
+                    <h3>Data</h3>
+
+                    <p>
+                        Information can be stored and processed.
+                    </p>
+
+                </article>
+
+
+                <article class="flow-item">
+
+                    <div class="flow-icon">🧠</div>
+
+                    <h3>Analysis</h3>
+
+                    <p>
+                        Software can identify patterns.
+                    </p>
+
+                </article>
+
+
+                <article class="flow-item">
+
+                    <div class="flow-icon">👨‍🌾</div>
+
+                    <h3>Decision</h3>
+
+                    <p>
+                        Farmers use information to act.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUTURE -->
+
+        <section class="future-section">
+
+            <h2>
+                What's Next for <span>Agriculture?</span>
+            </h2>
+
+            <p>
+                As technology develops, agriculture may become increasingly
+                connected, data-driven and automated while still depending
+                on farmers' knowledge and decisions.
+            </p>
+
+
+            <div class="future-grid">
+
+                <article class="future-card">
+
+                    <div>🦾</div>
+
+                    <h3>Agricultural Robots</h3>
+
+                    <p>
+                        Robots may assist with selected repetitive
+                        agricultural tasks.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <div>🧠</div>
+
+                    <h3>AI Crop Analysis</h3>
+
+                    <p>
+                        AI can analyse large amounts of agricultural
+                        information and imagery.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <div>🌐</div>
+
+                    <h3>Connected Farms</h3>
+
+                    <p>
+                        Devices and software can communicate to create
+                        connected agricultural systems.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <div>💦</div>
+
+                    <h3>Water Intelligence</h3>
+
+                    <p>
+                        Better monitoring can support more efficient
+                        irrigation management.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <div>🌍</div>
+
+                    <h3>Climate Monitoring</h3>
+
+                    <p>
+                        Digital information can help farmers track
+                        changing environmental conditions.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <div>📊</div>
+
+                    <h3>Data-Driven Farming</h3>
+
+                    <p>
+                        Agricultural data can become another tool alongside
+                        farmer experience and observation.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUOTE -->
+
+        <section class="tech-quote">
+
+            <p>
+                “Technology can give farmers more information.
+                Knowledge turns that information into action.”
+            </p>
+
+            <span>
+                UYIRMANN • From Tamil Soil to the World
+            </span>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="tech-footer">
+
+        <p>
+            <strong>UYIRMANN</strong>
+            — From Tamil Soil to the World.
+        </p>
+
+        <p>
+            Agriculture • Technology • Innovation
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* SCROLL REVEAL */
+
+        const cards =
+            document.querySelectorAll(".tech-card");
+
+        const observer =
+            new IntersectionObserver(
+                function(entries) {
+
+                    entries.forEach(function(entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        cards.forEach(function(card, index) {
+
+            card.style.transitionDelay =
+                (index * 0.06) + "s";
+
+            observer.observe(card);
+
+        });
+
+
+        /* HERO PARALLAX */
+
+        const hero =
+            document.querySelector(".tech-hero");
+
+        window.addEventListener("scroll", function() {
+
+            if (window.innerWidth > 750) {
+
+                hero.style.backgroundPosition =
+                    "center " + (window.scrollY * 0.22) + "px";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
