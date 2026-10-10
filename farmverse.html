@@ -191,14 +191,23 @@
     UYIRMANN FARMVERSE · A new world of agriculture
   </footer>
 
-  <script>
-    document
-      .getElementById("startButton")
-      .addEventListener("click", function () {
-        document.getElementById("message").textContent =
-          "Welcome, farmer! The interactive farm will be added in the next step.";
-      });
-  </script>
+<script>
+  document
+    .getElementById("startButton")
+    .addEventListener("click", function () {
+      document.getElementById("message").textContent =
+        "Loading your 3D farm...";
+
+      if (!document.getElementById("farm3d")) {
+        import("./farmverse.js").catch(function (error) {
+          console.error("Farm loading error:", error);
+
+          document.getElementById("message").textContent =
+            "Unable to load the 3D farm. Please refresh and try again.";
+        });
+      }
+    });
+</script>
 
 </body>
           </html>
