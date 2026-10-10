@@ -4,59 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>UYIRMANN FARMVERSE</title>
+  <title>UYIRMANN FARMVERSE | 3D Farming World</title>
+
+  <meta name="theme-color" content="#123d24">
+  <meta name="description"
+        content="Explore UYIRMANN FARMVERSE, an interactive 3D farming world.">
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --green: #8dffad;
+      --dark: #071b13;
+      --panel: #102b20;
+      --border: #285a40;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--dark);
       color: white;
-      background: #071b13;
     }
 
     header {
-      padding: 22px 16px;
+      padding: 25px 16px;
       text-align: center;
       background: linear-gradient(135deg, #063b25, #159447);
     }
 
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: clamp(25px, 5vw, 38px);
     }
 
     header p {
-      margin-bottom: 0;
+      margin: 10px 0 0;
       color: #d7ffe4;
     }
 
     .container {
-      width: min(100% - 28px, 1000px);
+      width: min(1100px, calc(100% - 28px));
       margin: 24px auto;
     }
 
-    .welcome {
+    .panel {
       padding: 22px;
-      border: 1px solid #285a40;
+      border: 1px solid var(--border);
       border-radius: 18px;
-      background: #102b20;
+      background: var(--panel);
     }
 
-    .welcome h2 {
-      color: #8dffad;
+    h2 {
+      color: var(--green);
     }
 
-    .game-preview {
-      min-height: 260px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 24px;
+    .hero {
       margin-top: 18px;
+      padding: 25px 16px;
+      text-align: center;
       border-radius: 20px;
       background:
         radial-gradient(ellipse at top, #65b85b, transparent 65%),
@@ -65,16 +73,16 @@
     }
 
     .farm-icon {
-      font-size: 72px;
+      font-size: clamp(45px, 10vw, 75px);
     }
 
     button {
-      padding: 13px 20px;
-      margin-top: 12px;
-      border: none;
+      padding: 14px 22px;
+      margin: 10px 5px;
+      border: 0;
       border-radius: 12px;
+      background: var(--green);
       color: #062b18;
-      background: #8dffad;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
@@ -84,9 +92,48 @@
       background: #c0ffd0;
     }
 
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    #message {
+      color: #b6ffc9;
+      overflow-wrap: anywhere;
+    }
+
+    #gameArea {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #farm3d {
+      position: relative;
+      width: 100%;
+      height: min(65vh, 600px);
+      min-height: 350px;
+      overflow: hidden;
+      border: 2px solid #4b8550;
+      border-radius: 18px;
+      background: #b8e8ff;
+      touch-action: pan-y;
+    }
+
+    #farm3d canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .game-instructions {
+      margin-top: 12px;
+      color: #d1e8d8;
+      line-height: 1.6;
+    }
+
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
       gap: 12px;
       margin-top: 18px;
     }
@@ -94,25 +141,35 @@
     .feature {
       padding: 18px 12px;
       text-align: center;
-      background: #102b20;
-      border: 1px solid #285a40;
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 14px;
     }
 
     .feature span {
       display: block;
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 8px;
     }
 
-    #message {
-      color: #b6ffc9;
-    }
-
     footer {
-      padding: 24px;
+      padding: 25px 15px;
       text-align: center;
       color: #a6c7b3;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 20px);
+      }
+
+      .panel {
+        padding: 17px;
+      }
+
+      #farm3d {
+        min-height: 330px;
+      }
     }
   </style>
 </head>
@@ -121,39 +178,45 @@
 
   <header>
     <h1>🌾 UYIRMANN FARMVERSE</h1>
-    <p>Grow your farm. Learn agriculture. Compete fairly.</p>
+    <p>Grow your farm. Learn agriculture. Explore your world.</p>
   </header>
 
   <main class="container">
 
-    <section class="welcome">
-      <h2>Welcome to your farming world!</h2>
+    <section class="panel">
+      <h2>Welcome, Farmer!</h2>
 
       <p>
-        Build your own farm, grow crops, manage water,
-        learn sustainable agriculture and compete with
-        real registered players.
+        Discover a new farming world, explore fields,
+        learn about crops, and build your farming skills.
       </p>
 
-      <p id="message">
-        Your farming adventure is getting ready!
+      <p id="message" role="status" aria-live="polite">
+        Your farming adventure is ready to begin!
       </p>
     </section>
 
-    <section class="game-preview">
-      <div>
-        <div class="farm-icon">🌱🚜🌳</div>
+    <section class="hero">
+      <div class="farm-icon">🌱 🚜 🌳</div>
 
-        <h2>Your farm starts here</h2>
+      <h2>Your Farm, Your World</h2>
 
-        <p>
-          A realistic interactive 3D farming world
-          is the next development step.
-        </p>
+      <p>
+        Explore an interactive 3D farming environment.
+      </p>
 
-        <button id="startButton">
-          Enter My Farm 🌾
-        </button>
+      <button id="startButton" type="button">
+        Enter My Farm 🌾
+      </button>
+    </section>
+
+    <section id="gameArea" aria-label="3D farming game">
+      <div id="farm3d"></div>
+
+      <div class="game-instructions">
+        <strong>Explore your farm</strong><br>
+        Drag horizontally to rotate the camera.
+        Use your device's zoom gesture where supported.
       </div>
     </section>
 
@@ -162,25 +225,25 @@
       <div class="feature">
         <span>🌱</span>
         <strong>Grow Crops</strong>
-        <p>Plant and harvest crops.</p>
+        <p>Discover different crops.</p>
       </div>
 
       <div class="feature">
         <span>💧</span>
         <strong>Water Management</strong>
-        <p>Learn smart irrigation.</p>
+        <p>Learn about irrigation.</p>
       </div>
 
       <div class="feature">
         <span>👤</span>
         <strong>Player Profiles</strong>
-        <p>Meet registered farmers.</p>
+        <p>Real registered players will be added later.</p>
       </div>
 
       <div class="feature">
         <span>🏆</span>
         <strong>Competitions</strong>
-        <p>Earn points through gameplay.</p>
+        <p>Fair competitions will follow after gameplay is built.</p>
       </div>
 
     </section>
@@ -188,26 +251,56 @@
   </main>
 
   <footer>
-    UYIRMANN FARMVERSE · A new world of agriculture
+    UYIRMANN FARMVERSE<br>
+    Growing a greener future 🌍
   </footer>
 
-<script>
-  document
-    .getElementById("startButton")
-    .addEventListener("click", function () {
-      document.getElementById("message").textContent =
-        "Loading your 3D farm...";
+  <script type="module">
+    const button = document.getElementById("startButton");
+    const message = document.getElementById("message");
+    const gameArea = document.getElementById("gameArea");
 
-      if (!document.getElementById("farm3d")) {
-        import("./farmverse.js").catch(function (error) {
-          console.error("Farm loading error:", error);
+    let gameStarted = false;
 
-          document.getElementById("message").textContent =
-            "Unable to load the 3D farm. Please refresh and try again.";
+    button.addEventListener("click", async function () {
+      if (gameStarted) {
+        gameArea.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
         });
+        return;
+      }
+
+      button.disabled = true;
+      message.textContent = "Loading your 3D farm. Please wait...";
+
+      try {
+        await import("./farmverse.js");
+
+        gameStarted = true;
+        gameArea.style.display = "block";
+
+        button.textContent = "Explore My Farm 🌳";
+
+        message.textContent =
+          "Your 3D farm has loaded successfully!";
+
+        gameArea.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      } catch (error) {
+        console.error("Farm loading error:", error);
+
+        message.textContent =
+          "The 3D farm could not load. Check your internet connection and the farmverse.js file.";
+
+        button.disabled = false;
+        button.textContent = "Try Loading Again 🔄";
       }
     });
-</script>
+  </script>
 
 </body>
-          </html>
+  </html>
